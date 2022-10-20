@@ -1,6 +1,10 @@
 package model
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type Book struct {
 	ID       string `json:"id"`
@@ -25,8 +29,13 @@ type User struct {
 	Email      string             `json:"email" Usage:"required,alphanumeric"`
 	Password   string             `json:"password" Usage:"required,min=8,max=20"`
 	Catalogue  map[string]string  `json:"catalogue"`
-	CreatedAt  string             `json:"created_at" Usage:"datetime=2006-01-02"`
-	UpdatedAt  string             `json:"updated_at" Usage:"datetime=2006-01-02"`
+	CreatedAt  time.Time          `json:"created_at" Usage:"datetime=2006-01-02"`
+	UpdatedAt  time.Time          `json:"updated_at" Usage:"datetime=2006-01-02"`
 	Token      string             `json:"token" Usage:"jwt"`
 	RenewToken string             `json:"renew_token" Usage:"jwt"`
+}
+
+type ResponseMessage struct{
+	StatusCode int `json:"statuscode"`
+	Message string `json:"message"`
 }

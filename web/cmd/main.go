@@ -14,6 +14,7 @@ import (
 var app config.CatalogueConfig
 
 func main() {
+
 	mongoURI := os.Getenv("mongoURI")
 	client := database.DatabaseConnection(mongoURI)
 	defer func() {
