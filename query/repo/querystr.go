@@ -1,7 +1,7 @@
 package query
 
 import (
-	"github.com/yusuf/p-catalogue/config"
+	"github.com/yusuf/p-catalogue/pkg/config"
 	repo "github.com/yusuf/p-catalogue/query"
 	"go.mongodb.org/mongo-driver/mongo"
 )
