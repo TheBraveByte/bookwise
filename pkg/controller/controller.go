@@ -1,7 +1,9 @@
 package controller
 
 import (
-	"github.com/yusuf/p-catalogue/config"
+	"net/http"
+
+	"github.com/yusuf/p-catalogue/pkg/config"
 	repo "github.com/yusuf/p-catalogue/query"
 	query "github.com/yusuf/p-catalogue/query/repo"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -20,6 +22,14 @@ func NewCatalogue(app *config.CatalogueConfig, db *mongo.Client) *Catalogue {
 		CatDB: query.NewCatalogueDBRepo(app, db),
 	}
 }
+
 func NewController(c *Catalogue) {
 	Catalog = c
+}
+
+func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
+	
+}
+
+func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 }
