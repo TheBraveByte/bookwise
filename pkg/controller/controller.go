@@ -50,17 +50,37 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	user.Password, _ = encrypt.EncryptPassword(rq.PostForm.Get("password"))
 	user.Catalogue = map[string]string{}
 	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().String())
-	
+
 	if err := Validate.Struct(user); err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); !ok {
 			json.NewEncoder(wr).Encode(fmt.Sprintf("error %v %v", http.StatusBadRequest))
 			return
 		}
 	}
-	
+
+	http.SetCookie(wr, &http.Cookie{
+		Name:     "password",
+		Value:    user.Password,
+		Path:     "/",
+		Domain:   "localhost",
+		MaxAge:   60 * 60,
+		Secure:   false,
+		HttpOnly: true,
+	})
+
+	http.SetCookie(wr, &http.Cookie{
+		Name:     "email",
+		Value:    user.Email,
+		Path:     "/",
+		Domain:   "localhost",
+		MaxAge:   60 * 60,
+		Secure:   false,
+		HttpOnly: true,
+	})
+
 	count, userID, _ := cg.CatDB.CreateUserAccount(user)
 	ok := primitive.IsValidObjectID(userID.String())
-	
+
 	if count == 0 && ok {
 		msg := model.ResponseMessage{
 			StatusCode: http.StatusCreated,
@@ -68,7 +88,7 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 		}
 		json.NewEncoder(wr).Encode(msg)
 		return
-		
+
 	} else {
 		msg := model.ResponseMessage{
 			StatusCode: http.StatusPermanentRedirect,
@@ -80,5 +100,26 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 }
 
 func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
+	if err := rq.ParseForm(); err != nil {
+		log.Fatal(err)
+	}
+	email := rq.PostForm.Get("email")
+	password := rq.PostForm.Get("password")
+
+	encryptPassword, err := rq.Cookie("password")
+	if err == http.ErrNoCookie {
+		log.Fatal(err)
+	}
+	cookie_email, err := rq.Cookie("email")
+	if err == http.ErrNoCookie {
+		log.Fatal(err)
+	}
+	switch {
+	case email == cookie_email.Value:
+		ok, _ := cg.CatDB.VerifyUser(email, password, encryptPassword.Value)
+		if ok {
+			
+		}
+	}
 	
 }
