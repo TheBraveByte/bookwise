@@ -6,5 +6,6 @@ import (
 )
 
 type CatalogueRepo interface {
-	CreateUserAccount(user model.User) (int, primitive.ObjectID, error) 
+	CreateUserAccount(user model.User) (int, primitive.ObjectID, error)
+	VerifyUser(email, password, hashedPassword string) (bool, error)
 }

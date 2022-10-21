@@ -5,13 +5,14 @@ import (
 	"log"
 	"time"
 
+	"github.com/yusuf/p-catalogue/pkg/encrypt"
 	"github.com/yusuf/p-catalogue/pkg/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func (cr CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.ObjectID, error) {
+func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.ObjectID, error) {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancelCtx()
 
@@ -48,4 +49,25 @@ func (cr CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.Obj
 		}
 	}
 	return 1, userID, nil
+}
+
+func (cr *CatalogueDBRepo) VerifyUser(email, password, encryptPassword string) (bool, error) {
+	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancelCtx()
+
+	filter := bson.D{{Key: "email", Value: email}}
+	var result bson.M
+	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&result)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return false, err
+		}
+		return false, err
+	}
+
+	ok, err := encrypt.VerifyEncryptPassword(password, encryptPassword)
+	if err != nil {
+		log.Println(err)
+	}
+	return ok, nil
 }
