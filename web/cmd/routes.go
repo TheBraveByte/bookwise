@@ -9,8 +9,9 @@ import (
 	"github.com/go-chi/cors"
 	"github.com/yusuf/p-catalogue/pkg/config"
 	"github.com/yusuf/p-catalogue/pkg/controller"
-	"golang.org/x/text/message/catalog"
 )
+
+
 
 func Route(app *config.CatalogueConfig) http.Handler {
 	mux := chi.NewRouter()
@@ -30,6 +31,6 @@ func Route(app *config.CatalogueConfig) http.Handler {
 	}))
 	mux.Post("/create-account", controller.Catalog.CreateAccount)
 	mux.Post("/login", controller.Catalog.Login)
-
+	
 	return mux
 }
