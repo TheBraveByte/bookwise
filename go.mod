@@ -11,7 +11,6 @@ require (
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
-	github.com/alexedwards/scs/v2 v2.5.0 // indirect
 	github.com/andybalholm/cascadia v1.2.0 // indirect
 	github.com/antchfx/htmlquery v1.2.3 // indirect
 	github.com/antchfx/xmlquery v1.2.4 // indirect
@@ -36,6 +35,7 @@ require (
 require (
 	github.com/go-chi/chi/v5 v5.0.7
 	github.com/go-chi/cors v1.2.1
+	github.com/golang-jwt/jwt/v4 v4.4.2
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/klauspost/compress v1.15.11 // indirect
 	github.com/montanaflynn/stats v0.6.6 // indirect
