@@ -39,6 +39,8 @@ func NewController(c *Catalogue) {
 	Catalog = c
 }
 
+// CreateAccount : this function will help to create their account and have them store or add to 
+// database for future us
 func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	var user model.User
 	// Parse the posted details of the user
@@ -95,6 +97,8 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	}
 }
 
+// Login : this function will help to verify the user login details and 
+// also helps to generate authorization token for users
 func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 	if err := rq.ParseForm(); err != nil {
 		log.Fatal(err)
@@ -105,20 +109,19 @@ func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 	data := cg.App.Session.Get(rq.Context(), "data").(map[string]interface{})
 
 	hashPassword := fmt.Sprintf("%s", data["password"])
-	userID := fmt.Sprintf("%s",data["userID"])
+	userID := fmt.Sprintf("%s", data["userID"])
 
 	switch {
 	case email == data["email"]:
 		ok, _ := cg.CatDB.VerifyUser(email, password, hashPassword)
 		if ok {
-			token, renewToken, err := token.GenerateToken(userID, email)
+			token, _, err := token.GenerateToken(userID, email)
 			if err != nil {
 				log.Fatal(err)
 				return
 			}
 
-			pass := map[string]interface{}{"t1": token, "t2": renewToken}
-			cg.App.Session.Put(rq.Context(), "pass", pass)
+			wr.Header().Set("Authorization", token)
 
 			msg := model.ResponseMessage{
 				StatusCode: http.StatusOK,
@@ -133,4 +136,8 @@ func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 		}
 		json.NewEncoder(wr).Encode(msg)
 	}
+}
+
+func (cg *Catalogue) SearchBook(wr http.ResponseWriter, rq *http.Request) {
+
 }
