@@ -29,7 +29,10 @@ func Route(app *config.CatalogueConfig) http.Handler {
 		AllowCredentials: true,
 		MaxAge:           300,
 	}))
-	mux.Post("/create-account", controller.Catalog.CreateAccount)
+
+	mux.Use(LoadAndSave)
+
+	mux.Get("/create-account", controller.Catalog.CreateAccount)
 	mux.Post("/login", controller.Catalog.Login)
 	
 	return mux
