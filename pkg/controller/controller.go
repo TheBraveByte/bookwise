@@ -11,6 +11,8 @@ import (
 	"github.com/yusuf/p-catalogue/pkg/config"
 	"github.com/yusuf/p-catalogue/pkg/encrypt"
 	"github.com/yusuf/p-catalogue/pkg/model"
+	"github.com/yusuf/p-catalogue/token"
+
 	repo "github.com/yusuf/p-catalogue/query"
 	query "github.com/yusuf/p-catalogue/query/repo"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -39,11 +41,13 @@ func NewController(c *Catalogue) {
 
 func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	var user model.User
+	// Parse the posted details of the user
 	if err := rq.ParseForm(); err != nil {
 		log.Fatal(err)
 		return
 	}
 
+	// assigned parsed values to struct field and encrypt the input password
 	user.FirstName = rq.PostForm.Get("first_name")
 	user.LastName = rq.PostForm.Get("last_name")
 	user.Email = rq.PostForm.Get("email")
@@ -51,51 +55,43 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	user.Catalogue = map[string]string{}
 	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().String())
 
+	// validate value with respect to struct tags
 	if err := Validate.Struct(user); err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); !ok {
-			json.NewEncoder(wr).Encode(fmt.Sprintf("error %v %v", http.StatusBadRequest))
+			json.NewEncoder(wr).Encode(fmt.Sprintf("error %v", http.StatusBadRequest))
 			return
 		}
 	}
 
-	http.SetCookie(wr, &http.Cookie{
-		Name:     "password",
-		Value:    user.Password,
-		Path:     "/",
-		Domain:   "localhost",
-		MaxAge:   60 * 60,
-		Secure:   false,
-		HttpOnly: true,
-	})
-
-	http.SetCookie(wr, &http.Cookie{
-		Name:     "email",
-		Value:    user.Email,
-		Path:     "/",
-		Domain:   "localhost",
-		MaxAge:   60 * 60,
-		Secure:   false,
-		HttpOnly: true,
-	})
-
 	count, userID, _ := cg.CatDB.CreateUserAccount(user)
 	ok := primitive.IsValidObjectID(userID.String())
 
-	if count == 0 && ok {
+	// store user data in session as cookies
+	data := map[string]interface{}{"email": user.Email, "userID": userID, "password": user.Password}
+	cg.App.Session.Put(rq.Context(), "data", data)
+
+	switch {
+
+	case count == 0 && ok:
 		msg := model.ResponseMessage{
 			StatusCode: http.StatusCreated,
-			Message:    "Account created successfully",
+			Message:    "account created successfully",
 		}
 		json.NewEncoder(wr).Encode(msg)
-		return
 
-	} else {
+	case count == 1 && ok:
 		msg := model.ResponseMessage{
 			StatusCode: http.StatusPermanentRedirect,
-			Message:    "Existing account.Pls login",
+			Message:    "existing account, pls login",
 		}
 		json.NewEncoder(wr).Encode(msg)
-		return
+
+	default:
+		msg := model.ResponseMessage{
+			StatusCode: http.StatusBadRequest,
+			Message:    "error : create your account",
+		}
+		json.NewEncoder(wr).Encode(msg)
 	}
 }
 
@@ -106,20 +102,35 @@ func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 	email := rq.PostForm.Get("email")
 	password := rq.PostForm.Get("password")
 
-	encryptPassword, err := rq.Cookie("password")
-	if err == http.ErrNoCookie {
-		log.Fatal(err)
-	}
-	cookie_email, err := rq.Cookie("email")
-	if err == http.ErrNoCookie {
-		log.Fatal(err)
-	}
+	data := cg.App.Session.Get(rq.Context(), "data").(map[string]interface{})
+
+	hashPassword := fmt.Sprintf("%s", data["password"])
+	userID := fmt.Sprintf("%s",data["userID"])
+
 	switch {
-	case email == cookie_email.Value:
-		ok, _ := cg.CatDB.VerifyUser(email, password, encryptPassword.Value)
+	case email == data["email"]:
+		ok, _ := cg.CatDB.VerifyUser(email, password, hashPassword)
 		if ok {
-			
+			token, renewToken, err := token.GenerateToken(userID, email)
+			if err != nil {
+				log.Fatal(err)
+				return
+			}
+
+			pass := map[string]interface{}{"t1": token, "t2": renewToken}
+			cg.App.Session.Put(rq.Context(), "pass", pass)
+
+			msg := model.ResponseMessage{
+				StatusCode: http.StatusOK,
+				Message:    "You have login successfully",
+			}
+			json.NewEncoder(wr).Encode(msg)
 		}
+	default:
+		msg := model.ResponseMessage{
+			StatusCode: http.StatusUnauthorized,
+			Message:    "Error: invalid login details",
+		}
+		json.NewEncoder(wr).Encode(msg)
 	}
-	
 }

@@ -13,8 +13,8 @@ import (
 
 type TokenClaims struct {
 	jwt.RegisteredClaims
-	Email    interface{}
-	Password interface{}
+	Email string
+	ID    string
 }
 
 func GetSigningKey() []byte {
@@ -25,7 +25,7 @@ func GetSigningKey() []byte {
 	return []byte(keyString)
 }
 
-func GenerateToken(email, password interface{}) (interface{}, interface{}, error) {
+func GenerateToken(id, email string) (interface{}, interface{}, error) {
 	tokenClaims := TokenClaims{
 		RegisteredClaims: jwt.RegisteredClaims{
 			Issuer: "personal",
@@ -34,8 +34,8 @@ func GenerateToken(email, password interface{}) (interface{}, interface{}, error
 			},
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
 		},
-		Email:    email,
-		Password: password,
+		Email: email,
+		ID:    id,
 	}
 	newtokenClaims := &jwt.RegisteredClaims{
 		Issuer:    "personal",
