@@ -25,7 +25,7 @@ func GetSigningKey() []byte {
 	return []byte(keyString)
 }
 
-func GenerateToken(id, email string) (interface{}, interface{}, error) {
+func GenerateToken(id, email string) (string, string, error) {
 	tokenClaims := TokenClaims{
 		RegisteredClaims: jwt.RegisteredClaims{
 			Issuer: "personal",
