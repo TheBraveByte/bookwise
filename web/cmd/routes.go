@@ -31,9 +31,13 @@ func Route(app *config.CatalogueConfig) http.Handler {
 	}))
 
 	mux.Use(LoadAndSave)
-
 	mux.Get("/create-account", controller.Catalog.CreateAccount)
 	mux.Post("/login", controller.Catalog.Login)
+	
+	mux.Route("/user", func(mux chi.Router){
+		mux.Use(Authorization)
+		mux.Get("/search-book", controller.Catalog.SearchBook)
+	})
 	
 	return mux
 }
