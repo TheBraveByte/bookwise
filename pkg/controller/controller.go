@@ -15,7 +15,6 @@ import (
 
 	repo "github.com/yusuf/p-catalogue/query"
 	query "github.com/yusuf/p-catalogue/query/repo"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -66,7 +65,7 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	}
 
 	count, userID, _ := cg.CatDB.CreateUserAccount(user)
-	ok := primitive.IsValidObjectID(userID.String())
+	// ok := primitive.IsValidObjectID(userID.String())
 
 	// store user data in session as cookies
 	data := map[string]interface{}{"email": user.Email, "userID": userID, "password": user.Password}
@@ -74,24 +73,17 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 
 	switch {
 
-	case count == 0 && ok:
+	case count == 0:
 		msg := model.ResponseMessage{
 			StatusCode: http.StatusCreated,
 			Message:    "account created successfully",
 		}
 		json.NewEncoder(wr).Encode(msg)
 
-	case count == 1 && ok:
+	case count == 1:
 		msg := model.ResponseMessage{
 			StatusCode: http.StatusPermanentRedirect,
 			Message:    "existing account, pls login",
-		}
-		json.NewEncoder(wr).Encode(msg)
-
-	default:
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusBadRequest,
-			Message:    "error : create your account",
 		}
 		json.NewEncoder(wr).Encode(msg)
 	}
