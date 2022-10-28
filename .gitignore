@@ -18,3 +18,5 @@
 ### environment variable
 .env
 *.idea
+
+.vscode

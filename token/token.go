@@ -37,7 +37,7 @@ func GenerateToken(id, email string) (string, string, error) {
 		Email: email,
 		ID:    id,
 	}
-	newtokenClaims := &jwt.RegisteredClaims{
+	newtonClaims := &jwt.RegisteredClaims{
 		Issuer:    "personal",
 		ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
 	}
@@ -46,7 +46,7 @@ func GenerateToken(id, email string) (string, string, error) {
 		log.Println("cannot create token from claims")
 		return "", "", err
 	}
-	newToken, err := jwt.NewWithClaims(jwt.SigningMethodES256, newtokenClaims).SignedString(GetSigningKey())
+	newToken, err := jwt.NewWithClaims(jwt.SigningMethodES256, newtonClaims).SignedString(GetSigningKey())
 	if err != nil {
 		log.Println("cannot create token from claims")
 		return "", "", err
