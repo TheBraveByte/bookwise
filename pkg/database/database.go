@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func DatabaseConnection(uri string) *mongo.Client {
+func DBConnection(uri string) *mongo.Client {
 	serverAPIOptions := options.ServerAPI(options.ServerAPIVersion1)
 
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
@@ -24,6 +24,6 @@ func DatabaseConnection(uri string) *mongo.Client {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	
+
 	return client
 }

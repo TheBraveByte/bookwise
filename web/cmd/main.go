@@ -30,6 +30,10 @@ func main() {
 	if err != nil {
 		log.Fatal("no environment variable file")
 	}
+
+	InfoLogger := log.New(os.Stdout, "server-side info : ", log.LstdFlags|log.Lshortfile)
+	ErrorLogger := log.New(os.Stdout, "server-side error : ", log.LstdFlags|log.Lshortfile)
+
 	session = scs.New()
 	session.Lifetime = 5 * time.Hour
 	session.IdleTimeout = 60 * time.Minute
@@ -41,17 +45,20 @@ func main() {
 	log.Println("Starting p-catalogue API application server ...............")
 
 	uri := os.Getenv("mongodb_uri")
-	client := database.DatabaseConnection(uri)
+	client := database.DBConnection(uri)
 
 	log.Println("....Application connected to the database.......")
-	
+
 	defer func() {
 		err := client.Disconnect(context.TODO())
 		if err != nil {
 			log.Panic(err)
 		}
 	}()
+
 	app.Session = session
+	app.InfoLogger = InfoLogger
+	app.ErrorLogger = ErrorLogger
 
 	catalog := controller.NewCatalogue(&app, client)
 	controller.NewController(catalog)
