@@ -38,15 +38,16 @@ func GenerateToken(id, email string) (string, string, error) {
 		ID:    id,
 	}
 	newtonClaims := &jwt.RegisteredClaims{
+		ExpiresAt: jwt.NewNumericDate(time.Now().Add(48 * time.Hour)),
 		Issuer:    "personal",
-		ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
+		IssuedAt:  &jwt.NumericDate{Time: time.Now()},
 	}
-	token, err := jwt.NewWithClaims(jwt.SigningMethodES256, tokenClaims).SignedString(GetSigningKey())
+	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, tokenClaims).SignedString(GetSigningKey())
 	if err != nil {
 		log.Println("cannot create token from claims")
 		return "", "", err
 	}
-	newToken, err := jwt.NewWithClaims(jwt.SigningMethodES256, newtonClaims).SignedString(GetSigningKey())
+	newToken, err := jwt.NewWithClaims(jwt.SigningMethodHS256, newtonClaims).SignedString(GetSigningKey())
 	if err != nil {
 		log.Println("cannot create token from claims")
 		return "", "", err
