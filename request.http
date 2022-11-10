@@ -1,0 +1,22 @@
+POST http://localhost:8000/create-account
+Content-Type: application/x-www-form-urlencoded
+
+first_name=Yusuf&last_name=Akinleye&email=ayaa0089@gmail.com&password=Akinleye12345
+###
+
+POST http://localhost:8000/login
+Content-Type: application/x-www-form-urlencoded
+
+email=ayaa0089@gmail.com&password=Akinleye12345
+
+
+###
+
+POST http://localhost:8000/api/search-book
+Content-Type: application/x-www-form-urlencoded
+
+title=The Subtle art of not giving a fuck
+
+###
+GET https://openlibrary.org/search.json?q=The+subtle+art+of+not+giving+a+fuck
+Content-Type: application/x-www-form-urlencoded
