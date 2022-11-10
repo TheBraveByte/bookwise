@@ -2,7 +2,7 @@ package query
 
 import (
 	"github.com/yusuf/p-catalogue/pkg/config"
-	repo "github.com/yusuf/p-catalogue/query"
+	"github.com/yusuf/p-catalogue/query"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -11,7 +11,7 @@ type CatalogueDBRepo struct {
 	DB  *mongo.Client
 }
 
-func NewCatalogueDBRepo(app *config.CatalogueConfig, db *mongo.Client) repo.CatalogueRepo {
+func NewCatalogueDBRepo(app *config.CatalogueConfig, db *mongo.Client) query.CatalogueRepo {
 	return &CatalogueDBRepo{
 		App: app,
 		DB:  db,

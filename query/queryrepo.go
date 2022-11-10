@@ -1,4 +1,4 @@
-package repo
+package query
 
 import (
 	"github.com/yusuf/p-catalogue/pkg/model"
