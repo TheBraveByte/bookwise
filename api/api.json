@@ -1,0 +1,421 @@
+{
+    "numFound": 3,
+    "start": 0,
+    "numFoundExact": true,
+    "docs": [
+        {
+            "key": "/works/OL17590212W",
+            "type": "work",
+            "seed": [
+                "/books/OL32082560M",
+                "/books/OL39807009M",
+                "/books/OL26472511M",
+                "/books/OL31856073M",
+                "/books/OL36818914M",
+                "/books/OL32967931M",
+                "/books/OL32549716M",
+                "/books/OL27003834M",
+                "/books/OL26926288M",
+                "/books/OL26971043M",
+                "/books/OL30776236M",
+                "/books/OL26986089M",
+                "/books/OL35406748M",
+                "/books/OL26948417M",
+                "/books/OL27383494M",
+                "/books/OL26193423M",
+                "/books/OL27970187M",
+                "/books/OL27383471M",
+                "/books/OL26940300M",
+                "/books/OL39472294M",
+                "/books/OL37772880M",
+                "/books/OL39199973M",
+                "/books/OL27351643M",
+                "/books/OL28699114M",
+                "/books/OL26977361M",
+                "/books/OL30676655M",
+                "/books/OL30676654M",
+                "/books/OL26894399M",
+                "/books/OL39221807M",
+                "/books/OL39221806M",
+                "/books/OL27351482M",
+                "/books/OL28230579M",
+                "/books/OL39806600M",
+                "/books/OL28261416M",
+                "/books/OL38543053M",
+                "/books/OL36098179M",
+                "/works/OL17590212W",
+                "/subjects/self-realization",
+                "/subjects/conduct_of_life",
+                "/subjects/conducta_de_vida",
+                "/subjects/nyt:advice-how-to-and-miscellaneous=2016-10-02",
+                "/subjects/new_york_times_bestseller",
+                "/authors/OL2964000A"
+            ],
+            "title": "The Subtle Art of Not Giving a F*ck",
+            "title_suggest": "The Subtle Art of Not Giving a F*ck",
+            "edition_count": 36,
+            "edition_key": [
+                "OL32082560M",
+                "OL39807009M",
+                "OL26472511M",
+                "OL31856073M",
+                "OL36818914M",
+                "OL32967931M",
+                "OL32549716M",
+                "OL27003834M",
+                "OL26926288M",
+                "OL26971043M",
+                "OL30776236M",
+                "OL26986089M",
+                "OL35406748M",
+                "OL26948417M",
+                "OL27383494M",
+                "OL26193423M",
+                "OL27970187M",
+                "OL27383471M",
+                "OL26940300M",
+                "OL39472294M",
+                "OL37772880M",
+                "OL39199973M",
+                "OL27351643M",
+                "OL28699114M",
+                "OL26977361M",
+                "OL30676655M",
+                "OL30676654M",
+                "OL26894399M",
+                "OL39221807M",
+                "OL39221806M",
+                "OL27351482M",
+                "OL28230579M",
+                "OL39806600M",
+                "OL28261416M",
+                "OL38543053M",
+                "OL36098179M"
+            ],
+            "publish_date": [
+                "Aug 23, 2018",
+                "May 24, 2017",
+                "Sep 13, 2016",
+                "Sep 01, 2017",
+                "Dec 14, 2017",
+                "Nov 28, 2017",
+                "2019",
+                "2022",
+                "11/3/2021",
+                "Jul 15, 2021",
+                "2018",
+                "Jul 03, 2018",
+                "Apr 04, 2018",
+                "August 2016",
+                "September 13, 2016",
+                "2016",
+                "2017",
+                "Mar 21, 2018"
+            ],
+            "publish_year": [
+                2021,
+                2022,
+                2019,
+                2018,
+                2016,
+                2017
+            ],
+            "first_publish_year": 2016,
+            "number_of_pages_median": 224,
+            "oclc": [
+                "1040147657",
+                "1021287056",
+                "956999728"
+            ],
+            "contributor": [
+                "I\ufe20A\ufe21strebov, Gleb, translator",
+                "Roig, Anna,   translator",
+                "Wayne, Roger, narrator"
+            ],
+            "lcc": [
+                "BJ-1589.00000000.M25918 2018",
+                "BJ-1589.00000000.M259 2016",
+                "BJ-1589.00000000",
+                "BJ-1589.00000000.M259 2016ab"
+            ],
+            "ddc": [
+                "158.1"
+            ],
+            "isbn": [
+                "1441711414",
+                "0062457713",
+                "0062641549",
+                "9788491392286",
+                "9781400213306",
+                "9781925483598",
+                "0062837508",
+                "9789389012996",
+                "9798804636129",
+                "1441711449",
+                "006245773X",
+                "9780062641540",
+                "9781441711410",
+                "0062884026",
+                "1760782106",
+                "9788551002490",
+                "1925483592",
+                "9780062899149",
+                "9788328335493",
+                "0063228254",
+                "0062899147",
+                "9781441711441",
+                "8491392289",
+                "1400213304",
+                "9781441711366",
+                "0062851330",
+                "9781760558772",
+                "9780062457721",
+                "865212860X",
+                "9786059397254",
+                "9780062457714",
+                "5961462900",
+                "9785961462906",
+                "9780062457738",
+                "9780062851338",
+                "176055877X",
+                "0062457721",
+                "9780062837509",
+                "9389012996",
+                "8328335492",
+                "1441711368",
+                "855100249X",
+                "6059397255",
+                "9781760782108",
+                "9788652128600",
+                "9780062884022",
+                "9780063228252"
+            ],
+            "last_modified_i": 1667418527,
+            "ebook_count_i": 2,
+            "ebook_access": "printdisabled",
+            "has_fulltext": true,
+            "public_scan_b": false,
+            "ia": [
+                "subtleartofnotgi0000mans_n2n5",
+                "subtleartofnotgi0000mans_h2r6"
+            ],
+            "ia_collection": [
+                "internetarchivebooks",
+                "printdisabled"
+            ],
+            "ia_collection_s": "internetarchivebooks;printdisabled",
+            "printdisabled_s": "OL27351482M;OL28230579M",
+            "cover_edition_key": "OL26193423M",
+            "cover_i": 8231990,
+            "publisher": [
+                "Harperone",
+                "Laguna",
+                "harper collins publishers",
+                "Penguin",
+                "Harper Paperbacks",
+                "Harper",
+                "HarperLuxe",
+                "HarperCollins",
+                "HarperCollins Publishers",
+                "Macmillan",
+                "Butik Yay\u0131nlar\u0131",
+                "HarperOne",
+                "HarperCollins Publishers and Blackstone Audio",
+                "Helion",
+                "Independently Published",
+                "Mark Manson ",
+                "Butik Yaynlar",
+                "Harpercollins",
+                "Intrinseca",
+                "Pan Macmillan Australia Pty, Limited",
+                "Mark Manson",
+                "Vani Ptakashan"
+            ],
+            "language": [
+                "eng",
+                "por",
+                "rus",
+                "spa"
+            ],
+            "author_key": [
+                "OL2964000A"
+            ],
+            "author_name": [
+                "Mark Manson"
+            ],
+            "author_alternative_name": [
+                "Manson Mark",
+                "The Subtle Art of Not Giving A F*ck by Mark Manson",
+                "mark manson"
+            ],
+            "subject": [
+                "Self-realization",
+                "Conduct of life",
+                "Conducta de vida",
+                "nyt:advice-how-to-and-miscellaneous=2016-10-02",
+                "New York Times bestseller"
+            ],
+            "id_amazon": [
+                "0062884026",
+                "0062899147",
+                "0062837508",
+                "0062851330"
+            ],
+            "ia_box_id": [
+                "IA40594623",
+                "IA40576215"
+            ],
+            "publisher_facet": [
+                "Butik Yaynlar",
+                "Butik Yay\u0131nlar\u0131",
+                "Harper",
+                "Harper Paperbacks",
+                "HarperCollins",
+                "HarperCollins Publishers",
+                "HarperCollins Publishers and Blackstone Audio",
+                "HarperLuxe",
+                "HarperOne",
+                "Harpercollins",
+                "Harperone",
+                "Helion",
+                "Independently Published",
+                "Intrinseca",
+                "Laguna",
+                "Macmillan",
+                "Mark Manson",
+                "Mark Manson ",
+                "Pan Macmillan Australia Pty, Limited",
+                "Penguin",
+                "Vani Ptakashan",
+                "harper collins publishers"
+            ],
+            "subject_facet": [
+                "Conduct of life",
+                "Conducta de vida",
+                "New York Times bestseller",
+                "Self-realization",
+                "nyt:advice-how-to-and-miscellaneous=2016-10-02"
+            ],
+            "_version_": 1748973201987207170,
+            "lcc_sort": "BJ-1589.00000000.M25918 2018",
+            "author_facet": [
+                "OL2964000A Mark Manson"
+            ],
+            "subject_key": [
+                "conduct_of_life",
+                "conducta_de_vida",
+                "new_york_times_bestseller",
+                "nytadvice-how-to-and-miscellaneous2016-10-02",
+                "self-realization"
+            ],
+            "ddc_sort": "158.1"
+        },
+        {
+            "key": "/works/OL27117933W",
+            "type": "work",
+            "seed": [
+                "/books/OL36812810M",
+                "/works/OL27117933W",
+                "/authors/OL7798859A"
+            ],
+            "title": "Summary, Analysis, and Review of Mark Manson's the Subtle Art of Not Giving a Fuck",
+            "title_suggest": "Summary, Analysis, and Review of Mark Manson's the Subtle Art of Not Giving a Fuck",
+            "edition_count": 1,
+            "edition_key": [
+                "OL36812810M"
+            ],
+            "publish_date": [
+                "2017"
+            ],
+            "publish_year": [
+                2017
+            ],
+            "first_publish_year": 2017,
+            "isbn": [
+                "9781682996775",
+                "1682996778"
+            ],
+            "last_modified_i": 1643350269,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Start Publishing LLC"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL7798859A"
+            ],
+            "author_name": [
+                "Start Publishing Notes"
+            ],
+            "publisher_facet": [
+                "Start Publishing LLC"
+            ],
+            "_version_": 1735669187080093698,
+            "author_facet": [
+                "OL7798859A Start Publishing Notes"
+            ]
+        },
+        {
+            "key": "/works/OL27419964W",
+            "type": "work",
+            "seed": [
+                "/books/OL37346802M",
+                "/works/OL27419964W",
+                "/authors/OL2964000A",
+                "/authors/OL10271722A"
+            ],
+            "title": "the subtle art of not giving a fuck [hardcover] and how to be fucking awesome 2 books collection set - a counterintuitive approach to living a good life",
+            "title_suggest": "the subtle art of not giving a fuck [hardcover] and how to be fucking awesome 2 books collection set - a counterintuitive approach to living a good life",
+            "edition_count": 1,
+            "edition_key": [
+                "OL37346802M"
+            ],
+            "publish_date": [
+                "Feb 28, 2018"
+            ],
+            "publish_year": [
+                2018
+            ],
+            "first_publish_year": 2018,
+            "isbn": [
+                "9123649704",
+                "9789123649709"
+            ],
+            "last_modified_i": 1646056510,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "HarperOne/Rethink Press Limited"
+            ],
+            "author_key": [
+                "OL2964000A",
+                "OL10271722A"
+            ],
+            "author_name": [
+                "Mark Manson",
+                "Dan Meredith"
+            ],
+            "author_alternative_name": [
+                "mark manson"
+            ],
+            "publisher_facet": [
+                "HarperOne/Rethink Press Limited"
+            ],
+            "_version_": 1735669553053040640,
+            "author_facet": [
+                "OL10271722A Dan Meredith",
+                "OL2964000A Mark Manson"
+            ]
+        }
+    ],
+    "num_found": 3,
+    "q": "the subtle art of not giving a fuck",
+    "offset": null
+}
