@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
-	"github.com/yusuf/p-catalogue/pkg/encrypt"
+	_ "github.com/yusuf/p-catalogue/pkg/encrypt"
 )
 
 type TokenClaims struct {
@@ -17,13 +17,16 @@ type TokenClaims struct {
 	ID    string
 }
 
-func GetSigningKey() []byte {
-	keyString, err := encrypt.EncryptPassword(os.Getenv("secret_key"))
-	if err != nil {
-		log.Fatalf("invalid secret key encryption")
-	}
-	return []byte(keyString)
-}
+var signedKey = os.Getenv("secretKey")
+
+//func GetSigningKey() string {
+//	//
+//	//keyString, err := encrypt.EncryptPassword(os.Getenv("secret_key"))
+//	//if err != nil {
+//	//	log.Fatalf("invalid secret key encryption")
+//	//}
+//	//return keyString
+//}
 
 func GenerateToken(id, email string) (string, string, error) {
 	tokenClaims := TokenClaims{
@@ -42,29 +45,31 @@ func GenerateToken(id, email string) (string, string, error) {
 		Issuer:    "personal",
 		IssuedAt:  &jwt.NumericDate{Time: time.Now()},
 	}
-	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, tokenClaims).SignedString(GetSigningKey())
+
+	token, err := jwt.NewWithClaims(jwt.SigningMethodHS256, tokenClaims).SignedString([]byte(signedKey))
 	if err != nil {
 		log.Println("cannot create token from claims")
 		return "", "", err
 	}
-	newToken, err := jwt.NewWithClaims(jwt.SigningMethodHS256, newtonClaims).SignedString(GetSigningKey())
+	newToken, err := jwt.NewWithClaims(jwt.SigningMethodHS256, newtonClaims).SignedString([]byte(signedKey))
 	if err != nil {
 		log.Println("cannot create token from claims")
 		return "", "", err
 	}
 
+	fmt.Println(token)
 	return token, newToken, nil
 }
 
 func ParseTokenString(tokenString string) (*TokenClaims, error) {
 	token, err := jwt.ParseWithClaims(tokenString, &TokenClaims{}, func(t *jwt.Token) (interface{}, error) {
-		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("unexpected signing method : %v", t.Header["alg"])
-		}
-		return GetSigningKey(), nil
+		//if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
+		//	return nil, fmt.Errorf("unexpected signing method : %v", t.Header["alg"])
+		//}
+		return []byte(signedKey), nil
 	})
 	if err != nil {
-		log.Fatalf("error while parsing token with it claims")
+		log.Fatalf("error while parsing token with it claims %v", err)
 	}
 	claims, ok := token.Claims.(*TokenClaims)
 	if !ok {
