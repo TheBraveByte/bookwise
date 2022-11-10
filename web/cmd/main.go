@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"encoding/gob"
+	"github.com/yusuf/p-catalogue/api"
+	"github.com/yusuf/p-catalogue/pkg/model"
 	"log"
 	"net/http"
 	"os"
@@ -22,7 +24,7 @@ var (
 )
 
 func main() {
-	gob.Register(map[string]interface{}{})
+	gob.Register(model.Data{})
 	gob.Register(map[string]string{})
 	gob.Register(primitive.NewObjectID())
 
@@ -31,13 +33,12 @@ func main() {
 		log.Fatal("no environment variable file")
 	}
 
-	InfoLogger := log.New(os.Stdout, "server-side info : ", log.LstdFlags|log.Lshortfile)
-	ErrorLogger := log.New(os.Stdout, "server-side error : ", log.LstdFlags|log.Lshortfile)
+	InfoLogger := log.New(os.Stdout, "p-catalogue info-logger", log.LstdFlags|log.Lshortfile)
+	ErrorLogger := log.New(os.Stdout, "p-catalogue error-logger : ", log.LstdFlags|log.Lshortfile)
 
 	session = scs.New()
-	session.Lifetime = 5 * time.Hour
-	session.IdleTimeout = 60 * time.Minute
-	session.Cookie.Path = "localhost"
+	session.Lifetime = 24 * time.Hour
+	//session.IdleTimeout = 60 * time.Minute
 	session.Cookie.Persist = true
 	session.Cookie.Secure = true
 	session.Cookie.HttpOnly = true
@@ -61,9 +62,11 @@ func main() {
 	app.ErrorLogger = ErrorLogger
 
 	catalog := controller.NewCatalogue(&app, client)
-	controller.NewController(catalog)
+	//controller.NewController(catalog)
 
-	srv := &http.Server{Addr: ":8000", Handler: Route(&app)}
+	libraryAPI := api.NewOpenLibraryAPI(&app, client)
+
+	srv := &http.Server{Addr: ":8000", Handler: Route(catalog, libraryAPI)}
 	if err := srv.ListenAndServe(); err != nil {
 		log.Panic(err)
 	}

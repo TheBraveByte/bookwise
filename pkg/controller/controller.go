@@ -25,7 +25,7 @@ type Catalogue struct {
 	CatDB repo.CatalogueRepo
 }
 
-var Catalog *Catalogue
+//var Catalog *Catalogue
 
 func NewCatalogue(app *config.CatalogueConfig, db *mongo.Client) *Catalogue {
 	return &Catalogue{
@@ -34,9 +34,10 @@ func NewCatalogue(app *config.CatalogueConfig, db *mongo.Client) *Catalogue {
 	}
 }
 
-func NewController(c *Catalogue) {
-	Catalog = c
-}
+//
+//func NewController(c *Catalogue) {
+//	Catalog = c
+//}
 
 // CreateAccount : this function will help to create their account and have them store or add to
 // database for future us
@@ -102,6 +103,7 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 // Login : this function will help to verify the user login details and
 // also helps to generate authorization token for users
 func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
+
 	if err := rq.ParseForm(); err != nil {
 		log.Fatal(err)
 	}
