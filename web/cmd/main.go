@@ -4,7 +4,8 @@ import (
 	"context"
 	"encoding/gob"
 	"github.com/yusuf/p-catalogue/api"
-	"github.com/yusuf/p-catalogue/pkg/model"
+	"github.com/yusuf/p-catalogue/user/model"
+	"github.com/yusuf/p-catalogue/user/userHandler"
 	"log"
 	"net/http"
 	"os"
@@ -12,9 +13,8 @@ import (
 
 	"github.com/alexedwards/scs/v2"
 	"github.com/joho/godotenv"
-	"github.com/yusuf/p-catalogue/pkg/config"
-	"github.com/yusuf/p-catalogue/pkg/controller"
-	"github.com/yusuf/p-catalogue/pkg/database"
+	"github.com/yusuf/p-catalogue/dependencies/config"
+	"github.com/yusuf/p-catalogue/dependencies/database"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -61,8 +61,8 @@ func main() {
 	app.InfoLogger = InfoLogger
 	app.ErrorLogger = ErrorLogger
 
-	catalog := controller.NewCatalogue(&app, client)
-	//controller.NewController(catalog)
+	catalog := userHandler.NewCatalogue(&app, client)
+	//user.NewController(catalog)
 
 	libraryAPI := api.NewOpenLibraryAPI(&app, client)
 

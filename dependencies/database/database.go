@@ -2,12 +2,14 @@ package database
 
 import (
 	"context"
-	"log"
+	"github.com/yusuf/p-catalogue/dependencies/config"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+var app config.CatalogueConfig
 
 func DBConnection(uri string) *mongo.Client {
 	serverAPIOptions := options.ServerAPI(options.ServerAPIVersion1)
@@ -17,12 +19,12 @@ func DBConnection(uri string) *mongo.Client {
 
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPIOptions))
 	if err != nil {
-		log.Panicln(err)
+		app.ErrorLogger.Panicln(err)
 	}
 
 	err = client.Ping(ctx, nil)
 	if err != nil {
-		log.Fatalln(err)
+		app.ErrorLogger.Fatalln(err)
 	}
 
 	return client

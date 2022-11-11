@@ -2,16 +2,16 @@ package main
 
 import (
 	"github.com/yusuf/p-catalogue/api"
+	"github.com/yusuf/p-catalogue/user/userHandler"
 	"net/http"
 	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
-	"github.com/yusuf/p-catalogue/pkg/controller"
 )
 
-func Route(catalog *controller.Catalogue, api *api.OpenLibraryAPI) http.Handler {
+func Route(catalog *userHandler.Catalogue, api *api.OpenLibraryAPI) http.Handler {
 	mux := chi.NewRouter()
 	mux.Use(middleware.RequestID)
 	mux.Use(middleware.RealIP)

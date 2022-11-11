@@ -2,10 +2,9 @@ package main
 
 import (
 	"context"
+	"github.com/yusuf/p-catalogue/dependencies/token"
 	"log"
 	"net/http"
-
-	"github.com/yusuf/p-catalogue/token"
 )
 
 // Authorization : middleware for authorization using the generated token

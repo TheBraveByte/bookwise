@@ -2,11 +2,11 @@ package query
 
 import (
 	"context"
-	"log"
+	"github.com/yusuf/p-catalogue/user/model"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
 
-	"github.com/yusuf/p-catalogue/pkg/encrypt"
-	"github.com/yusuf/p-catalogue/pkg/model"
+	"github.com/yusuf/p-catalogue/dependencies/encrypt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -17,8 +17,8 @@ func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.Ob
 	defer cancelCtx()
 
 	filter := bson.D{{Key: "email", Value: user.Email}}
-	var user_data bson.M
-	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&user_data)
+	var userData bson.M
+	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&userData)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			newUserID := primitive.NewObjectID()
@@ -33,14 +33,14 @@ func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.Ob
 			}
 			_, err := UserData(cr.DB, "user").InsertOne(ctx, data)
 			if err != nil {
-				log.Fatal("cannot created database for user")
+				cr.App.ErrorLogger.Fatalf("cannot created database for user %v", err)
 			}
 			return 0, newUserID, nil
 		}
-		log.Fatal("this user does not exist")
+		cr.App.ErrorLogger.Fatalf("this user does not exist, %v", err)
 	}
 	var userID primitive.ObjectID
-	for k, v := range user_data {
+	for k, v := range userData {
 		if k == "_id" {
 			switch id := v.(type) {
 			case primitive.ObjectID:
@@ -67,7 +67,29 @@ func (cr *CatalogueDBRepo) VerifyUser(email, password, encryptPassword string) (
 
 	ok, err := encrypt.VerifyEncryptPassword(password, encryptPassword)
 	if err != nil {
-		log.Println(err)
+		cr.App.ErrorLogger.Println(err)
 	}
 	return ok, nil
+}
+
+func (cr *CatalogueDBRepo) UpdateUserDetails(userID primitive.ObjectID, token, renewToken string) error {
+	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancelCtx()
+
+	filter := bson.D{{"_id", userID}}
+	update := bson.D{{"$set", bson.D{
+		{"token", token},
+		{"renew_token", renewToken},
+	}}}
+	opts := options.FindOneAndUpdate().SetUpsert(true)
+	var newUpdate bson.M
+	err := UserData(cr.DB, "book").FindOneAndUpdate(ctx, filter, update, opts).Decode(&newUpdate)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return err
+		}
+		cr.App.ErrorLogger.Fatal(err)
+	}
+	return nil
+
 }

@@ -1,18 +1,17 @@
-package controller
+package userHandler
 
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/yusuf/p-catalogue/dependencies/token"
+	"github.com/yusuf/p-catalogue/user/model"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/go-playground/validator"
-	"github.com/yusuf/p-catalogue/pkg/config"
-	"github.com/yusuf/p-catalogue/pkg/encrypt"
-	"github.com/yusuf/p-catalogue/pkg/model"
-	"github.com/yusuf/p-catalogue/token"
-
+	"github.com/yusuf/p-catalogue/dependencies/config"
+	"github.com/yusuf/p-catalogue/dependencies/encrypt"
 	repo "github.com/yusuf/p-catalogue/query"
 	query "github.com/yusuf/p-catalogue/query/repo"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -45,7 +44,7 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	var user model.User
 	// Parse the posted details of the user
 	if err := rq.ParseForm(); err != nil {
-		log.Fatal(err)
+		cg.App.ErrorLogger.Fatalln(err)
 		return
 	}
 
@@ -69,10 +68,8 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	}
 
 	count, userID, _ := cg.CatDB.CreateUserAccount(user)
-	// ok := primitive.IsValidObjectID(userID.String())
 
 	// store user data in session as cookies
-
 	data := model.Data{Email: user.Email, ID: userID, Password: user.Password}
 	cg.App.Session.Put(rq.Context(), "data", data)
 
@@ -105,7 +102,7 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 
 	if err := rq.ParseForm(); err != nil {
-		log.Fatal(err)
+		cg.App.ErrorLogger.Fatalln(err)
 	}
 	email := rq.Form.Get("email")
 	password := rq.Form.Get("password")
@@ -119,13 +116,15 @@ func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 	case email == data.Email:
 		ok, _ := cg.CatDB.VerifyUser(email, password, hashPassword)
 		if ok {
-			generateToken, _, err := token.GenerateToken(userID, email)
+			generateToken, renewToken, err := token.GenerateToken(userID, email)
 			if err != nil {
 				log.Fatal(err)
 				return
 			}
 
 			http.SetCookie(wr, &http.Cookie{Name: "auth_token", Value: generateToken, Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
+
+			_ = cg.CatDB.UpdateUserDetails(data.ID, generateToken, renewToken)
 
 			msg := model.ResponseMessage{
 				StatusCode: http.StatusOK,
