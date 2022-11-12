@@ -2,11 +2,11 @@ package query
 
 import (
 	"context"
-	"github.com/yusuf/p-catalogue/user/model"
+	"github.com/yusuf/p-catalogue/modules/model"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
 
-	"github.com/yusuf/p-catalogue/dependencies/encrypt"
+	"github.com/yusuf/p-catalogue/modules/encrypt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -18,7 +18,7 @@ func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.Ob
 
 	filter := bson.D{{Key: "email", Value: user.Email}}
 	var userData bson.M
-	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&userData)
+	err := UserData(cr.DB, "controller").FindOne(ctx, filter).Decode(&userData)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			newUserID := primitive.NewObjectID()
@@ -31,13 +31,13 @@ func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.Ob
 				{Key: "catalogue", Value: user.Catalogue},
 				{Key: "created_at", Value: user.CreatedAt},
 			}
-			_, err := UserData(cr.DB, "user").InsertOne(ctx, data)
+			_, err := UserData(cr.DB, "controller").InsertOne(ctx, data)
 			if err != nil {
-				cr.App.ErrorLogger.Fatalf("cannot created database for user %v", err)
+				cr.App.ErrorLogger.Fatalf("cannot created database for controller %v", err)
 			}
 			return 0, newUserID, nil
 		}
-		cr.App.ErrorLogger.Fatalf("this user does not exist, %v", err)
+		cr.App.ErrorLogger.Fatalf("this controller does not exist, %v", err)
 	}
 	var userID primitive.ObjectID
 	for k, v := range userData {
@@ -57,7 +57,7 @@ func (cr *CatalogueDBRepo) VerifyUser(email, password, encryptPassword string) (
 
 	filter := bson.D{{Key: "email", Value: email}}
 	var result bson.M
-	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&result)
+	err := UserData(cr.DB, "controller").FindOne(ctx, filter).Decode(&result)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			return false, err

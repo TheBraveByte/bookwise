@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
-	_ "github.com/yusuf/p-catalogue/dependencies/encrypt"
+	_ "github.com/yusuf/p-catalogue/modules/encrypt"
 )
 
 type TokenClaims struct {
@@ -73,7 +73,7 @@ func ParseTokenString(tokenString string) (*TokenClaims, error) {
 	}
 	claims, ok := token.Claims.(*TokenClaims)
 	if !ok {
-		log.Fatalf("error %v user not authorized access", http.StatusUnauthorized)
+		log.Fatalf("error %v controller not authorized access", http.StatusUnauthorized)
 	}
 	if err := claims.Valid(); err != nil {
 		log.Fatalf("error %v %s", http.StatusUnauthorized, err)
