@@ -1,8 +1,7 @@
 package main
 
 import (
-	"github.com/yusuf/p-catalogue/api"
-	"github.com/yusuf/p-catalogue/user/userHandler"
+	"github.com/yusuf/p-catalogue/modules/controller"
 	"net/http"
 	"time"
 
@@ -11,7 +10,7 @@ import (
 	"github.com/go-chi/cors"
 )
 
-func Route(catalog *userHandler.Catalogue, api *api.OpenLibraryAPI) http.Handler {
+func Route(catalog *controller.Catalogue) http.Handler {
 	mux := chi.NewRouter()
 	mux.Use(middleware.RequestID)
 	mux.Use(middleware.RealIP)
@@ -32,9 +31,10 @@ func Route(catalog *userHandler.Catalogue, api *api.OpenLibraryAPI) http.Handler
 	mux.Post("/create-account", catalog.CreateAccount)
 	mux.Post("/login", catalog.Login)
 
-	mux.Route("/api", func(mux chi.Router) {
+	mux.Route("/api_repo", func(mux chi.Router) {
 		mux.Use(Authorization)
-		mux.Post("/search-book", api.SearchBookTitle)
+		mux.Post("/search-book", catalog.SearchBookTitle)
+		//mux.Get("/get", catalog.APIServeUser)
 	})
 
 	return mux

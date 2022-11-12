@@ -6,7 +6,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// EncryptPassword : this function will help to hash the user input password to a 
+// EncryptPassword : this function will help to hash the controller input password to a
 // secured encrypted string
 func EncryptPassword(password string) (string, error) {
 	encryptPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
@@ -19,10 +19,10 @@ func EncryptPassword(password string) (string, error) {
 }
 
 // VerifyEncryptPassword : this function will help to compare the encryted string with input password
-// by the user to during authentication
+// by the controller to during authentication
 func VerifyEncryptPassword(password, hashedpassword string) (bool, error) {
 	err := bcrypt.CompareHashAndPassword([]byte(hashedpassword), []byte(password))
-	
+
 	if err == bcrypt.ErrMismatchedHashAndPassword {
 		return false, err
 	}

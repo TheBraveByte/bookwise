@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"github.com/yusuf/p-catalogue/dependencies/token"
+	"github.com/yusuf/p-catalogue/modules/token"
 	"log"
 	"net/http"
 )

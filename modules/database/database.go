@@ -2,7 +2,7 @@ package database
 
 import (
 	"context"
-	"github.com/yusuf/p-catalogue/dependencies/config"
+	"github.com/yusuf/p-catalogue/modules/config"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
