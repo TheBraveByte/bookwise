@@ -19,6 +19,20 @@ type User struct {
 	RenewToken string             `json:"renew_token" Usage:"jwt"`
 }
 
+type Book struct {
+	AuthorName   []string `json:"author_name"`
+	Title        string   `json:"title"`
+	PublishYear  int      `json:"first_publish_year"`
+	Price        float64  `json:"price"`
+	EditionCount int      `json:"edition_count"`
+	Language     []string `json:"language"`
+	Contributor  []string `json:"contributor"`
+}
+
+type Docs struct {
+	Docs []Book `json:"docs"`
+}
+
 type ResponseMessage struct {
 	StatusCode int    `json:"status_code"`
 	Message    string `json:"message"`
