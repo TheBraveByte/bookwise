@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/alexedwards/scs/v2"
+	"github.com/go-playground/validator"
 )
 
 type CatalogueConfig struct {
@@ -12,4 +13,5 @@ type CatalogueConfig struct {
 	ErrorLogger *log.Logger
 	Session     *scs.SessionManager
 	Client      *http.Client
+	Validate    *validator.Validate
 }
