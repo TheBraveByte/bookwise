@@ -2,7 +2,7 @@ package query
 
 import (
 	"context"
-	"github.com/yusuf/p-catalogue/modules/model"
+	"github.com/yusuf/p-catalogue/model"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
 

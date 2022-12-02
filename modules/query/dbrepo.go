@@ -1,7 +1,7 @@
 package query
 
 import (
-	"github.com/yusuf/p-catalogue/modules/model"
+	"github.com/yusuf/p-catalogue/model"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -12,5 +12,5 @@ type CatalogueRepo interface {
 
 	// AddBook controller Interacting with the book data
 	AddBook(title string, bookData model.Book) (int64, primitive.ObjectID, error)
-	//GetSearchedBook(bookID primitive.ObjectID) (primitive.M, error)
+	GetSearchedBook(bookID primitive.ObjectID) (primitive.M, error)
 }

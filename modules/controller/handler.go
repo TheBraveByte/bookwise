@@ -1,50 +1,54 @@
-package userHandler
+package controller
 
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/yusuf/p-catalogue/dependencies/token"
-	"github.com/yusuf/p-catalogue/user/model"
 	"log"
 	"net/http"
 	"time"
 
 	"github.com/go-playground/validator"
-	"github.com/yusuf/p-catalogue/dependencies/config"
-	"github.com/yusuf/p-catalogue/dependencies/encrypt"
-	repo "github.com/yusuf/p-catalogue/query"
-	query "github.com/yusuf/p-catalogue/query/repo"
+	"github.com/yusuf/p-catalogue/model"
+	repo "github.com/yusuf/p-catalogue/modules/query"
+	"github.com/yusuf/p-catalogue/modules/query/repo"
+	"github.com/yusuf/p-catalogue/modules/token"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+
+	"github.com/yusuf/p-catalogue/modules/config"
+	"github.com/yusuf/p-catalogue/modules/encrypt"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var Validate = validator.New()
-
-type Catalogue struct {
-	App   *config.CatalogueConfig
-	CatDB repo.CatalogueRepo
+var Client = &http.Client{
+	Transport: &http.Transport{
+		MaxIdleConns:       3,
+		DisableCompression: true,
+		MaxConnsPerHost:    3,
+		IdleConnTimeout:    100 * time.Second,
+	},
 }
 
-//var Catalog *Catalogue
+type Catalogue struct {
+	App    *config.CatalogueConfig
+	CatDB  repo.CatalogueRepo
+	Client *http.Client
+}
 
 func NewCatalogue(app *config.CatalogueConfig, db *mongo.Client) *Catalogue {
 	return &Catalogue{
-		App:   app,
-		CatDB: query.NewCatalogueDBRepo(app, db),
+		App:    app,
+		CatDB:  query.NewCatalogueDBRepo(app, db),
+		Client: Client,
 	}
 }
 
-//
-//func NewController(c *Catalogue) {
-//	Catalog = c
-//}
-
 // CreateAccount : this function will help to create their account and have them store or add to
-// database for future us
-func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
+// database for future usage
+func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	var user model.User
-	// Parse the posted details of the user
+	// Parse the posted details of the controller
 	if err := rq.ParseForm(); err != nil {
-		cg.App.ErrorLogger.Fatalln(err)
+		ct.App.ErrorLogger.Fatalln(err)
 		return
 	}
 
@@ -57,7 +61,7 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().String())
 
 	// validate value with respect to struct tags
-	if err := Validate.Struct(user); err != nil {
+	if err := ct.App.Validate.Struct(user); err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); !ok {
 			err := json.NewEncoder(wr).Encode(fmt.Sprintf("error %v", http.StatusBadRequest))
 			if err != nil {
@@ -67,11 +71,16 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 		}
 	}
 
-	count, userID, _ := cg.CatDB.CreateUserAccount(user)
+	count, userID, _ := ct.CatDB.CreateUserAccount(user)
 
-	// store user data in session as cookies
-	data := model.Data{Email: user.Email, ID: userID, Password: user.Password}
-	cg.App.Session.Put(rq.Context(), "data", data)
+	// store controller data in session as cookies
+	var data model.Data
+
+	data.Email = user.Email
+	data.ID = userID
+	data.Password = user.Password
+
+	ct.App.Session.Put(rq.Context(), "data", data)
 
 	switch {
 
@@ -97,24 +106,24 @@ func (cg *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	}
 }
 
-// Login : this function will help to verify the user login details and
+// Login : this function will help to verify the controller login details and
 // also helps to generate authorization token for users
-func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
+func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 
 	if err := rq.ParseForm(); err != nil {
-		cg.App.ErrorLogger.Fatalln(err)
+		ct.App.ErrorLogger.Fatalln(err)
 	}
 	email := rq.Form.Get("email")
 	password := rq.Form.Get("password")
 
-	data := cg.App.Session.Get(rq.Context(), "data").(model.Data)
+	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
 
 	hashPassword := data.Password
 	userID := fmt.Sprint(data.ID)
 
 	switch {
 	case email == data.Email:
-		ok, _ := cg.CatDB.VerifyUser(email, password, hashPassword)
+		ok, _ := ct.CatDB.VerifyUser(email, password, hashPassword)
 		if ok {
 			generateToken, renewToken, err := token.GenerateToken(userID, email)
 			if err != nil {
@@ -124,7 +133,7 @@ func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 
 			http.SetCookie(wr, &http.Cookie{Name: "auth_token", Value: generateToken, Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
 
-			_ = cg.CatDB.UpdateUserDetails(data.ID, generateToken, renewToken)
+			_ = ct.CatDB.UpdateUserDetails(data.ID, generateToken, renewToken)
 
 			msg := model.ResponseMessage{
 				StatusCode: http.StatusOK,
@@ -145,4 +154,27 @@ func (cg *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 			return
 		}
 	}
+}
+
+func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
+	//this api_repo control will find/fetch the searched book from the
+	//  add a database query to extract book details from the database
+	//	 and make it available to the controller handler
+
+	bookID := ct.App.Session.Get(rq.Context(), "book_id").(primitive.ObjectID)
+	ok := primitive.IsValidObjectID(bookID.String())
+	if !ok {
+		ct.App.ErrorLogger.Println("book id is invalid")
+	}
+	book, err := ct.CatDB.GetSearchedBook(bookID)
+	if err != nil {
+		ct.App.ErrorLogger.Println("cannot find searched")
+	}
+	err = json.NewEncoder(wr).Encode(&book)
+	if err != nil {
+		return
+	}
+	//Initialise a payment system to check if payment was made
+	//Before adding to the database
+	return
 }

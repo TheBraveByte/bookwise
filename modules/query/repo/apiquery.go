@@ -2,9 +2,9 @@ package query
 
 import (
 	"context"
+	"github.com/yusuf/p-catalogue/model"
 	"go.mongodb.org/mongo-driver/mongo"
 
-	"github.com/yusuf/p-catalogue/modules/model"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"math"
