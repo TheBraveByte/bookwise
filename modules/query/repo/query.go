@@ -3,7 +3,6 @@ package query
 import (
 	"context"
 	"github.com/yusuf/p-catalogue/model"
-	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
 
 	"github.com/yusuf/p-catalogue/modules/encrypt"
@@ -11,6 +10,32 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
+
+func (cr *CatalogueDBRepo) SendAvailableBooks() (interface{}, error) {
+	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
+	defer cancelCtx()
+
+	filter := bson.D{{}}
+	var res []model.Library
+	cursor, err := LibraryData(cr.DB, "library").Find(ctx, filter)
+	if err != nil {
+		cr.App.ErrorLogger.Fatalf("error in library collection : %v ", err)
+	}
+	defer func(cursor *mongo.Cursor, ctx context.Context) {
+		err := cursor.Close(ctx)
+		if err != nil {
+			return
+		}
+	}(cursor, ctx)
+
+	if err := cursor.All(ctx, &res); err != nil {
+		return nil, err
+	}
+	if err := cursor.Err(); err != nil {
+		return nil, err
+	}
+	return res, nil
+}
 
 func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.ObjectID, error) {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
@@ -28,10 +53,13 @@ func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.Ob
 				{Key: "first_name", Value: user.FirstName},
 				{Key: "last_name", Value: user.LastName},
 				{Key: "password", Value: user.Password},
-				{Key: "catalogue", Value: user.Catalogue},
+				{Key: "user_library", Value: user.UserLibrary},
+				{Key: "token", Value: ""},
+				{Key: "renew_token", Value: ""},
 				{Key: "created_at", Value: user.CreatedAt},
+				{Key: "updated_at", Value: user.UpdatedAt},
 			}
-			_, err := UserData(cr.DB, "controller").InsertOne(ctx, data)
+			_, err := UserData(cr.DB, "user").InsertOne(ctx, data)
 			if err != nil {
 				cr.App.ErrorLogger.Fatalf("cannot created database for controller %v", err)
 			}
@@ -57,14 +85,13 @@ func (cr *CatalogueDBRepo) VerifyUser(email, password, encryptPassword string) (
 
 	filter := bson.D{{Key: "email", Value: email}}
 	var result bson.M
-	err := UserData(cr.DB, "controller").FindOne(ctx, filter).Decode(&result)
+	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&result)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			return false, err
 		}
 		return false, err
 	}
-
 	ok, err := encrypt.VerifyEncryptPassword(password, encryptPassword)
 	if err != nil {
 		cr.App.ErrorLogger.Println(err)
@@ -79,17 +106,11 @@ func (cr *CatalogueDBRepo) UpdateUserDetails(userID primitive.ObjectID, token, r
 	filter := bson.D{{"_id", userID}}
 	update := bson.D{{"$set", bson.D{
 		{"token", token},
-		{"renew_token", renewToken},
-	}}}
-	opts := options.FindOneAndUpdate().SetUpsert(true)
-	var newUpdate bson.M
-	err := UserData(cr.DB, "book").FindOneAndUpdate(ctx, filter, update, opts).Decode(&newUpdate)
+		{"renew_token", renewToken}}}}
+
+	_, err := UserData(cr.DB, "book").UpdateOne(ctx, filter, update)
 	if err != nil {
-		if err == mongo.ErrNoDocuments {
-			return err
-		}
-		cr.App.ErrorLogger.Fatal(err)
+		return err
 	}
 	return nil
-
 }

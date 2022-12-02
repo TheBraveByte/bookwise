@@ -42,6 +42,34 @@ func NewCatalogue(app *config.CatalogueConfig, db *mongo.Client) *Catalogue {
 	}
 }
 
+func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
+	var library model.Library
+
+	// validate value with respect to struct tags
+	if err := ct.App.Validate.Struct(&library); err != nil {
+		if _, ok := err.(*validator.InvalidValidationError); !ok {
+			err := json.NewEncoder(wr).Encode(fmt.Sprintf("error %v", http.StatusBadRequest))
+			if err != nil {
+				return
+			}
+			return
+		}
+	}
+	books, err := ct.CatDB.SendAvailableBooks()
+	if err != nil {
+		ct.App.ErrorLogger.Fatalln(err)
+	}
+	library = books.(model.Library)
+	msg := model.ResponseMessage{
+		StatusCode: http.StatusOK,
+		Message:    fmt.Sprintf("All available Books : \n %v ", &library),
+	}
+	err = json.NewEncoder(wr).Encode(msg)
+	if err != nil {
+		return
+	}
+}
+
 // CreateAccount : this function will help to create their account and have them store or add to
 // database for future usage
 func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
@@ -57,11 +85,11 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	user.LastName = rq.PostForm.Get("last_name")
 	user.Email = rq.PostForm.Get("email")
 	user.Password, _ = encrypt.EncryptPassword(rq.PostForm.Get("password"))
-	user.Catalogue = map[string]string{}
+	user.UserLibrary = []model.UserLibrary{}
 	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().String())
 
 	// validate value with respect to struct tags
-	if err := ct.App.Validate.Struct(user); err != nil {
+	if err := ct.App.Validate.Struct(&user); err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); !ok {
 			err := json.NewEncoder(wr).Encode(fmt.Sprintf("error %v", http.StatusBadRequest))
 			if err != nil {
@@ -157,7 +185,7 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 }
 
 func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
-	//this api_repo control will find/fetch the searched book from the
+	//this handler method will find/fetch the searched book from the
 	//  add a database query to extract book details from the database
 	//	 and make it available to the controller handler
 
