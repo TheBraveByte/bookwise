@@ -3,24 +3,26 @@ package main
 import (
 	"context"
 	"encoding/gob"
-	"github.com/yusuf/p-catalogue/api"
-	"github.com/yusuf/p-catalogue/user/model"
-	"github.com/yusuf/p-catalogue/user/userHandler"
 	"log"
 	"net/http"
 	"os"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
+	"github.com/go-playground/validator"
+	"github.com/yusuf/p-catalogue/database"
+	"github.com/yusuf/p-catalogue/model"
+	"github.com/yusuf/p-catalogue/modules/controller"
+
 	"github.com/joho/godotenv"
-	"github.com/yusuf/p-catalogue/dependencies/config"
-	"github.com/yusuf/p-catalogue/dependencies/database"
+	"github.com/yusuf/p-catalogue/modules/config"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 var (
-	app     config.CatalogueConfig
-	session *scs.SessionManager
+	validate *validator.Validate
+	app      config.CatalogueConfig
+	session  *scs.SessionManager
 )
 
 func main() {
@@ -33,22 +35,31 @@ func main() {
 		log.Fatal("no environment variable file")
 	}
 
-	InfoLogger := log.New(os.Stdout, "p-catalogue info-logger", log.LstdFlags|log.Lshortfile)
-	ErrorLogger := log.New(os.Stdout, "p-catalogue error-logger : ", log.LstdFlags|log.Lshortfile)
+	InfoLogger := log.New(os.Stdout, " ", log.LstdFlags|log.Lshortfile)
+	ErrorLogger := log.New(os.Stdout, " ", log.LstdFlags|log.Lshortfile)
+
+	validate = validator.New()
+	app.Validate = validate
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
-	//session.IdleTimeout = 60 * time.Minute
 	session.Cookie.Persist = true
+	session.Cookie.Domain = "localhost"
+	session.Cookie.Path = "/"
 	session.Cookie.Secure = true
 	session.Cookie.HttpOnly = true
 
-	log.Println("Starting p-catalogue API application server ...............")
+	app.Session = session
+
+	app.InfoLogger = InfoLogger
+	app.ErrorLogger = ErrorLogger
+
+	log.Println("..........  Starting p-catalogue API application server  ..........")
 
 	uri := os.Getenv("mongodb_uri")
 	client := database.DBConnection(uri)
 
-	log.Println("....Application connected to the database.......")
+	log.Println("..........  Application connected to the database  ..........")
 
 	defer func() {
 		err := client.Disconnect(context.TODO())
@@ -57,16 +68,9 @@ func main() {
 		}
 	}()
 
-	app.Session = session
-	app.InfoLogger = InfoLogger
-	app.ErrorLogger = ErrorLogger
+	catalog := controller.NewCatalogue(&app, client)
 
-	catalog := userHandler.NewCatalogue(&app, client)
-	//user.NewController(catalog)
-
-	libraryAPI := api.NewOpenLibraryAPI(&app, client)
-
-	srv := &http.Server{Addr: ":8000", Handler: Route(catalog, libraryAPI)}
+	srv := &http.Server{Addr: ":8000", Handler: Route(catalog)}
 	if err := srv.ListenAndServe(); err != nil {
 		log.Panic(err)
 	}

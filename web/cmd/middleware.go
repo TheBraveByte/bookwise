@@ -23,8 +23,9 @@ func Authorization(next http.Handler) http.Handler {
 			log.Fatalf("error %v", http.StatusUnauthorized)
 			return
 		}
-		ctx := context.WithValue(rq.Context(), "pass", tokenClaims)
+		ctx := context.WithValue(rq.Context(), "pass_token", tokenClaims)
 		next.ServeHTTP(wr, rq.WithContext(ctx))
+
 	})
 }
 
