@@ -17,7 +17,11 @@ func Route(catalog *controller.Catalogue) http.Handler {
 	mux.Use(middleware.Recoverer)
 	mux.Use(middleware.Timeout(100 * time.Second))
 
+	//middleware for data store in session as cookies
 	mux.Use(LoadAndSave)
+
+	//endpoint
+	mux.Get("/view-books", catalog.AvailableBooks)
 	mux.Post("/create-account", catalog.CreateAccount)
 	mux.Post("/login", catalog.Login)
 
