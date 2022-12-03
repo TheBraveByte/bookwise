@@ -33,3 +33,18 @@ func Authorization(next http.Handler) http.Handler {
 func LoadAndSave(next http.Handler) http.Handler {
 	return session.LoadAndSave(next)
 }
+
+func AuthAddBook(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(wr http.ResponseWriter, rq *http.Request) {
+		c, err := rq.Cookie("add_book")
+		if err != nil {
+			log.Println(err)
+		}
+		if c.Value == "" {
+			log.Fatal("error no value is assigned to key in header")
+			return
+		}
+		ctx := context.WithValue(rq.Context(), "purchase", c.Value)
+		next.ServeHTTP(wr, rq.WithContext(ctx))
+	})
+}
