@@ -9,7 +9,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-func Route(catalog *controller.Catalogue) http.Handler {
+func Route(c *controller.Catalogue) http.Handler {
 	mux := chi.NewRouter()
 	mux.Use(middleware.RequestID)
 	mux.Use(middleware.RealIP)
@@ -21,14 +21,19 @@ func Route(catalog *controller.Catalogue) http.Handler {
 	mux.Use(LoadAndSave)
 
 	//endpoint
-	mux.Get("/view-books", catalog.AvailableBooks)
-	mux.Post("/create-account", catalog.CreateAccount)
-	mux.Post("/login", catalog.Login)
+	mux.Get("/view-books", c.AvailableBooks)
+	mux.Post("/create/account", c.CreateAccount)
+	mux.Post("/login/account", c.Login)
+	mux.Post("/pay/book", c.PurchaseBook)
 
 	mux.Route("/api", func(mux chi.Router) {
 		mux.Use(Authorization)
-		mux.Post("/search-book", catalog.SearchBookTitle)
+		mux.Post("/search-book", c.SearchBookTitle)
+		mux.Post("/pay/details", c.PurchaseBook)
+		mux.Get("/pay/validate", c.ValidatePayment)
 
+		mux.Use(AuthAddBook)
+		mux.Get("/add/book", c.AddBook)
 	})
 
 	return mux
