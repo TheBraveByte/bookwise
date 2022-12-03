@@ -57,3 +57,18 @@ type Data struct {
 	ID       primitive.ObjectID
 	Password string
 }
+
+type PayLoad struct {
+	FirstName   string  `json:"first_name" Usage:"required,alpha"`
+	LastName    string  `json:"last_name" Usage:"required,alpha"`
+	Amount      float64 `json:"amount"`
+	TxRef       string  `json:"tx_ref"`
+	Email       string  `json:"email"`
+	Phone       string  `json:"phone"`
+	Currency    string  `json:"currency"`
+	CardNo      string  `json:"card_no"`
+	Cvv         string  `json:"cvv"`
+	Pin         string  `json:"pin"`
+	ExpiryMonth string  `json:"expiry_month"`
+	ExpiryYear  string  `json:"expiry_year"`
+}
