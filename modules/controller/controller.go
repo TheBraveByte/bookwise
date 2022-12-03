@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/go-playground/validator"
@@ -59,10 +60,10 @@ func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
 	}
-	library = books.(model.Library)
+
 	msg := model.ResponseMessage{
 		StatusCode: http.StatusOK,
-		Message:    fmt.Sprintf("All available Books : \n %v ", &library),
+		Message:    fmt.Sprintf("All available Books : \n %v ", books),
 	}
 	err = json.NewEncoder(wr).Encode(msg)
 	if err != nil {
@@ -185,6 +186,95 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 }
 
 func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
+
+	// Parse the posted details of the controller
+	if err := rq.ParseForm(); err != nil {
+		ct.App.ErrorLogger.Fatalln(err)
+		return
+	}
+	amount, _ := strconv.ParseFloat(rq.Form.Get("amount"), 64)
+	payload := &model.PayLoad{
+		FirstName:   rq.Form.Get("first_name"),
+		LastName:    rq.Form.Get("last_name"),
+		Amount:      amount,
+		TxRef:       "MC-11001993",
+		Email:       rq.Form.Get("email"),
+		Phone:       rq.Form.Get("phone"),
+		Currency:    rq.Form.Get("currency"),
+		CardNo:      rq.Form.Get("card_no"),
+		Cvv:         rq.Form.Get("cvv"),
+		Pin:         rq.Form.Get("pin"),
+		ExpiryMonth: rq.Form.Get("expiry_month"),
+		ExpiryYear:  rq.Form.Get("expiry_year"),
+	}
+	// validate value with respect to struct tags
+	if err := ct.App.Validate.Struct(payload); err != nil {
+		if _, ok := err.(*validator.InvalidValidationError); !ok {
+			err := json.NewEncoder(wr).Encode(fmt.Sprintf("error %v", http.StatusBadRequest))
+			if err != nil {
+				return
+			}
+			return
+		}
+	}
+	resp, _ := ct.Process(payload)
+	fmt.Println(resp)
+
+	ref := resp["data"].(map[string]interface{})["flwRef"].(string)
+
+	ct.App.Session.Put(rq.Context(), "amount", amount)
+
+	ct.App.Session.Put(rq.Context(), "ref", ref)
+
+	err := json.NewEncoder(wr).Encode(&resp)
+	if err != nil {
+		return
+	}
+
+}
+
+func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
+	ref := ct.App.Session.GetString(rq.Context(), "ref")
+	if ref == "" {
+		ct.App.ErrorLogger.Fatal("error no reference code for this transaction ")
+	}
+	amount := ct.App.Session.GetFloat(rq.Context(), "amount")
+	if amount == 0.0 {
+		ct.App.ErrorLogger.Fatal("error cannot make a payment of NGN 0.0 : pls enter a valid amount")
+	}
+
+	// Todo ->  we need to get OTP input from the user during production of this API , but since we are using TEST MODE
+	// Todo ->  we will be using a default OTP for now just for testing.
+
+	resp, err := ct.Validate(ref, "1234")
+	if err != nil {
+		ct.App.ErrorLogger.Fatalf("invalid card details, cannot complete this payment process %v ", err)
+	}
+	respAmount := resp["data"].(map[string]interface{})["amount"].(float64)
+	if resp["status"] == "success" && resp["message"] == "Charge Complete" && amount == respAmount {
+		http.SetCookie(wr, &http.Cookie{Name: "add_book", Value: "success", Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
+		msg := model.ResponseMessage{
+			StatusCode: http.StatusOK,
+			Message:    "Payment Successful",
+		}
+
+		err := json.NewEncoder(wr).Encode(msg)
+		if err != nil {
+			return
+		}
+	} else {
+		msg := model.ResponseMessage{
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Payment Not Successful ! Try again",
+		}
+		err := json.NewEncoder(wr).Encode(msg)
+		if err != nil {
+			return
+		}
+	}
+}
+
+func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 	//this handler method will find/fetch the searched book from the
 	//  add a database query to extract book details from the database
 	//	 and make it available to the controller handler
@@ -194,7 +284,7 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 	if !ok {
 		ct.App.ErrorLogger.Println("book id is invalid")
 	}
-	book, err := ct.CatDB.GetSearchedBook(bookID)
+	book, err := ct.CatDB.GetBook(bookID)
 	if err != nil {
 		ct.App.ErrorLogger.Println("cannot find searched")
 	}
