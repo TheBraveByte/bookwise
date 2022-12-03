@@ -2,6 +2,8 @@ github.com/alexedwards/scs v1.4.1 h1:/5L5a07IlqApODcEfZyMsu8Smd1S7Q4nBjEyKxIRTp0
 github.com/alexedwards/scs v1.4.1/go.mod h1:JRIFiXthhMSivuGbxpzUa0/hT5rz2hpyw61Bmd+S1bg=
 github.com/alexedwards/scs/v2 v2.5.0 h1:zgxOfNFmiJyXG7UPIuw1g2b9LWBeRLh3PjfB9BDmfL4=
 github.com/alexedwards/scs/v2 v2.5.0/go.mod h1:ToaROZxyKukJKT/xLcVQAChi5k6+Pn1Gvmdl7h3RRj8=
+github.com/anjolabassey/Rave-go v0.0.0-20220227000759-c0b94887bf0b h1:glle5leZOL+WlGz4iHImJ2jkkM9NNp4shmvklwDOeZs=
+github.com/anjolabassey/Rave-go v0.0.0-20220227000759-c0b94887bf0b/go.mod h1:y/6LHJRcX/uuGv+/Rq6YsUi47gYdmWalt0AUlFX9MqA=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

@@ -11,6 +11,7 @@ require (
 
 require (
 	github.com/alexedwards/scs v1.4.1 // indirect
+	github.com/anjolabassey/Rave-go v0.0.0-20220227000759-c0b94887bf0b // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect

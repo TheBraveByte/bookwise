@@ -6,12 +6,12 @@ import (
 )
 
 type CatalogueRepo interface {
-	SendAvailableBooks() (interface{}, error)
+	SendAvailableBooks() ([]model.Library, error)
 	CreateUserAccount(user model.User) (int, primitive.ObjectID, error)
 	VerifyUser(email, password, hashedPassword string) (bool, error)
 	UpdateUserDetails(userID primitive.ObjectID, token, renewToken string) error
 
 	// AddBook controller Interacting with the book data
 	CheckLibrary(title string, bookData model.Book) (int64, primitive.ObjectID, error)
-	GetSearchedBook(bookID primitive.ObjectID) (primitive.M, error)
+	GetBook(bookID primitive.ObjectID) (primitive.M, error)
 }

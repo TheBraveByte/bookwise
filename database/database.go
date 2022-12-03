@@ -18,6 +18,7 @@ func DBConnection(uri string) *mongo.Client {
 	defer cancelCtx()
 
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri).SetServerAPIOptions(serverAPIOptions))
+
 	if err != nil {
 		app.ErrorLogger.Panicln(err)
 	}
