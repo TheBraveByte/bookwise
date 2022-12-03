@@ -44,6 +44,7 @@ func (ct *Catalogue) Validate(ref, otp string) (map[string]interface{}, error) {
 		Otp:       "1234",
 		PublicKey: os.Getenv("RAVE_PUBKEY"),
 	}
+
 	err, resp := card.ValidateCard(validatePayload)
 	if err != nil {
 		panic(err)
