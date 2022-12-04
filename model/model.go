@@ -20,13 +20,14 @@ type User struct {
 }
 
 type UserLibrary struct {
-	AuthorName []string `json:"author_name"`
-	Title      string   `json:"title"`
+	BookID     primitive.ObjectID `json:"book_id" bson:"book_id"`
+	AuthorName []string           `json:"author_name"`
+	Title      string             `json:"title"`
 }
 
 type Library struct {
 	ID   primitive.ObjectID `bson:"_id" json:"_id"`
-	Book []Book             `json:"book" bson:"book"`
+	Book Book               `json:"book" bson:"book"`
 }
 
 // Book sub-model for book API result
