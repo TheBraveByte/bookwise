@@ -1,22 +1,55 @@
-POST http://localhost:8000/create-account
+### api request for register and unregister user to check available books
+GET http://localhost:8000/view-books
 Content-Type: application/x-www-form-urlencoded
 
-first_name=Yusuf&last_name=Akinleye&email=ayaa0089@gmail.com&password=Akinleye12345
-###
+### api request for users to create account
+POST http://localhost:8000/create/account
+Content-Type: application/x-www-form-urlencoded
 
-POST http://localhost:8000/login
+first_name=Yusuf&last_name=&email=ayaa0089@gmail.com&password=Akinleye12345
+
+### request for users to authenticate and authorize user to gain full access to other api request
+POST http://localhost:8000/login/account
 Content-Type: application/x-www-form-urlencoded
 
 email=ayaa0089@gmail.com&password=Akinleye12345
 
-
-###
-
-POST http://localhost:8000/api/search-book
+### api request for users to search for book of their choice
+POST http://localhost:8000/api/user/search-book
 Content-Type: application/x-www-form-urlencoded
 
-title=The Subtle art of not giving a fuck
+title=Models: Attract Women Through Honesty
 
-###
-GET https://openlibrary.org/search.json?q=The+subtle+art+of+not+giving+a+fuck
+### request to process payment for a book
+POST http://localhost:8000/api/user/pay/details
 Content-Type: application/x-www-form-urlencoded
+
+first_name=Yusuf&last_name=Akinleye&email=ayaaakinleye@gmail.com&amount=200&phone=09068849124&card_no=5531886652142950&cvv=564&expiry_month=09&expiry_year=2032&pin=3310
+
+### request to validate book payment
+GET http://localhost:8000/api/user/pay/validate
+Content-Type: application/x-www-form-urlencoded
+
+### request to add book paid for in the user library
+GET http://localhost:8000/add/new/book
+Content-Type: application/x-www-form-urlencoded
+
+### request to allow authorized user to view the main library
+GET http://localhost:8000/api/user/view/books
+Content-Type: application/x-www-form-urlencoded
+
+### request to allow authorized user to view user the book userlibrary/collection
+GET http://localhost:8000/api/user/view/library
+Content-Type: application/x-www-form-urlencoded
+
+### request to search for book in the user library
+GET http://localhost:8000/api/user/search/book
+Content-Type: application/x-www-form-urlencoded
+
+title=Models: Attract Women Through Honesty
+
+### request to delete from the user library
+GET http://localhost:8000/api/user/delete/book
+Content-Type: application/x-www-form-urlencoded
+
+title=Models: Attract Women Through Honesty

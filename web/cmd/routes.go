@@ -20,20 +20,22 @@ func Route(c *controller.Catalogue) http.Handler {
 	//middleware for data store in session as cookies
 	mux.Use(LoadAndSave)
 
-	//endpoint
-	mux.Get("/view-books", c.AvailableBooks)
+	mux.Get("/view/books", c.AvailableBooks)
 	mux.Post("/create/account", c.CreateAccount)
 	mux.Post("/login/account", c.Login)
-	mux.Post("/pay/book", c.PurchaseBook)
 
 	mux.Route("/api", func(mux chi.Router) {
 		mux.Use(Authorization)
-		mux.Post("/search-book", c.SearchBookTitle)
-		mux.Post("/pay/details", c.PurchaseBook)
-		mux.Get("/pay/validate", c.ValidatePayment)
-
-		mux.Use(AuthAddBook)
-		mux.Get("/add/book", c.AddBook)
+		mux.Post("/user/search-book", c.SearchForBook)
+		mux.Post("/user/pay/details", c.PurchaseBook)
+		mux.Get("/user/pay/validate", c.ValidatePayment)
+		mux.Get("/user/view/books", c.AvailableBooks)
+		mux.Post("/user/view/library", c.ViewUserLibrary)
+		mux.Get("/user/delete/book", c.DeleteUserBook)
+		mux.Post("/user/search/book", c.SearchUserBook)
+	})
+	mux.Route("/add", func(mux chi.Router) {
+		mux.Get("/new/book", c.AddBook)
 	})
 
 	return mux
