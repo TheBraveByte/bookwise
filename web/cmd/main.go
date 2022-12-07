@@ -27,6 +27,7 @@ var (
 
 func main() {
 	gob.Register(model.Data{})
+	gob.Register(model.PayLoad{})
 	gob.Register(map[string]string{})
 	gob.Register(primitive.NewObjectID())
 
@@ -56,8 +57,8 @@ func main() {
 
 	log.Println("..........  Starting p-catalogue API application server  ..........")
 
-	uri := os.Getenv("mongodb_uri")
-	client := database.DBConnection(uri)
+	uri := os.Getenv("MONGODB_URI")
+	client := database.Connection(uri)
 
 	log.Println("..........  Application connected to the database  ..........")
 

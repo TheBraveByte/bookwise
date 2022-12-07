@@ -43,6 +43,8 @@ func NewCatalogue(app *config.CatalogueConfig, db *mongo.Client) *Catalogue {
 	}
 }
 
+// AvailableBooks : this method allows access for authorized and unauthorized users to views and
+// see all available books in the library.
 func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 	var library model.Library
 
@@ -71,10 +73,11 @@ func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 	}
 }
 
-// CreateAccount : this function will help to create their account and have them store or add to
-// database for future usage
+// CreateAccount : this methods will help to create their account and have them store or add to
+// database for future usage.
 func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	var user model.User
+
 	// Parse the posted details of the controller
 	if err := rq.ParseForm(); err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
@@ -87,7 +90,7 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	user.Email = rq.PostForm.Get("email")
 	user.Password, _ = encrypt.EncryptPassword(rq.PostForm.Get("password"))
 	user.UserLibrary = []model.UserLibrary{}
-	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().String())
+	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 
 	// validate value with respect to struct tags
 	if err := ct.App.Validate.Struct(&user); err != nil {
@@ -104,15 +107,14 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 
 	// store controller data in session as cookies
 	var data model.Data
-
 	data.Email = user.Email
 	data.ID = userID
 	data.Password = user.Password
 
 	ct.App.Session.Put(rq.Context(), "data", data)
 
+	// check for new account or existing account
 	switch {
-
 	case count == 0:
 		msg := model.ResponseMessage{
 			StatusCode: http.StatusCreated,
@@ -135,8 +137,8 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	}
 }
 
-// Login : this function will help to verify the controller login details and
-// also helps to generate authorization token for users
+// Login : this method will help to verify the controller login details and also helps to generate
+// authorization token for users.
 func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 
 	if err := rq.ParseForm(); err != nil {
@@ -185,6 +187,8 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 	}
 }
 
+// PurchaseBook : this will help users to process the payment procedure when the user provide
+// their credit/debit card details.
 func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 
 	// Parse the posted details of the controller
@@ -207,6 +211,7 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 		ExpiryMonth: rq.Form.Get("expiry_month"),
 		ExpiryYear:  rq.Form.Get("expiry_year"),
 	}
+
 	// validate value with respect to struct tags
 	if err := ct.App.Validate.Struct(payload); err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); !ok {
@@ -218,7 +223,6 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 		}
 	}
 	resp, _ := ct.Process(payload)
-	fmt.Println(resp)
 
 	ref := resp["data"].(map[string]interface{})["flwRef"].(string)
 
@@ -233,7 +237,10 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 
 }
 
+// ValidatePayment : this methods will help complete and verify the payment details of the user
+// and other reference value needed.
 func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
+
 	ref := ct.App.Session.GetString(rq.Context(), "ref")
 	if ref == "" {
 		ct.App.ErrorLogger.Fatal("error no reference code for this transaction ")
@@ -243,14 +250,24 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 		ct.App.ErrorLogger.Fatal("error cannot make a payment of NGN 0.0 : pls enter a valid amount")
 	}
 
+	// Todo -> if this Application will be use in production
 	// Todo ->  we need to get OTP input from the user during production of this API , but since we are using TEST MODE
 	// Todo ->  we will be using a default OTP for now just for testing.
 
 	resp, err := ct.Validate(ref, "1234")
+	fmt.Println(resp)
+
 	if err != nil {
 		ct.App.ErrorLogger.Fatalf("invalid card details, cannot complete this payment process %v ", err)
 	}
-	respAmount := resp["data"].(map[string]interface{})["amount"].(float64)
+
+	respAmount := resp["data"].(map[string]interface{})["tx"].(map[string]interface{})["amount"].(float64)
+
+	fmt.Printf(" amount is %v \n", respAmount)
+	fmt.Printf(" status is %v \n", resp["status"])
+	fmt.Printf(" message is %v \n", resp["message"])
+	//fmt.Printf(" tX is %v \n", re)
+
 	if resp["status"] == "success" && resp["message"] == "Charge Complete" && amount == respAmount {
 		http.SetCookie(wr, &http.Cookie{Name: "add_book", Value: "success", Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
 		msg := model.ResponseMessage{
@@ -274,25 +291,101 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	}
 }
 
+// AddBook : this method will find/fetch the searched book using the bookID to extract book details
+// from the database and make it available to the user; this is protected with a middleware
 func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
-	//this handler method will find/fetch the searched book from the
-	//  add a database query to extract book details from the database
-	//	 and make it available to the controller handler
 
 	bookID := ct.App.Session.Get(rq.Context(), "book_id").(primitive.ObjectID)
-	ok := primitive.IsValidObjectID(bookID.String())
+	fmt.Println(bookID)
+	ok := primitive.IsValidObjectID(bookID.Hex())
+
 	if !ok {
 		ct.App.ErrorLogger.Println("book id is invalid")
 	}
+
 	book, err := ct.CatDB.GetBook(bookID)
 	if err != nil {
-		ct.App.ErrorLogger.Println("cannot find searched")
+		ct.App.ErrorLogger.Println("cannot find searched book")
 	}
+
+	bookData := book["book"].(primitive.M)
+	bookId := book["_id"].(primitive.ObjectID)
+	fmt.Println(book)
+	//Add the book to the user Library
+	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
+
+	err = ct.CatDB.UpdateUserBook(data.ID, bookId, bookData)
+	if err != nil {
+		ct.App.ErrorLogger.Fatalln("error! cannot add book to user library")
+	}
+
 	err = json.NewEncoder(wr).Encode(&book)
 	if err != nil {
 		return
 	}
-	//Initialise a payment system to check if payment was made
-	//Before adding to the database
-	return
+
+}
+
+// ViewUserLibrary : this method is to check out all the book collection that a particular user
+// have bought
+func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
+	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
+	userLibrary, err := ct.CatDB.GetUserBooks(data.ID)
+	if err != nil {
+		ct.App.ErrorLogger.Fatalln(err)
+	}
+	err = json.NewEncoder(wr).Encode(userLibrary)
+	if err != nil {
+		return
+	}
+
+}
+
+// SearchUserBook : this method read data of a specific book title from the user library
+func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
+	//bookTitle:=chi.URLParam(rq, "title")
+	title := rq.Form.Get("book_title")
+	if title == "" {
+		ct.App.ErrorLogger.Println("no input value to search")
+		return
+	}
+	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
+	book, err := ct.CatDB.FindBook(data.ID, title)
+	if err != nil {
+		ct.App.ErrorLogger.Fatal("error cannot find book")
+
+	}
+	err = json.NewEncoder(wr).Encode(book)
+	if err != nil {
+		return
+	}
+
+}
+
+// DeleteUserBook : this will delete a specified book title in the user library
+func (ct *Catalogue) DeleteUserBook(wr http.ResponseWriter, rq *http.Request) {
+	title := rq.Form.Get("book_title")
+	if title == "" {
+		ct.App.ErrorLogger.Println("no input value to search")
+		return
+	}
+	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
+	book, err := ct.CatDB.FindBook(data.ID, title)
+	if err != nil {
+		ct.App.ErrorLogger.Fatal("error cannot find book")
+
+	}
+	bookID := book["_id"].(primitive.ObjectID)
+	err = ct.CatDB.DeleteBook(bookID, data.ID)
+	if err != nil {
+		ct.App.ErrorLogger.Fatal("error cannot delete book")
+	}
+	msg := model.ResponseMessage{
+		StatusCode: http.StatusOK,
+		Message:    fmt.Sprintf("Title : %v \nBook Deleted ", title),
+	}
+	err = json.NewEncoder(wr).Encode(msg)
+	if err != nil {
+		return
+	}
 }

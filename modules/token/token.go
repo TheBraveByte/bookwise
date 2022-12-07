@@ -17,16 +17,7 @@ type TokenClaims struct {
 	ID    string
 }
 
-var signedKey = os.Getenv("secretKey")
-
-//func GetSigningKey() string {
-//	//
-//	//keyString, err := encrypt.EncryptPassword(os.Getenv("secret_key"))
-//	//if err != nil {
-//	//	log.Fatalf("invalid secret key encryption")
-//	//}
-//	//return keyString
-//}
+var signedKey = os.Getenv("SECRET_KEY")
 
 func GenerateToken(id, email string) (string, string, error) {
 	tokenClaims := TokenClaims{
