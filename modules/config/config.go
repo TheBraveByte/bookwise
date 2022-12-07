@@ -8,6 +8,8 @@ import (
 	"github.com/go-playground/validator"
 )
 
+// CatalogueConfig : struct type which help hold field of reusable type in the
+// application
 type CatalogueConfig struct {
 	InfoLogger  *log.Logger
 	ErrorLogger *log.Logger

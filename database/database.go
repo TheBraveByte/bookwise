@@ -11,7 +11,9 @@ import (
 
 var app config.CatalogueConfig
 
-func DBConnection(uri string) *mongo.Client {
+// Connection : this will help connect the application connect to the cloud database within
+// the set time out context function
+func Connection(uri string) *mongo.Client {
 	serverAPIOptions := options.ServerAPI(options.ServerAPIVersion1)
 
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)

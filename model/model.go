@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+// Library : model struct for the main library to store books
+type Library struct {
+	ID   primitive.ObjectID `bson:"_id" json:"_id"`
+	Book Book               `json:"book" bson:"book"`
+}
+
 // User : model for users
 type User struct {
 	ID          primitive.ObjectID `bson:"_id" json:"_id"`
@@ -19,15 +25,11 @@ type User struct {
 	UpdatedAt   time.Time          `json:"updated_at" Usage:"datetime=2006-01-02"`
 }
 
+// UserLibrary : model to store purchased book by user
 type UserLibrary struct {
 	BookID     primitive.ObjectID `json:"book_id" bson:"book_id"`
 	AuthorName []string           `json:"author_name"`
 	Title      string             `json:"title"`
-}
-
-type Library struct {
-	ID   primitive.ObjectID `bson:"_id" json:"_id"`
-	Book Book               `json:"book" bson:"book"`
 }
 
 // Book sub-model for book API result
@@ -59,6 +61,7 @@ type Data struct {
 	Password string
 }
 
+// PayLoad : model struct for user payment details
 type PayLoad struct {
 	FirstName   string  `json:"first_name" Usage:"required,alpha"`
 	LastName    string  `json:"last_name" Usage:"required,alpha"`

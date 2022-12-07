@@ -7,7 +7,8 @@ import (
 	"net/http"
 )
 
-// Authorization : middleware for authorization using the generated token
+// Authorization : middleware to authorize registered user to restricted routes using
+// a unique generated token
 func Authorization(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(wr http.ResponseWriter, rq *http.Request) {
 		authToken, err := rq.Cookie("auth_token")
@@ -34,6 +35,8 @@ func LoadAndSave(next http.Handler) http.Handler {
 	return session.LoadAndSave(next)
 }
 
+// AuthAddBook : middleware to authorize user to add books to their personal
+// book collections
 func AuthAddBook(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(wr http.ResponseWriter, rq *http.Request) {
 		c, err := rq.Cookie("add_book")
