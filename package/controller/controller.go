@@ -3,6 +3,7 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/go-chi/chi/v5"
 	"log"
 	"net/http"
 	"strconv"
@@ -10,13 +11,13 @@ import (
 
 	"github.com/go-playground/validator"
 	"github.com/yusuf/p-catalogue/model"
-	repo "github.com/yusuf/p-catalogue/modules/query"
-	"github.com/yusuf/p-catalogue/modules/query/repo"
-	"github.com/yusuf/p-catalogue/modules/token"
+	repo "github.com/yusuf/p-catalogue/package/query"
+	"github.com/yusuf/p-catalogue/package/query/repo"
+	"github.com/yusuf/p-catalogue/package/token"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"github.com/yusuf/p-catalogue/modules/config"
-	"github.com/yusuf/p-catalogue/modules/encrypt"
+	"github.com/yusuf/p-catalogue/package/config"
+	"github.com/yusuf/p-catalogue/package/encrypt"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -63,11 +64,23 @@ func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 		ct.App.ErrorLogger.Fatalln(err)
 	}
 
-	msg := model.ResponseMessage{
-		StatusCode: http.StatusOK,
-		Message:    fmt.Sprintf("All available Books : \n %v ", books),
+	numberOfBooks := len(books)
+	var authorName []string
+	for _, m := range books {
+		author := m["book"].(primitive.M)["author_name"].(string)
+		authorName = append(authorName, author)
 	}
-	err = json.NewEncoder(wr).Encode(msg)
+	numberOfAuthors := len(authorName)
+
+	stat := map[string]interface{}{
+		"status_code":       http.StatusOK,
+		"message":           "All available books in library",
+		"number_of_authors": numberOfAuthors,
+		"number_of_books":   numberOfBooks,
+		"data":              books,
+	}
+
+	err = json.NewEncoder(wr).Encode(stat)
 	if err != nil {
 		return
 	}
@@ -91,6 +104,7 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	user.Password, _ = encrypt.EncryptPassword(rq.PostForm.Get("password"))
 	user.UserLibrary = []model.UserLibrary{}
 	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+	user.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 
 	// validate value with respect to struct tags
 	if err := ct.App.Validate.Struct(&user); err != nil {
@@ -105,30 +119,32 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 
 	count, userID, _ := ct.CatDB.CreateUserAccount(user)
 
-	// store controller data in session as cookies
-	var data model.Data
-	data.Email = user.Email
-	data.ID = userID
-	data.Password = user.Password
+	// store controller userInfo in session as cookies
+	userInfo := model.UserInfo{
+		Email:    user.Email,
+		ID:       userID,
+		Password: user.Password,
+	}
 
-	ct.App.Session.Put(rq.Context(), "data", data)
+	ct.App.Session.Put(rq.Context(), "userInfo", userInfo)
 
 	// check for new account or existing account
 	switch {
 	case count == 0:
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusCreated,
-			Message:    "account created successfully",
+		msg := map[string]interface{}{
+			"status_code": http.StatusCreated,
+			"message":     "Account Registered Successfully",
 		}
+
 		err := json.NewEncoder(wr).Encode(msg)
 		if err != nil {
 			return
 		}
 
 	case count == 1:
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusPermanentRedirect,
-			Message:    "existing account, pls login",
+		msg := map[string]interface{}{
+			"status_code": http.StatusPermanentRedirect,
+			"message":     "Existing Account; Please Login",
 		}
 		err := json.NewEncoder(wr).Encode(msg)
 		if err != nil {
@@ -147,13 +163,13 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 	email := rq.Form.Get("email")
 	password := rq.Form.Get("password")
 
-	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
+	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
 
-	hashPassword := data.Password
-	userID := fmt.Sprint(data.ID)
+	hashPassword := userInfo.Password
+	userID := fmt.Sprint(userInfo.ID)
 
 	switch {
-	case email == data.Email:
+	case email == userInfo.Email:
 		ok, _ := ct.CatDB.VerifyUser(email, password, hashPassword)
 		if ok {
 			generateToken, renewToken, err := token.GenerateToken(userID, email)
@@ -164,11 +180,11 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 
 			http.SetCookie(wr, &http.Cookie{Name: "auth_token", Value: generateToken, Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
 
-			_ = ct.CatDB.UpdateUserDetails(data.ID, generateToken, renewToken)
+			_ = ct.CatDB.UpdateUserDetails(userInfo.ID, generateToken, renewToken)
 
-			msg := model.ResponseMessage{
-				StatusCode: http.StatusOK,
-				Message:    "You have login successfully",
+			msg := map[string]interface{}{
+				"status_code": http.StatusOK,
+				"message":     "Successfully Logged-in",
 			}
 			err = json.NewEncoder(wr).Encode(msg)
 			if err != nil {
@@ -176,9 +192,9 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 			}
 		}
 	default:
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusUnauthorized,
-			Message:    "Error: invalid login details",
+		msg := map[string]interface{}{
+			"status_code": http.StatusUnauthorized,
+			"message":     "Error !!! : Invalid Login Details",
 		}
 		err := json.NewEncoder(wr).Encode(msg)
 		if err != nil {
@@ -230,7 +246,12 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 
 	ct.App.Session.Put(rq.Context(), "ref", ref)
 
-	err := json.NewEncoder(wr).Encode(&resp)
+	msg := map[string]interface{}{
+		"status_code": http.StatusAccepted,
+		"message":     "All Payment Details Confirmed",
+		"response":    resp,
+	}
+	err := json.NewEncoder(wr).Encode(msg)
 	if err != nil {
 		return
 	}
@@ -255,8 +276,6 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	// Todo ->  we will be using a default OTP for now just for testing.
 
 	resp, err := ct.Validate(ref, "1234")
-	fmt.Println(resp)
-
 	if err != nil {
 		ct.App.ErrorLogger.Fatalf("invalid card details, cannot complete this payment process %v ", err)
 	}
@@ -266,13 +285,13 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	fmt.Printf(" amount is %v \n", respAmount)
 	fmt.Printf(" status is %v \n", resp["status"])
 	fmt.Printf(" message is %v \n", resp["message"])
-	//fmt.Printf(" tX is %v \n", re)
 
 	if resp["status"] == "success" && resp["message"] == "Charge Complete" && amount == respAmount {
-		http.SetCookie(wr, &http.Cookie{Name: "add_book", Value: "success", Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusOK,
-			Message:    "Payment Successful",
+		http.SetCookie(wr, &http.Cookie{Name: "add_book", Value: "success", Path: "/", Domain: "localhost", Expires: time.Now().Add(60 * time.Second)})
+		msg := map[string]interface{}{
+			"status_code": http.StatusOK,
+			"message":     "Payment For Book Successful",
+			"response":    resp,
 		}
 
 		err := json.NewEncoder(wr).Encode(msg)
@@ -280,9 +299,9 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 			return
 		}
 	} else {
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusInternalServerError,
-			Message:    "Payment Not Successful ! Try again",
+		msg := map[string]interface{}{
+			"status_code": http.StatusInternalServerError,
+			"message":     "Payment Not Successful ! Try again",
 		}
 		err := json.NewEncoder(wr).Encode(msg)
 		if err != nil {
@@ -310,16 +329,20 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 
 	bookData := book["book"].(primitive.M)
 	bookId := book["_id"].(primitive.ObjectID)
-	fmt.Println(book)
-	//Add the book to the user Library
-	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
 
-	err = ct.CatDB.UpdateUserBook(data.ID, bookId, bookData)
+	//Add the book to the user Library
+	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+
+	err = ct.CatDB.UpdateUserBook(userInfo.ID, bookId, bookData)
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln("error! cannot add book to user library")
 	}
-
-	err = json.NewEncoder(wr).Encode(&book)
+	msg := map[string]interface{}{
+		"status_code": http.StatusOK,
+		"message":     "New Book Added To Library",
+		"data":        book,
+	}
+	err = json.NewEncoder(wr).Encode(msg)
 	if err != nil {
 		return
 	}
@@ -329,12 +352,17 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 // ViewUserLibrary : this method is to check out all the book collection that a particular user
 // have bought
 func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
-	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
-	userLibrary, err := ct.CatDB.GetUserBooks(data.ID)
+	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	userLibrary, err := ct.CatDB.GetUserBooks(userInfo.ID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
 	}
-	err = json.NewEncoder(wr).Encode(userLibrary)
+	msg := map[string]interface{}{
+		"status_code": http.StatusOK,
+		"message":     "User Book Collections",
+		"data":        userLibrary,
+	}
+	err = json.NewEncoder(wr).Encode(msg)
 	if err != nil {
 		return
 	}
@@ -343,19 +371,24 @@ func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
 
 // SearchUserBook : this method read data of a specific book title from the user library
 func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
-	//bookTitle:=chi.URLParam(rq, "title")
-	title := rq.Form.Get("book_title")
-	if title == "" {
-		ct.App.ErrorLogger.Println("no input value to search")
+	bookID, err := primitive.ObjectIDFromHex(chi.URLParam(rq, "id"))
+	if err != nil {
+		ct.App.ErrorLogger.Fatalln("invalid id parameter")
 		return
 	}
-	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
-	book, err := ct.CatDB.FindBook(data.ID, title)
+	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	book, err := ct.CatDB.FindBook(userInfo.ID, bookID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatal("error cannot find book")
 
 	}
-	err = json.NewEncoder(wr).Encode(book)
+	msg := map[string]interface{}{
+		"status_code": http.StatusOK,
+		"message":     fmt.Sprintf("Book with an ID : %v Found \n", bookID),
+		"data":        book,
+	}
+
+	err = json.NewEncoder(wr).Encode(msg)
 	if err != nil {
 		return
 	}
@@ -364,25 +397,20 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 
 // DeleteUserBook : this will delete a specified book title in the user library
 func (ct *Catalogue) DeleteUserBook(wr http.ResponseWriter, rq *http.Request) {
-	title := rq.Form.Get("book_title")
-	if title == "" {
-		ct.App.ErrorLogger.Println("no input value to search")
+	bookID, err := primitive.ObjectIDFromHex(chi.URLParam(rq, "id"))
+	if err != nil {
+		ct.App.ErrorLogger.Fatalln("invalid book id")
 		return
 	}
-	data := ct.App.Session.Get(rq.Context(), "data").(model.Data)
-	book, err := ct.CatDB.FindBook(data.ID, title)
-	if err != nil {
-		ct.App.ErrorLogger.Fatal("error cannot find book")
+	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
 
-	}
-	bookID := book["_id"].(primitive.ObjectID)
-	err = ct.CatDB.DeleteBook(bookID, data.ID)
+	err = ct.CatDB.DeleteBook(userInfo.ID, bookID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatal("error cannot delete book")
 	}
-	msg := model.ResponseMessage{
-		StatusCode: http.StatusOK,
-		Message:    fmt.Sprintf("Title : %v \nBook Deleted ", title),
+	msg := map[string]interface{}{
+		"status_code": http.StatusOK,
+		"message":     fmt.Sprintf("Book with an ID: %v Deleted", bookID),
 	}
 	err = json.NewEncoder(wr).Encode(msg)
 	if err != nil {

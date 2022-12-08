@@ -48,13 +48,13 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 	apiData := string(data)
 
 	// write the data read from the body to json file (api.json)
-	err = os.WriteFile("./modules/json/api.json", []byte(apiData), 0666)
+	err = os.WriteFile("./package/json/api.json", []byte(apiData), 0666)
 	if err != nil {
 		ct.App.ErrorLogger.Println(err)
 	}
 
 	// Open the JSON file and check for any error that might occur
-	bookData, err := os.Open("./modules/json/api.json")
+	bookData, err := os.Open("./package/json/api.json")
 	if err != nil {
 		ct.App.ErrorLogger.Println(err)
 	}
@@ -94,9 +94,10 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 	// conditions : check if the searched book is available in the Main Library/ Store
 	// , not available or if an error pop up in the server
 	if count >= 1 {
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusOK,
-			Message:    fmt.Sprintf("%v :Book Found in Library ! \n %v", book.Title, &book),
+		msg := map[string]interface{}{
+			"status_code": http.StatusOK,
+			"message":     fmt.Sprintf("%v : Book Found in Library", book.Title),
+			"data":        book,
 		}
 		err = json.NewEncoder(wr).Encode(msg)
 		if err != nil {
@@ -104,18 +105,19 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 		}
 	} else if count == 0 {
 
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusOK,
-			Message:    fmt.Sprintf(" %v : Book not found in Library \n Adding new Book to Library .... \n Search again", book.Title),
+		msg := map[string]interface{}{
+			"status_code": http.StatusOK,
+			"message":     fmt.Sprintf(" %v : Book not found in Library!", book.Title),
+			"data":        "Adding New Book to Library .... Search again",
 		}
 		err = json.NewEncoder(wr).Encode(msg)
 		if err != nil {
 			return
 		}
 	} else {
-		msg := model.ResponseMessage{
-			StatusCode: http.StatusInternalServerError,
-			Message:    "error while searching for book",
+		msg := map[string]interface{}{
+			"status_code": http.StatusInternalServerError,
+			"message":     "Error While Searching For Book",
 		}
 		err := json.NewEncoder(wr).Encode(msg)
 		if err != nil {
