@@ -402,9 +402,8 @@ func (ct *Catalogue) DeleteUserBook(wr http.ResponseWriter, rq *http.Request) {
 		ct.App.ErrorLogger.Fatalln("invalid book id")
 		return
 	}
-	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
 
-	err = ct.CatDB.DeleteBook(userInfo.ID, bookID)
+	err = ct.CatDB.DeleteBook(bookID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatal("error cannot delete book")
 	}
