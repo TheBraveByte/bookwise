@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/yusuf/p-catalogue/modules/controller"
+	"github.com/yusuf/p-catalogue/package/controller"
 	"net/http"
 	"time"
 
@@ -29,12 +29,13 @@ func Route(c *controller.Catalogue) http.Handler {
 		mux.Post("/user/search-book", c.SearchForBook)
 		mux.Post("/user/pay/details", c.PurchaseBook)
 		mux.Get("/user/pay/validate", c.ValidatePayment)
-		mux.Get("/user/view/books", c.AvailableBooks)
-		mux.Post("/user/view/library", c.ViewUserLibrary)
-		mux.Get("/user/delete/book", c.DeleteUserBook)
-		mux.Post("/user/search/book", c.SearchUserBook)
+		mux.Get("/user/view/library", c.AvailableBooks)
+		mux.Get("/user/view/books", c.ViewUserLibrary)
+		mux.Get("/user/delete/book/{id}", c.DeleteUserBook)
+		mux.Get("/user/search/book/{id}", c.SearchUserBook)
 	})
 	mux.Route("/add", func(mux chi.Router) {
+		mux.Use(AuthAddBook)
 		mux.Get("/new/book", c.AddBook)
 	})
 
