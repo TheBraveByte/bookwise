@@ -12,10 +12,10 @@ import (
 	"github.com/go-playground/validator"
 	"github.com/yusuf/p-catalogue/database"
 	"github.com/yusuf/p-catalogue/model"
-	"github.com/yusuf/p-catalogue/modules/controller"
+	"github.com/yusuf/p-catalogue/package/controller"
 
 	"github.com/joho/godotenv"
-	"github.com/yusuf/p-catalogue/modules/config"
+	"github.com/yusuf/p-catalogue/package/config"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -26,7 +26,7 @@ var (
 )
 
 func main() {
-	gob.Register(model.Data{})
+	gob.Register(model.UserInfo{})
 	gob.Register(model.PayLoad{})
 	gob.Register(map[string]string{})
 	gob.Register(primitive.NewObjectID())
