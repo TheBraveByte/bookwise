@@ -27,7 +27,7 @@ type User struct {
 
 // UserLibrary : model to store purchased book by user
 type UserLibrary struct {
-	BookID     primitive.ObjectID `json:"book_id" bson:"book_id"`
+	BookID     primitive.ObjectID `json:"_id" bson:"_id"`
 	AuthorName []string           `json:"author_name"`
 	Title      string             `json:"title"`
 }
@@ -48,14 +48,8 @@ type Docs struct {
 	Docs []Book `json:"docs"`
 }
 
-// ResponseMessage : json response message for endpoints
-type ResponseMessage struct {
-	StatusCode int `json:"status_code"`
-	Message    any `json:"message"`
-}
-
-// Data : model to store cookies data in sessions
-type Data struct {
+// UserInfo : model to store cookies data in sessions
+type UserInfo struct {
 	Email    string
 	ID       primitive.ObjectID
 	Password string
