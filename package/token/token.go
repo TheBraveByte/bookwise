@@ -1,14 +1,13 @@
 package token
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
-	_ "github.com/yusuf/p-catalogue/modules/encrypt"
+	_ "github.com/yusuf/p-catalogue/package/encrypt"
 )
 
 type TokenClaims struct {
@@ -48,7 +47,6 @@ func GenerateToken(id, email string) (string, string, error) {
 		return "", "", err
 	}
 
-	fmt.Println(token)
 	return token, newToken, nil
 }
 

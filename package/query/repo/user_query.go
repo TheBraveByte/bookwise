@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
 
-	"github.com/yusuf/p-catalogue/modules/encrypt"
+	"github.com/yusuf/p-catalogue/package/encrypt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -90,14 +90,14 @@ func (cr *CatalogueDBRepo) UpdateUserDetails(userID primitive.ObjectID, token, r
 	return nil
 }
 
-func (cr *CatalogueDBRepo) UpdateUserBook(userID primitive.ObjectID, book model.Library) error {
+func (cr *CatalogueDBRepo) UpdateUserBook(userID, bookId primitive.ObjectID, bookData primitive.M) error {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancelCtx()
 	filter := bson.D{{"_id", userID}}
-	update := bson.D{{Key: "$push", Value: bson.D{{Key: "user_library", Value: bson.D{
-		{Key: "author_name", Value: book.Book.AuthorName},
-		{Key: "title", Value: book.Book.Title},
-		{Key: "book_id", Value: book.ID},
+	update := bson.D{{Key: "$addToSet", Value: bson.D{{Key: "user_library", Value: bson.D{
+		{Key: "author_name", Value: bookData["author_name"]},
+		{Key: "title", Value: bookData["title"]},
+		{Key: "_id", Value: bookId},
 	}}}}}
 	_, err := UserData(cr.DB, "user").UpdateOne(ctx, filter, update)
 	if err != nil {
@@ -106,10 +106,10 @@ func (cr *CatalogueDBRepo) UpdateUserBook(userID primitive.ObjectID, book model.
 	return nil
 }
 
-func (cr *CatalogueDBRepo) GetUserBooks(userID primitive.ObjectID) ([]model.UserLibrary, error) {
+func (cr *CatalogueDBRepo) GetUserBooks(userID primitive.ObjectID) (primitive.A, error) {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancelCtx()
-	var res model.User
+	var res bson.M
 	filter := bson.D{{"_id", userID}}
 	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&res)
 	if err != nil {
@@ -118,31 +118,33 @@ func (cr *CatalogueDBRepo) GetUserBooks(userID primitive.ObjectID) ([]model.User
 		}
 		cr.App.ErrorLogger.Fatal(err)
 	}
-	return res.UserLibrary, nil
+	userBooks := res["user_library"].(primitive.A)
+	return userBooks, nil
+
 }
-func (cr *CatalogueDBRepo) FindBook(userID primitive.ObjectID, title string) (model.UserLibrary, error) {
+
+func (cr *CatalogueDBRepo) FindBook(userID, bookId primitive.ObjectID) (primitive.M, error) {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancelCtx()
-	filter := bson.D{{Key: "user_library.title", Value: title}, {Key: "_id", Value: userID}}
+	filter := bson.D{{Key: "user_library._id", Value: bookId}, {Key: "_id", Value: userID}}
 	opt := options.FindOne().SetProjection(bson.D{
-		{Key: "title", Value: title},
-		{Key: "user_library", Value: bson.D{{Key: "$elemMatch", Value: bson.D{{Key: "title", Value: title}}}}},
+		{Key: "_id", Value: bookId},
+		{Key: "user_library", Value: bson.D{{Key: "$elemMatch", Value: bson.D{{Key: "_id", Value: bookId}}}}},
 	})
-	var res model.User
+	var res bson.M
 	err := UserData(cr.DB, "user").FindOne(ctx, filter, opt).Decode(&res)
 	if err != nil {
 		cr.App.ErrorLogger.Panic(err)
 	}
-	return res.UserLibrary[0], nil
-
+	return res, nil
 }
 
-func (cr *CatalogueDBRepo) DeleteBook(bookID, userID primitive.ObjectID) error {
+func (cr *CatalogueDBRepo) DeleteBook(bookId primitive.ObjectID) error {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancelCtx()
-	filter := bson.D{{Key: "_id", Value: userID}, {Key: "user_library.book_id", Value: bookID}}
+	filter := bson.D{{Key: "user_library._id", Value: bookId}}
 	update := bson.D{{Key: "$pull", Value: bson.D{
-		{Key: "user_library", Value: bson.D{{Key: "book_id", Value: bookID}}},
+		{Key: "user_library", Value: bson.D{{Key: "_id", Value: bookId}}},
 	}}}
 	opt := options.Update().SetUpsert(false)
 

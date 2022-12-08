@@ -14,8 +14,8 @@ type CatalogueRepo interface {
 
 	UpdateUserBook(userID, bookId primitive.ObjectID, bookData primitive.M) error
 	GetUserBooks(userID primitive.ObjectID) (primitive.A, error)
-	FindBook(userID primitive.ObjectID, title string) (primitive.M, error)
-	DeleteBook(bookID, userID primitive.ObjectID) error
+	FindBook(userID, bookId primitive.ObjectID) (primitive.M, error)
+	DeleteBook(bookId primitive.ObjectID) error
 
 	CheckLibrary(title string, bookData model.Book) (int64, primitive.ObjectID, error)
 	GetBook(bookID primitive.ObjectID) (primitive.M, error)
