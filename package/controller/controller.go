@@ -65,11 +65,14 @@ func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 	}
 
 	numberOfBooks := len(books)
-	var authorName []string
+	var authorName []primitive.A
 	for _, m := range books {
-		author := m["book"].(primitive.M)["author_name"].(string)
+		author := m["book"].(primitive.M)["author_name"].(primitive.A)
 		authorName = append(authorName, author)
 	}
+
+	fmt.Println(authorName)
+
 	numberOfAuthors := len(authorName)
 
 	stat := map[string]interface{}{
@@ -180,7 +183,11 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 
 			http.SetCookie(wr, &http.Cookie{Name: "auth_token", Value: generateToken, Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
 
-			_ = ct.CatDB.UpdateUserDetails(userInfo.ID, generateToken, renewToken)
+			err = ct.CatDB.UpdateUserDetails(userInfo.ID, generateToken, renewToken)
+			if err != nil {
+				ct.App.ErrorLogger.Fatalln("error cannot update token ")
+				return
+			}
 
 			msg := map[string]interface{}{
 				"status_code": http.StatusOK,
@@ -360,6 +367,7 @@ func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
 	msg := map[string]interface{}{
 		"status_code": http.StatusOK,
 		"message":     "User Book Collections",
+		"stat":        len(userLibrary),
 		"data":        userLibrary,
 	}
 	err = json.NewEncoder(wr).Encode(msg)
@@ -382,15 +390,31 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 		ct.App.ErrorLogger.Fatal("error cannot find book")
 
 	}
-	msg := map[string]interface{}{
-		"status_code": http.StatusOK,
-		"message":     fmt.Sprintf("Book with an ID : %v Found \n", bookID),
-		"data":        book,
-	}
+	if len(book) == 0 {
+		msg := map[string]interface{}{
+			"status_code": http.StatusOK,
+			"message":     "Book Not Found",
+			"data":        book,
+		}
 
-	err = json.NewEncoder(wr).Encode(msg)
-	if err != nil {
-		return
+		err = json.NewEncoder(wr).Encode(msg)
+		if err != nil {
+			return
+		}
+
+	}
+	if len(book) >= 1 {
+		msg := map[string]interface{}{
+			"status_code": http.StatusOK,
+			"message":     "Book is Found",
+			"data":        book,
+		}
+
+		err = json.NewEncoder(wr).Encode(msg)
+		if err != nil {
+			return
+		}
+
 	}
 
 }

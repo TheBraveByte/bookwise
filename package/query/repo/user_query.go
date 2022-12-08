@@ -79,9 +79,7 @@ func (cr *CatalogueDBRepo) UpdateUserDetails(userID primitive.ObjectID, token, r
 	defer cancelCtx()
 
 	filter := bson.D{{"_id", userID}}
-	update := bson.D{{"$set", bson.D{
-		{"token", token},
-		{"renew_token", renewToken}}}}
+	update := bson.D{{"$set", bson.D{{"token", token}, {"renew_token", renewToken}}}}
 
 	_, err := UserData(cr.DB, "book").UpdateOne(ctx, filter, update)
 	if err != nil {
@@ -134,6 +132,9 @@ func (cr *CatalogueDBRepo) FindBook(userID, bookId primitive.ObjectID) (primitiv
 	var res bson.M
 	err := UserData(cr.DB, "user").FindOne(ctx, filter, opt).Decode(&res)
 	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return res, nil
+		}
 		cr.App.ErrorLogger.Panic(err)
 	}
 	return res, nil
