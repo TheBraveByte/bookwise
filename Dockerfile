@@ -16,11 +16,11 @@ COPY . .
 
 # build your code from the main folder/file in the parent folder
 # to a executable file catalogueAPI
-RUN CGO_ENABLED=0 go build -o catalogueAPI ./web/cmd
+RUN CGO_ENABLED=0 go build -o bookwiseAPI ./web/cmd
 
 #Run the executable
-RUN chmod +x /usr/src/app/catalogueAPI
+RUN chmod +x /usr/src/app/bookwiseAPI
 
 #Compile the executable file
-CMD ["/usr/src/app/catalogueAPI"]
+CMD ["/usr/src/app/bookwiseAPI"]
 
