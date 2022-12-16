@@ -2,23 +2,23 @@ package query
 
 import (
 	"context"
-	"github.com/yusuf/p-catalogue/model"
+	"github.com/yusuf/bookwiseAPI/model"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
 
-	"github.com/yusuf/p-catalogue/package/encrypt"
+	"github.com/yusuf/bookwiseAPI/package/encrypt"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func (cr *CatalogueDBRepo) CreateUserAccount(user model.User) (int, primitive.ObjectID, error) {
+func (cr *CatalogueDBRepo) CreateUserAccount(user *model.User) (int, primitive.ObjectID, error) {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancelCtx()
 
 	filter := bson.D{{Key: "email", Value: user.Email}}
 	var userData bson.M
-	err := UserData(cr.DB, "controller").FindOne(ctx, filter).Decode(&userData)
+	err := UserData(cr.DB, "user").FindOne(ctx, filter).Decode(&userData)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			newUserID := primitive.NewObjectID()
@@ -81,7 +81,7 @@ func (cr *CatalogueDBRepo) UpdateUserDetails(userID primitive.ObjectID, token, r
 	filter := bson.D{{"_id", userID}}
 	update := bson.D{{"$set", bson.D{{"token", token}, {"renew_token", renewToken}}}}
 
-	_, err := UserData(cr.DB, "book").UpdateOne(ctx, filter, update)
+	_, err := UserData(cr.DB, "user").UpdateOne(ctx, filter, update)
 	if err != nil {
 		return err
 	}
