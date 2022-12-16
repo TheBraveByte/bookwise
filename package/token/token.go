@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/golang-jwt/jwt/v4"
-	_ "github.com/yusuf/p-catalogue/package/encrypt"
 )
 
 type TokenClaims struct {

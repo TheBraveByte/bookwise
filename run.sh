@@ -1,3 +1,3 @@
 #!/bin/bash
 
-go run github.com/yusuf/p-catalogue/web/cmd
+go run github.com/yusuf/bookwiseAPI/web/cmd

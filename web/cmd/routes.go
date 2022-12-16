@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/yusuf/p-catalogue/package/controller"
+	"github.com/yusuf/bookwiseAPI/package/controller"
 	"net/http"
 	"time"
 

@@ -10,14 +10,14 @@ import (
 	"time"
 
 	"github.com/go-playground/validator"
-	"github.com/yusuf/p-catalogue/model"
-	repo "github.com/yusuf/p-catalogue/package/query"
-	"github.com/yusuf/p-catalogue/package/query/repo"
-	"github.com/yusuf/p-catalogue/package/token"
+	"github.com/yusuf/bookwiseAPI/model"
+	repo "github.com/yusuf/bookwiseAPI/package/query"
+	"github.com/yusuf/bookwiseAPI/package/query/repo"
+	"github.com/yusuf/bookwiseAPI/package/token"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"github.com/yusuf/p-catalogue/package/config"
-	"github.com/yusuf/p-catalogue/package/encrypt"
+	"github.com/yusuf/bookwiseAPI/package/config"
+	"github.com/yusuf/bookwiseAPI/package/encrypt"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
@@ -82,8 +82,13 @@ func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 		"number_of_books":   numberOfBooks,
 		"data":              books,
 	}
+	wr.Header().Set("Content-Type", "application/json")
 
-	err = json.NewEncoder(wr).Encode(stat)
+	jsonData, err := json.MarshalIndent(stat, " ", "   ")
+	if err != nil {
+		return
+	}
+	_, err = wr.Write(jsonData)
 	if err != nil {
 		return
 	}
@@ -92,7 +97,6 @@ func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 // CreateAccount : this methods will help to create their account and have them store or add to
 // database for future usage.
 func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
-	var user model.User
 
 	// Parse the posted details of the controller
 	if err := rq.ParseForm(); err != nil {
@@ -100,14 +104,23 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 		return
 	}
 
+	password, _ := encrypt.EncryptPassword(rq.PostForm.Get("password"))
+	createdAt, _ := time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+	updatedAt, _ := time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+
 	// assigned parsed values to struct field and encrypt the input password
-	user.FirstName = rq.PostForm.Get("first_name")
-	user.LastName = rq.PostForm.Get("last_name")
-	user.Email = rq.PostForm.Get("email")
-	user.Password, _ = encrypt.EncryptPassword(rq.PostForm.Get("password"))
-	user.UserLibrary = []model.UserLibrary{}
-	user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
-	user.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
+	user := &model.User{
+		ID:          primitive.ObjectID{},
+		FirstName:   rq.PostForm.Get("first_name"),
+		LastName:    rq.PostForm.Get("last_name"),
+		Email:       rq.PostForm.Get("email"),
+		Password:    password,
+		UserLibrary: []model.UserLibrary{},
+		Token:       "",
+		RenewToken:  "",
+		CreatedAt:   createdAt,
+		UpdatedAt:   updatedAt,
+	}
 
 	// validate value with respect to struct tags
 	if err := ct.App.Validate.Struct(&user); err != nil {
@@ -139,17 +152,28 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 			"message":     "Account Registered Successfully",
 		}
 
-		err := json.NewEncoder(wr).Encode(msg)
+		wr.Header().Set("Content-Type", "application/json")
+
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
 		if err != nil {
 			return
 		}
-
+		_, err = wr.Write(jsonData)
+		if err != nil {
+			return
+		}
 	case count == 1:
 		msg := map[string]interface{}{
 			"status_code": http.StatusPermanentRedirect,
 			"message":     "Existing Account; Please Login",
 		}
-		err := json.NewEncoder(wr).Encode(msg)
+		wr.Header().Set("Content-Type", "application/json")
+
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}
@@ -193,7 +217,13 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 				"status_code": http.StatusOK,
 				"message":     "Successfully Logged-in",
 			}
-			err = json.NewEncoder(wr).Encode(msg)
+			wr.Header().Set("Content-Type", "application/json")
+
+			jsonData, err := json.MarshalIndent(msg, " ", "   ")
+			if err != nil {
+				return
+			}
+			_, err = wr.Write(jsonData)
 			if err != nil {
 				return
 			}
@@ -203,7 +233,13 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 			"status_code": http.StatusUnauthorized,
 			"message":     "Error !!! : Invalid Login Details",
 		}
-		err := json.NewEncoder(wr).Encode(msg)
+		wr.Header().Set("Content-Type", "application/json")
+
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}
@@ -238,11 +274,16 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 	// validate value with respect to struct tags
 	if err := ct.App.Validate.Struct(payload); err != nil {
 		if _, ok := err.(*validator.InvalidValidationError); !ok {
-			err := json.NewEncoder(wr).Encode(fmt.Sprintf("error %v", http.StatusBadRequest))
+			wr.Header().Set("Content-Type", "application/json")
+			msg := fmt.Sprintf("error %v", http.StatusBadRequest)
+			jsonData, err := json.MarshalIndent(msg, " ", "   ")
 			if err != nil {
 				return
 			}
-			return
+			_, err = wr.Write(jsonData)
+			if err != nil {
+				return
+			}
 		}
 	}
 	resp, _ := ct.Process(payload)
@@ -258,7 +299,13 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 		"message":     "All Payment Details Confirmed",
 		"response":    resp,
 	}
-	err := json.NewEncoder(wr).Encode(msg)
+	wr.Header().Set("Content-Type", "application/json")
+
+	jsonData, err := json.MarshalIndent(msg, " ", "   ")
+	if err != nil {
+		return
+	}
+	_, err = wr.Write(jsonData)
 	if err != nil {
 		return
 	}
@@ -293,6 +340,8 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	fmt.Printf(" status is %v \n", resp["status"])
 	fmt.Printf(" message is %v \n", resp["message"])
 
+	wr.Header().Set("Content-Type", "application/json")
+
 	if resp["status"] == "success" && resp["message"] == "Charge Complete" && amount == respAmount {
 		http.SetCookie(wr, &http.Cookie{Name: "add_book", Value: "success", Path: "/", Domain: "localhost", Expires: time.Now().Add(60 * time.Second)})
 		msg := map[string]interface{}{
@@ -301,16 +350,25 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 			"response":    resp,
 		}
 
-		err := json.NewEncoder(wr).Encode(msg)
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
 		if err != nil {
 			return
 		}
+		_, err = wr.Write(jsonData)
+		if err != nil {
+			return
+		}
+
 	} else {
 		msg := map[string]interface{}{
 			"status_code": http.StatusInternalServerError,
 			"message":     "Payment Not Successful ! Try again",
 		}
-		err := json.NewEncoder(wr).Encode(msg)
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}
@@ -344,12 +402,19 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln("error! cannot add book to user library")
 	}
+
+	wr.Header().Set("Content-Type", "application/json")
+
 	msg := map[string]interface{}{
 		"status_code": http.StatusOK,
 		"message":     "New Book Added To Library",
 		"data":        book,
 	}
-	err = json.NewEncoder(wr).Encode(msg)
+	jsonData, err := json.MarshalIndent(msg, " ", "   ")
+	if err != nil {
+		return
+	}
+	_, err = wr.Write(jsonData)
 	if err != nil {
 		return
 	}
@@ -364,13 +429,19 @@ func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
 	}
+	wr.Header().Set("Content-Type", "application/json")
+
 	msg := map[string]interface{}{
 		"status_code": http.StatusOK,
 		"message":     "User Book Collections",
 		"stat":        len(userLibrary),
 		"data":        userLibrary,
 	}
-	err = json.NewEncoder(wr).Encode(msg)
+	jsonData, err := json.MarshalIndent(msg, " ", "   ")
+	if err != nil {
+		return
+	}
+	_, err = wr.Write(jsonData)
 	if err != nil {
 		return
 	}
@@ -390,6 +461,9 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 		ct.App.ErrorLogger.Fatal("error cannot find book")
 
 	}
+
+	wr.Header().Set("Content-Type", "application/json")
+
 	if len(book) == 0 {
 		msg := map[string]interface{}{
 			"status_code": http.StatusOK,
@@ -397,7 +471,11 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 			"data":        book,
 		}
 
-		err = json.NewEncoder(wr).Encode(msg)
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}
@@ -410,7 +488,11 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 			"data":        book,
 		}
 
-		err = json.NewEncoder(wr).Encode(msg)
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}
@@ -435,7 +517,12 @@ func (ct *Catalogue) DeleteUserBook(wr http.ResponseWriter, rq *http.Request) {
 		"status_code": http.StatusOK,
 		"message":     fmt.Sprintf("Book with an ID: %v Deleted", bookID),
 	}
-	err = json.NewEncoder(wr).Encode(msg)
+	wr.Header().Set("Content-Type", "application/json")
+	jsonData, err := json.MarshalIndent(msg, " ", "   ")
+	if err != nil {
+		return
+	}
+	_, err = wr.Write(jsonData)
 	if err != nil {
 		return
 	}

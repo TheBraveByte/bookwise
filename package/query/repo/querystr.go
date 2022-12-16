@@ -1,8 +1,8 @@
 package query
 
 import (
-	"github.com/yusuf/p-catalogue/package/config"
-	"github.com/yusuf/p-catalogue/package/query"
+	"github.com/yusuf/bookwiseAPI/package/config"
+	"github.com/yusuf/bookwiseAPI/package/query"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 

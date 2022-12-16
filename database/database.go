@@ -2,7 +2,7 @@ package database
 
 import (
 	"context"
-	"github.com/yusuf/p-catalogue/package/config"
+	"github.com/yusuf/bookwiseAPI/package/config"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"

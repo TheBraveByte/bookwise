@@ -1,14 +1,14 @@
 package query
 
 import (
-	"github.com/yusuf/p-catalogue/model"
+	"github.com/yusuf/bookwiseAPI/model"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type CatalogueRepo interface {
 	SendAvailableBooks() ([]primitive.M, error)
 
-	CreateUserAccount(user model.User) (int, primitive.ObjectID, error)
+	CreateUserAccount(user *model.User) (int, primitive.ObjectID, error)
 	VerifyUser(email, password, hashedPassword string) (bool, error)
 	UpdateUserDetails(userID primitive.ObjectID, token, renewToken string) error
 

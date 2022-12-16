@@ -2,7 +2,7 @@ package controller
 
 import (
 	"github.com/anjolabassey/Rave-go/rave"
-	"github.com/yusuf/p-catalogue/model"
+	"github.com/yusuf/bookwiseAPI/model"
 	"os"
 )
 

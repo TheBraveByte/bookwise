@@ -10,12 +10,12 @@ import (
 
 	"github.com/alexedwards/scs/v2"
 	"github.com/go-playground/validator"
-	"github.com/yusuf/p-catalogue/database"
-	"github.com/yusuf/p-catalogue/model"
-	"github.com/yusuf/p-catalogue/package/controller"
+	"github.com/yusuf/bookwiseAPI/database"
+	"github.com/yusuf/bookwiseAPI/model"
+	"github.com/yusuf/bookwiseAPI/package/controller"
 
 	"github.com/joho/godotenv"
-	"github.com/yusuf/p-catalogue/package/config"
+	"github.com/yusuf/bookwiseAPI/package/config"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -56,8 +56,8 @@ func main() {
 	app.ErrorLogger = ErrorLogger
 
 	log.Println("..........  Starting p-catalogue API application server  ..........")
-
 	uri := os.Getenv("MONGODB_URI")
+
 	client := database.Connection(uri)
 
 	log.Println("..........  Application connected to the database  ..........")

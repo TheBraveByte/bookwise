@@ -3,7 +3,7 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/yusuf/p-catalogue/model"
+	"github.com/yusuf/bookwiseAPI/model"
 	"io"
 	"net/http"
 	"os"
@@ -13,6 +13,8 @@ import (
 // SearchForBook : this method searched for requested books using OpenLibrary API and
 // storing the response data in a proper json format for use.
 func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
+	wr.Header().Set("Content-Type", "application/json")
+
 	var docs model.Docs
 
 	// parse the form input
@@ -99,7 +101,11 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 			"message":     fmt.Sprintf("%v : Book Found in Library", book.Title),
 			"data":        book,
 		}
-		err = json.NewEncoder(wr).Encode(msg)
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}
@@ -110,7 +116,11 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 			"message":     fmt.Sprintf(" %v : Book not found in Library!", book.Title),
 			"data":        "Adding New Book to Library .... Search again",
 		}
-		err = json.NewEncoder(wr).Encode(msg)
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}
@@ -119,7 +129,11 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 			"status_code": http.StatusInternalServerError,
 			"message":     "Error While Searching For Book",
 		}
-		err := json.NewEncoder(wr).Encode(msg)
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
 		if err != nil {
 			return
 		}

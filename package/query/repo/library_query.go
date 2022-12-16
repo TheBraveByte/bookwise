@@ -2,7 +2,7 @@ package query
 
 import (
 	"context"
-	"github.com/yusuf/p-catalogue/model"
+	"github.com/yusuf/bookwiseAPI/model"
 	"go.mongodb.org/mongo-driver/mongo"
 	"log"
 
@@ -48,7 +48,7 @@ func (cr *CatalogueDBRepo) SendAvailableBooks() ([]primitive.M, error) {
 func (cr *CatalogueDBRepo) CheckLibrary(title string, bookData model.Book) (int64, primitive.ObjectID, error) {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancelCtx()
-	filter := bson.D{{"book.title", title}}
+	filter := bson.D{{Key: "book.title", Value: title}}
 	var res model.Library
 	err := LibraryData(cr.DB, "library").FindOne(ctx, filter).Decode(&res)
 	if err != nil {
@@ -57,13 +57,13 @@ func (cr *CatalogueDBRepo) CheckLibrary(title string, bookData model.Book) (int6
 			newBook := bson.D{
 				{Key: "_id", Value: bookID},
 				{Key: "book", Value: bson.D{
-					{"author_name", bookData.AuthorName},
-					{"title", bookData.Title},
-					{"first_publish_year", bookData.PublishYear},
-					{"price", math.RoundToEven(99.55 * (rand.Float64() + 5))},
-					{"edition_count", bookData.EditionCount},
-					{"language", bookData.Language},
-					{"contributor", bookData.Contributor},
+					{Key: "author_name", Value: bookData.AuthorName},
+					{Key: "title", Value: bookData.Title},
+					{Key: "first_publish_year", Value: bookData.PublishYear},
+					{Key: "price", Value: math.RoundToEven(99.55 * (rand.Float64() + 5))},
+					{Key: "edition_count", Value: bookData.EditionCount},
+					{Key: "language", Value: bookData.Language},
+					{Key: "contributor", Value: bookData.Contributor},
 				}}}
 			_, err := LibraryData(cr.DB, "library").InsertOne(ctx, newBook)
 			if err != nil {
