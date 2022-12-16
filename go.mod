@@ -1,4 +1,4 @@
-module github.com/yusuf/p-catalogue
+module github.com/yusuf/bookwiseAPI
 
 go 1.19
 
@@ -10,13 +10,11 @@ require (
 )
 
 require (
-	github.com/alexedwards/scs v1.4.1 // indirect
-	github.com/anjolabassey/Rave-go v0.0.0-20220227000759-c0b94887bf0b // indirect
+	github.com/anjolabassey/Rave-go v0.0.0-20220227000759-c0b94887bf0b
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/stretchr/testify v1.8.0 // indirect
-	golang.org/x/sys v0.1.0 // indirect
 	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
