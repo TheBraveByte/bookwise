@@ -6,25 +6,25 @@ Content-Type: application/x-www-form-urlencoded
 POST http://localhost:8000/create/account
 Content-Type: application/x-www-form-urlencoded
 
-first_name=Yusuf&last_name=Akinleye&email=yusufakinleye144@gmail.com&password=Akinleye12345
+first_name=Yusuf&last_name=Akinleye&email=yusufakinleye140@gmail.com&password=Akinleye12345
 
 ### request for users to authenticate and authorize user to gain full access to other api request
 POST http://localhost:8000/login/account
 Content-Type: application/x-www-form-urlencoded
 
-email=yusufakinleye144@gmail.com&password=Akinleye12345
+email=yusufakinleye140@gmail.com&password=Akinleye12345
 
 ### api request for users to search for book of their choice
 POST http://localhost:8000/api/user/search-book
 Content-Type: application/x-www-form-urlencoded
 
-title=The Subtle Art of not giving a fuck
+title=Atomic Habit
 
 ### request to process payment for a book
 POST http://localhost:8000/api/user/pay/details
 Content-Type: application/x-www-form-urlencoded
 
-first_name=Yusuf&last_name=Akinleye&email=yusufakinleye144@gmail.com&amount=10000&phone=09068849124&card_no=5531886652142950&cvv=564&expiry_month=09&expiry_year=2032&pin=3310
+first_name=Yusuf&last_name=Akinleye&email=yusufakinleye140@gmail.com&amount=10000&phone=09068849124&card_no=5531886652142950&cvv=564&expiry_month=09&expiry_year=2032&pin=3310
 
 ### request to validate book payment
 GET http://localhost:8000/api/user/pay/validate

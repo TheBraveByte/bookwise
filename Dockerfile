@@ -15,7 +15,8 @@ RUN go mod download && go mod verify
 COPY . .
 
 # build your code from the main folder/file in the parent folder
-# to a executable file catalogueAPI
+# to a executable file catalogueAPI and disabled using C code and
+# use just the built-in
 RUN CGO_ENABLED=0 go build -o bookwiseAPI ./web/cmd
 
 #Run the executable
