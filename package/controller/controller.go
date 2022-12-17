@@ -3,11 +3,12 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/go-chi/chi/v5"
 	"log"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/go-chi/chi/v5"
 
 	"github.com/go-playground/validator"
 	"github.com/yusuf/bookwiseAPI/model"
@@ -97,7 +98,6 @@ func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {
 // CreateAccount : this methods will help to create their account and have them store or add to
 // database for future usage.
 func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
-
 	// Parse the posted details of the controller
 	if err := rq.ParseForm(); err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
@@ -111,9 +111,9 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 	// assigned parsed values to struct field and encrypt the input password
 	user := &model.User{
 		ID:          primitive.ObjectID{},
-		FirstName:   rq.PostForm.Get("first_name"),
-		LastName:    rq.PostForm.Get("last_name"),
-		Email:       rq.PostForm.Get("email"),
+		FirstName:   rq.Form.Get("first_name"),
+		LastName:    rq.Form.Get("last_name"),
+		Email:       rq.Form.Get("email"),
 		Password:    password,
 		UserLibrary: []model.UserLibrary{},
 		Token:       "",
@@ -141,7 +141,6 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 		ID:       userID,
 		Password: user.Password,
 	}
-
 	ct.App.Session.Put(rq.Context(), "userInfo", userInfo)
 
 	// check for new account or existing account
@@ -183,14 +182,16 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 // Login : this method will help to verify the controller login details and also helps to generate
 // authorization token for users.
 func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
-
 	if err := rq.ParseForm(); err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
 	}
 	email := rq.Form.Get("email")
 	password := rq.Form.Get("password")
 
-	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	userInfo, ok := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	if !ok {
+		ct.App.ErrorLogger.Fatal("no available data in session")
+	}
 
 	hashPassword := userInfo.Password
 	userID := fmt.Sprint(userInfo.ID)
@@ -249,7 +250,6 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 // PurchaseBook : this will help users to process the payment procedure when the user provide
 // their credit/debit card details.
 func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
-
 	// Parse the posted details of the controller
 	if err := rq.ParseForm(); err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
@@ -309,13 +309,11 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		return
 	}
-
 }
 
 // ValidatePayment : this methods will help complete and verify the payment details of the user
 // and other reference value needed.
 func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
-
 	ref := ct.App.Session.GetString(rq.Context(), "ref")
 	if ref == "" {
 		ct.App.ErrorLogger.Fatal("error no reference code for this transaction ")
@@ -378,7 +376,6 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 // AddBook : this method will find/fetch the searched book using the bookID to extract book details
 // from the database and make it available to the user; this is protected with a middleware
 func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
-
 	bookID := ct.App.Session.Get(rq.Context(), "book_id").(primitive.ObjectID)
 	fmt.Println(bookID)
 	ok := primitive.IsValidObjectID(bookID.Hex())
@@ -395,7 +392,7 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 	bookData := book["book"].(primitive.M)
 	bookId := book["_id"].(primitive.ObjectID)
 
-	//Add the book to the user Library
+	// Add the book to the user Library
 	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
 
 	err = ct.CatDB.UpdateUserBook(userInfo.ID, bookId, bookData)
@@ -418,7 +415,6 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		return
 	}
-
 }
 
 // ViewUserLibrary : this method is to check out all the book collection that a particular user
@@ -445,7 +441,6 @@ func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		return
 	}
-
 }
 
 // SearchUserBook : this method read data of a specific book title from the user library
@@ -459,7 +454,6 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 	book, err := ct.CatDB.FindBook(userInfo.ID, bookID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatal("error cannot find book")
-
 	}
 
 	wr.Header().Set("Content-Type", "application/json")
@@ -498,7 +492,6 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 		}
 
 	}
-
 }
 
 // DeleteUserBook : this will delete a specified book title in the user library

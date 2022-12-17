@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/yusuf/bookwiseAPI/package/controller"
 	"net/http"
 	"time"
+
+	"github.com/yusuf/bookwiseAPI/package/controller"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -11,13 +12,16 @@ import (
 
 func Route(c *controller.Catalogue) http.Handler {
 	mux := chi.NewRouter()
+
+
 	mux.Use(middleware.RequestID)
 	mux.Use(middleware.RealIP)
 	mux.Use(middleware.Logger)
 	mux.Use(middleware.Recoverer)
 	mux.Use(middleware.Timeout(100 * time.Second))
 
-	//middleware for data store in session as cookies
+
+	// middleware for data store in session as cookies
 	mux.Use(LoadAndSave)
 
 	mux.Get("/view/books", c.AvailableBooks)
