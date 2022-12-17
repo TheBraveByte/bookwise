@@ -28,6 +28,10 @@ var (
 func main() {
 	gob.Register(model.UserInfo{})
 	gob.Register(model.PayLoad{})
+	gob.Register(model.User{})
+	gob.Register(model.Book{})
+	gob.Register(model.Docs{})
+	gob.Register(model.UserLibrary{})
 	gob.Register(map[string]string{})
 	gob.Register(primitive.NewObjectID())
 
@@ -45,17 +49,18 @@ func main() {
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
 	session.Cookie.Persist = true
-	session.Cookie.Domain = "localhost"
-	session.Cookie.Path = "/"
 	session.Cookie.Secure = true
-	session.Cookie.HttpOnly = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	// session.Cookie.Domain = "localhost"
+	// session.Cookie.Path = "/"
+	// session.Cookie.HttpOnly = true
 
 	app.Session = session
 
 	app.InfoLogger = InfoLogger
 	app.ErrorLogger = ErrorLogger
 
-	log.Println("..........  Starting p-catalogue API application server  ..........")
+	log.Println("..........  Starting Bookwise API application server  ..........")
 	uri := os.Getenv("MONGODB_URI")
 
 	client := database.Connection(uri)
