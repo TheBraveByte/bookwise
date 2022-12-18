@@ -336,6 +336,7 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	resp, err := ct.Validate(ref, "1234")
 	if err != nil {
 		ct.App.ErrorLogger.Fatalf("invalid card details, cannot complete this payment process %v ", err)
+		
 	}
 
 	respAmount := resp["data"].(map[string]interface{})["tx"].(map[string]interface{})["amount"].(float64)

@@ -7,6 +7,9 @@ import (
 	"os"
 )
 
+// Note : this payment process here is for testing and not live yet
+
+
 var card = rave.Card{
 	Rave: rave.Rave{
 		Live:      false,
@@ -26,8 +29,8 @@ func (ct *Catalogue) Process(payload *model.PayLoad) (map[string]interface{}, er
 		Amount:        payload.Amount,
 		Currency:      "NGN",
 		CustomerPhone: payload.Phone,
-		Firstname:     "",
-		Lastname:      "",
+		Firstname:     payload.FirstName,
+		Lastname:      payload.LastName,
 		Email:         payload.Email,
 		Txref:         payload.TxRef,
 		RedirectUrl:   "https://localhost:8000/view-books",
