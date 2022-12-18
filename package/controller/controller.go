@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	_ "github.com/gorilla/securecookie"
 
 	"github.com/go-playground/validator"
 	"github.com/yusuf/bookwiseAPI/model"
@@ -141,7 +142,8 @@ func (ct *Catalogue) CreateAccount(wr http.ResponseWriter, rq *http.Request) {
 		ID:       userID,
 		Password: user.Password,
 	}
-	ct.App.Session.Put(rq.Context(), "userInfo", userInfo)
+	scs := ct.App.Session.Start(wr, rq)
+	scs.Set("userInfo", userInfo)
 
 	// check for new account or existing account
 	switch {
@@ -188,7 +190,9 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 	email := rq.Form.Get("email")
 	password := rq.Form.Get("password")
 
-	userInfo, ok := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	scs := ct.App.Session.Start(wr, rq)
+	userInfo, ok := scs.Get("userInfo").(model.UserInfo)
+	fmt.Println(userInfo)
 	if !ok {
 		ct.App.ErrorLogger.Fatal("no available data in session")
 	}
@@ -290,9 +294,10 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 
 	ref := resp["data"].(map[string]interface{})["flwRef"].(string)
 
-	ct.App.Session.Put(rq.Context(), "amount", amount)
+	scs := ct.App.Session.Start(wr, rq)
 
-	ct.App.Session.Put(rq.Context(), "ref", ref)
+	scs.Set("amount", amount)
+	scs.Set("ref", ref)
 
 	msg := map[string]interface{}{
 		"status_code": http.StatusAccepted,
@@ -314,12 +319,13 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 // ValidatePayment : this methods will help complete and verify the payment details of the user
 // and other reference value needed.
 func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
-	ref := ct.App.Session.GetString(rq.Context(), "ref")
+	scs := ct.App.Session.Start(wr, rq)
+	ref := scs.GetString( "ref")
 	if ref == "" {
 		ct.App.ErrorLogger.Fatal("error no reference code for this transaction ")
 	}
-	amount := ct.App.Session.GetFloat(rq.Context(), "amount")
-	if amount == 0.0 {
+	amount, err := scs.GetFloat64( "amount")
+	if amount == 0.0  || err != nil{
 		ct.App.ErrorLogger.Fatal("error cannot make a payment of NGN 0.0 : pls enter a valid amount")
 	}
 
@@ -376,7 +382,8 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 // AddBook : this method will find/fetch the searched book using the bookID to extract book details
 // from the database and make it available to the user; this is protected with a middleware
 func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
-	bookID := ct.App.Session.Get(rq.Context(), "book_id").(primitive.ObjectID)
+	scs := ct.App.Session.Start(wr, rq)
+	bookID := scs.Get("book_id").(primitive.ObjectID)
 	fmt.Println(bookID)
 	ok := primitive.IsValidObjectID(bookID.Hex())
 
@@ -393,7 +400,7 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 	bookId := book["_id"].(primitive.ObjectID)
 
 	// Add the book to the user Library
-	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	userInfo := scs.Get( "userInfo").(model.UserInfo)
 
 	err = ct.CatDB.UpdateUserBook(userInfo.ID, bookId, bookData)
 	if err != nil {
@@ -420,7 +427,9 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 // ViewUserLibrary : this method is to check out all the book collection that a particular user
 // have bought
 func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
-	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	scs := ct.App.Session.Start(wr, rq)
+
+	userInfo := scs.Get( "userInfo").(model.UserInfo)
 	userLibrary, err := ct.CatDB.GetUserBooks(userInfo.ID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
@@ -450,7 +459,9 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 		ct.App.ErrorLogger.Fatalln("invalid id parameter")
 		return
 	}
-	userInfo := ct.App.Session.Get(rq.Context(), "userInfo").(model.UserInfo)
+	
+	scs := ct.App.Session.Start(wr, rq)
+	userInfo := scs.Get("userInfo").(model.UserInfo)
 	book, err := ct.CatDB.FindBook(userInfo.ID, bookID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatal("error cannot find book")
