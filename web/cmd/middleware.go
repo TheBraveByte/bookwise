@@ -2,13 +2,13 @@ package main
 
 import (
 	"context"
+	"github.com/kataras/go-sessions/v3"
 	"github.com/yusuf/bookwiseAPI/package/token"
 	"log"
 	"net/http"
 	"time"
 
-	_"github.com/gorilla/securecookie"
-	"github.com/kataras/go-sessions/v3"
+	_ "github.com/gorilla/securecookie"
 )
 
 // Authorization : middleware to authorize registered user to restricted routes using
@@ -35,9 +35,6 @@ func Authorization(next http.Handler) http.Handler {
 }
 
 // LoadAndSave : middleware for session to store cookies
-//func LoadAndSave(next http.Handler) http.Handler {
-//	return session.LoadAndSave(next)
-//}
 
 // AuthAddBook : middleware to authorize user to add books to their personal
 // book collections
@@ -56,10 +53,7 @@ func AuthAddBook(next http.Handler) http.Handler {
 	})
 }
 
-
-	
-
-
+// CookieManager : Http session management setup to store cookies
 func CookieManager(cookieName string) *sessions.Sessions {
 	scs := sessions.New(sessions.Config{
 		Cookie:  cookieName,
