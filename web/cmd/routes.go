@@ -13,16 +13,11 @@ import (
 func Route(c *controller.Catalogue) http.Handler {
 	mux := chi.NewRouter()
 
-
 	mux.Use(middleware.RequestID)
 	mux.Use(middleware.RealIP)
 	mux.Use(middleware.Logger)
 	mux.Use(middleware.Recoverer)
 	mux.Use(middleware.Timeout(100 * time.Second))
-
-
-	// middleware for data store in session as cookies
-	mux.Use(LoadAndSave)
 
 	mux.Get("/view/books", c.AvailableBooks)
 	mux.Post("/create/account", c.CreateAccount)

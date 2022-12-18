@@ -6,10 +6,9 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 
-	"github.com/alexedwards/scs/v2"
 	"github.com/go-playground/validator"
+	"github.com/kataras/go-sessions/v3"
 	"github.com/yusuf/bookwiseAPI/database"
 	"github.com/yusuf/bookwiseAPI/model"
 	"github.com/yusuf/bookwiseAPI/package/controller"
@@ -22,7 +21,8 @@ import (
 var (
 	validate *validator.Validate
 	app      config.CatalogueConfig
-	session  *scs.SessionManager
+	session *sessions.Sessions
+
 )
 
 func main() {
@@ -46,19 +46,13 @@ func main() {
 	validate = validator.New()
 	app.Validate = validate
 
-	session = scs.New()
-	session.Lifetime = 24 * time.Hour
-	session.Cookie.Persist = true
-	session.Cookie.Secure = true
-	session.Cookie.SameSite = http.SameSiteLaxMode
-	// session.Cookie.Domain = "localhost"
-	// session.Cookie.Path = "/"
-	// session.Cookie.HttpOnly = true
-
-	app.Session = session
-
 	app.InfoLogger = InfoLogger
 	app.ErrorLogger = ErrorLogger
+
+
+	cookieName := os.Getenv("SESSION_ID")
+	app.Session = CookieManager(cookieName)
+	
 
 	log.Println("..........  Starting Bookwise API application server  ..........")
 	uri := os.Getenv("MONGODB_URI")

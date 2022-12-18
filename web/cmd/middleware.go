@@ -5,6 +5,10 @@ import (
 	"github.com/yusuf/bookwiseAPI/package/token"
 	"log"
 	"net/http"
+	"time"
+
+	_"github.com/gorilla/securecookie"
+	"github.com/kataras/go-sessions/v3"
 )
 
 // Authorization : middleware to authorize registered user to restricted routes using
@@ -31,9 +35,9 @@ func Authorization(next http.Handler) http.Handler {
 }
 
 // LoadAndSave : middleware for session to store cookies
-func LoadAndSave(next http.Handler) http.Handler {
-	return session.LoadAndSave(next)
-}
+//func LoadAndSave(next http.Handler) http.Handler {
+//	return session.LoadAndSave(next)
+//}
 
 // AuthAddBook : middleware to authorize user to add books to their personal
 // book collections
@@ -50,4 +54,18 @@ func AuthAddBook(next http.Handler) http.Handler {
 		ctx := context.WithValue(rq.Context(), "purchase", c.Value)
 		next.ServeHTTP(wr, rq.WithContext(ctx))
 	})
+}
+
+
+	
+
+
+func CookieManager(cookieName string) *sessions.Sessions {
+	scs := sessions.New(sessions.Config{
+		Cookie:  cookieName,
+		Expires: time.Hour * 24,
+		// Encode:  secureCookie.Encode,
+		// Decode:  secureCookie.Decode,
+	})
+	return scs
 }
