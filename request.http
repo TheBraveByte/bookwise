@@ -6,13 +6,13 @@ Content-Type: application/x-www-form-urlencoded
 POST http://localhost:8000/create/account
 Content-Type: application/x-www-form-urlencoded
 
-first_name=Yusuf&last_name=Akinleye&email=yusufakinleye140@gmail.com&password=Akinleye12345
+first_name=Yusuf&last_name=Akinleye&email=yusufakinleye10@gmail.com&password=Akinleye12345
 
 ### request for users to authenticate and authorize user to gain full access to other api request
 POST http://localhost:8000/login/account
 Content-Type: application/x-www-form-urlencoded
 
-email=yusufakinleye140@gmail.com&password=Akinleye12345
+email=yusufakinleye10@gmail.com&password=Akinleye12345
 
 ### api request for users to search for book of their choice
 POST http://localhost:8000/api/user/search-book
@@ -43,10 +43,10 @@ GET http://localhost:8000/api/user/view/books
 Content-Type: application/x-www-form-urlencoded
 
 ### request to search for book in the user library (copy the id to test the endpoint)
-GET http://localhost:8000/api/user/search/book/6392737d9b29b896a1095d41
+GET http://localhost:8000/api/user/search/book/639f02e4af11f63bde22f6c5
 Content-Type: application/x-www-form-urlencoded
 
 
 ### request to delete from the user library  (copy the id to test the endpoint)
-GET http://localhost:8000/api/user/delete/book/6392737d9b29b896a1095d41
+GET http://localhost:8000/api/user/delete/book/639f02e4af11f63bde22f6c5
 Content-Type: application/x-www-form-urlencoded
