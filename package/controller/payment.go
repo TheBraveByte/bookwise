@@ -1,5 +1,6 @@
 package controller
 
+
 import (
 	"github.com/anjolabassey/Rave-go/rave"
 	"github.com/yusuf/bookwiseAPI/model"
@@ -51,3 +52,4 @@ func (ct *Catalogue) Validate(ref, otp string) (map[string]interface{}, error) {
 	}
 	return resp, nil
 }
+

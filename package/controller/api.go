@@ -1,5 +1,6 @@
 package controller
 
+
 import (
 	"encoding/json"
 	"fmt"
@@ -90,8 +91,8 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln("error while checking for book in the library")
 	}
-
-	ct.App.Session.Put(rq.Context(), "book_id", bookID)
+	scs := ct.App.Session.Start(wr, rq)
+	scs.Set("book_id", bookID)
 
 	// conditions : check if the searched book is available in the Main Library/ Store
 	// , not available or if an error pop up in the server
@@ -139,3 +140,5 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 		}
 	}
 }
+
+
