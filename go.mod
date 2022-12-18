@@ -3,19 +3,25 @@ module github.com/yusuf/bookwiseAPI
 go 1.19
 
 require (
-	github.com/alexedwards/scs/v2 v2.5.0
 	github.com/go-playground/validator v9.31.0+incompatible
+	github.com/gorilla/securecookie v1.1.1
 	github.com/joho/godotenv v1.4.0
+	github.com/kataras/go-sessions/v3 v3.3.1
 	go.mongodb.org/mongo-driver v1.10.3
 )
 
 require (
-	github.com/anjolabassey/Rave-go v0.0.0-20220227000759-c0b94887bf0b
+	github.com/andybalholm/brotli v1.0.4 // indirect
+	github.com/valyala/bytebufferpool v1.0.0 // indirect
+	github.com/valyala/fasthttp v1.43.0 // indirect
+)
+
+require (
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/stretchr/testify v1.8.0 // indirect
-	golang.org/x/xerrors v0.0.0-20220907171357-04be3eba64a2 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
 
