@@ -1,401 +1,966 @@
 {
-    "numFound": 8,
+    "numFound": 138,
     "start": 0,
     "numFoundExact": true,
     "docs": [
         {
-            "key": "/works/OL17590212W",
+            "key": "/works/OL25953594W",
             "type": "work",
             "seed": [
-                "/books/OL32082560M",
-                "/books/OL39807009M",
-                "/books/OL26472511M",
-                "/books/OL31856073M",
-                "/books/OL36818914M",
-                "/books/OL32967931M",
-                "/books/OL32549716M",
-                "/books/OL27003834M",
-                "/books/OL26926288M",
-                "/books/OL26971043M",
-                "/books/OL30776236M",
-                "/books/OL26986089M",
-                "/books/OL35406748M",
-                "/books/OL26948417M",
-                "/books/OL27383494M",
-                "/books/OL26193423M",
-                "/books/OL27970187M",
-                "/books/OL27383471M",
-                "/books/OL26940300M",
-                "/books/OL39472294M",
-                "/books/OL37772880M",
-                "/books/OL39199973M",
-                "/books/OL27351643M",
-                "/books/OL28699114M",
-                "/books/OL26977361M",
-                "/books/OL30676655M",
-                "/books/OL30676654M",
-                "/books/OL26894399M",
-                "/books/OL39221807M",
-                "/books/OL39221806M",
-                "/books/OL27351482M",
-                "/books/OL28230579M",
-                "/books/OL39806600M",
-                "/books/OL28261416M",
-                "/books/OL42719523M",
-                "/books/OL38543053M",
-                "/books/OL36098179M",
-                "/works/OL17590212W",
-                "/subjects/self-realization",
-                "/subjects/conduct_of_life",
-                "/subjects/conducta_de_vida",
-                "/subjects/nyt:advice-how-to-and-miscellaneous=2016-10-02",
-                "/subjects/new_york_times_bestseller",
-                "/authors/OL2964000A"
+                "/books/OL35028489M",
+                "/works/OL25953594W",
+                "/authors/OL9810328A"
             ],
-            "title": "The Subtle Art of Not Giving a F*ck",
-            "title_suggest": "The Subtle Art of Not Giving a F*ck",
-            "edition_count": 37,
+            "title": "Atomic Habits Journal",
+            "title_suggest": "Atomic Habits Journal",
+            "edition_count": 1,
             "edition_key": [
-                "OL32082560M",
-                "OL39807009M",
-                "OL26472511M",
-                "OL31856073M",
-                "OL36818914M",
-                "OL32967931M",
-                "OL32549716M",
-                "OL27003834M",
-                "OL26926288M",
-                "OL26971043M",
-                "OL30776236M",
-                "OL26986089M",
-                "OL35406748M",
-                "OL26948417M",
-                "OL27383494M",
-                "OL26193423M",
-                "OL27970187M",
-                "OL27383471M",
-                "OL26940300M",
-                "OL39472294M",
-                "OL37772880M",
-                "OL39199973M",
-                "OL27351643M",
-                "OL28699114M",
-                "OL26977361M",
-                "OL30676655M",
-                "OL30676654M",
-                "OL26894399M",
-                "OL39221807M",
-                "OL39221806M",
-                "OL27351482M",
-                "OL28230579M",
-                "OL39806600M",
-                "OL28261416M",
-                "OL42719523M",
-                "OL38543053M",
-                "OL36098179M"
+                "OL35028489M"
             ],
             "publish_date": [
-                "Sep 13, 2016",
-                "Mar 21, 2018",
-                "Jul 03, 2018",
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798602139884"
+            ],
+            "last_modified_i": 1633824734,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9810328A"
+            ],
+            "author_name": [
+                "Atomic Habit Journal"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667842022375426,
+            "author_facet": [
+                "OL9810328A Atomic Habit Journal"
+            ]
+        },
+        {
+            "key": "/works/OL30048054W",
+            "type": "work",
+            "seed": [
+                "/books/OL41304541M",
+                "/works/OL30048054W",
+                "/authors/OL10998990A"
+            ],
+            "title": "Companion Workbook : Atomic Habits",
+            "title_suggest": "Companion Workbook : Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41304541M"
+            ],
+            "publish_date": [
+                "2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "isbn": [
+                "9781092706568",
+                "1092706569"
+            ],
+            "last_modified_i": 1669314008,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10998990A"
+            ],
+            "author_name": [
+                "Julie Ann Price"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750402606418624519,
+            "author_facet": [
+                "OL10998990A Julie Ann Price"
+            ]
+        },
+        {
+            "key": "/works/OL26072826W",
+            "type": "work",
+            "seed": [
+                "/books/OL35188503M",
+                "/works/OL26072826W",
+                "/authors/OL9842947A"
+            ],
+            "title": "Atomic Habits Daily Journal",
+            "title_suggest": "Atomic Habits Daily Journal",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35188503M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798549776272"
+            ],
+            "last_modified_i": 1633911393,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9842947A"
+            ],
+            "author_name": [
+                "Rondyy Rondyy Roo"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667954623709184,
+            "author_facet": [
+                "OL9842947A Rondyy Rondyy Roo"
+            ]
+        },
+        {
+            "key": "/works/OL31027464W",
+            "type": "work",
+            "seed": [
+                "/books/OL42613835M",
+                "/works/OL31027464W",
+                "/authors/OL11337847A"
+            ],
+            "title": "Atomic Habit Tracker",
+            "title_suggest": "Atomic Habit Tracker",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42613835M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798429270708"
+            ],
+            "last_modified_i": 1670037216,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11337847A"
+            ],
+            "author_name": [
+                "FBT"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751160949689024512,
+            "author_facet": [
+                "OL11337847A FBT"
+            ]
+        },
+        {
+            "key": "/works/OL26009924W",
+            "type": "work",
+            "seed": [
+                "/books/OL35106148M",
+                "/works/OL26009924W",
+                "/authors/OL9829018A"
+            ],
+            "title": "Atomic Habits : How to Build Good Habits and Break Bad Ones",
+            "title_suggest": "Atomic Habits : How to Build Good Habits and Break Bad Ones",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35106148M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798545118748"
+            ],
+            "last_modified_i": 1633866756,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9829018A"
+            ],
+            "author_name": [
+                "Wood KAYLA"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667897647235074,
+            "author_facet": [
+                "OL9829018A Wood KAYLA"
+            ]
+        },
+        {
+            "key": "/works/OL28914058W",
+            "type": "work",
+            "seed": [
+                "/books/OL39749834M",
+                "/works/OL28914058W",
+                "/authors/OL3733504A"
+            ],
+            "title": "Summary of Atomic Habits",
+            "title_suggest": "Summary of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39749834M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798796303146"
+            ],
+            "last_modified_i": 1663574277,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "spa"
+            ],
+            "author_key": [
+                "OL3733504A"
+            ],
+            "author_name": [
+                "John Cleverly"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1744384068146954240,
+            "author_facet": [
+                "OL3733504A John Cleverly"
+            ]
+        },
+        {
+            "key": "/works/OL26016324W",
+            "type": "work",
+            "seed": [
+                "/books/OL35113820M",
+                "/works/OL26016324W",
+                "/authors/OL9672374A"
+            ],
+            "title": "Atomic Habits Journal",
+            "title_suggest": "Atomic Habits Journal",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35113820M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798544187783"
+            ],
+            "last_modified_i": 1633870948,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9672374A"
+            ],
+            "author_name": [
+                "rondyy rondyy roo"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667958343008256,
+            "author_facet": [
+                "OL9672374A rondyy rondyy roo"
+            ]
+        },
+        {
+            "key": "/works/OL25538546W",
+            "type": "work",
+            "seed": [
+                "/books/OL34254441M",
+                "/works/OL25538546W",
+                "/authors/OL9649764A"
+            ],
+            "title": "Atomic Habits for Kids",
+            "title_suggest": "Atomic Habits for Kids",
+            "edition_count": 1,
+            "edition_key": [
+                "OL34254441M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "number_of_pages_median": 72,
+            "isbn": [
+                "9798525792821"
+            ],
+            "last_modified_i": 1633102302,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9649764A"
+            ],
+            "author_name": [
+                "Tiffany CLEAR"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667384077778947,
+            "author_facet": [
+                "OL9649764A Tiffany CLEAR"
+            ]
+        },
+        {
+            "key": "/works/OL26678644W",
+            "type": "work",
+            "seed": [
+                "/books/OL36121469M",
+                "/works/OL26678644W",
+                "/authors/OL10037135A"
+            ],
+            "title": "Atomic Habits Tracker",
+            "title_suggest": "Atomic Habits Tracker",
+            "edition_count": 1,
+            "edition_key": [
+                "OL36121469M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798497360189"
+            ],
+            "last_modified_i": 1640695992,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10037135A"
+            ],
+            "author_name": [
+                "John R. Charles"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735668651746394114,
+            "author_facet": [
+                "OL10037135A John R. Charles"
+            ]
+        },
+        {
+            "key": "/works/OL17930368W",
+            "type": "work",
+            "seed": [
+                "/books/OL43029154M",
+                "/books/OL38573910M",
+                "/books/OL38290995M",
+                "/books/OL38290299M",
+                "/books/OL38290297M",
+                "/books/OL38090984M",
+                "/books/OL36647151M",
+                "/books/OL35684085M",
+                "/books/OL33607132M",
+                "/books/OL32336498M",
+                "/books/OL27918581M",
+                "/books/OL26502528M",
+                "/books/OL41548398M",
+                "/books/OL40216430M",
+                "/books/OL30941750M",
+                "/books/OL39107844M",
+                "/books/OL35261119M",
+                "/books/OL31936190M",
+                "/books/OL30515574M",
+                "/books/OL30515575M",
+                "/books/OL41866438M",
+                "/books/OL41941195M",
+                "/books/OL36939272M",
+                "/books/OL33000520M",
+                "/books/OL31844060M",
+                "/books/OL35382683M",
+                "/books/OL38278752M",
+                "/works/OL17930368W",
+                "/subjects/habit",
+                "/subjects/habit_breaking",
+                "/subjects/behavior_modification",
+                "/subjects/self-actualization_(psychology)",
+                "/subjects/business",
+                "/subjects/psychology",
+                "/subjects/personal_growth",
+                "/subjects/nyt:business-books=2022-08-14",
+                "/subjects/new_york_times_bestseller",
+                "/subjects/business_&_economics_/_organizational_behavior",
+                "/subjects/psychology_/_social_psychology",
+                "/subjects/self-help_/_personal_growth_/_general",
+                "/authors/OL7422948A"
+            ],
+            "title": "Atomic Habits",
+            "title_suggest": "Atomic Habits",
+            "edition_count": 27,
+            "edition_key": [
+                "OL43029154M",
+                "OL38573910M",
+                "OL38290995M",
+                "OL38290299M",
+                "OL38290297M",
+                "OL38090984M",
+                "OL36647151M",
+                "OL35684085M",
+                "OL33607132M",
+                "OL32336498M",
+                "OL27918581M",
+                "OL26502528M",
+                "OL41548398M",
+                "OL40216430M",
+                "OL30941750M",
+                "OL39107844M",
+                "OL35261119M",
+                "OL31936190M",
+                "OL30515574M",
+                "OL30515575M",
+                "OL41866438M",
+                "OL41941195M",
+                "OL36939272M",
+                "OL33000520M",
+                "OL31844060M",
+                "OL35382683M",
+                "OL38278752M"
+            ],
+            "publish_date": [
                 "2018",
-                "11/3/2021",
-                "2016",
-                "Apr 04, 2018",
-                "2022",
+                "Jun 11, 2019",
+                "May 16, 2019",
+                "Apr 27, 2020",
                 "2019",
-                "September 13, 2016",
-                "Nov 28, 2017",
-                "Sep 01, 2017",
-                "Aug 23, 2018",
-                "May 24, 2017",
-                "Dec 14, 2017",
-                "Jul 15, 2021",
-                "August 2016",
-                "2017"
+                "2018-10-16",
+                "Jan 07, 2020",
+                "Oct 29, 2021",
+                "2022",
+                "Sep 10, 2019",
+                "2020",
+                "Oct 16, 2018",
+                "Oct 27, 2019",
+                "Oct 01, 2019"
             ],
             "publish_year": [
                 2018,
+                2019,
                 2021,
                 2022,
-                2016,
-                2019,
-                2017
+                2020
             ],
-            "first_publish_year": 2016,
-            "number_of_pages_median": 224,
+            "first_publish_year": 2018,
+            "number_of_pages_median": 320,
+            "lccn": [
+                "2018377469"
+            ],
+            "publish_place": [
+                "Barcelona",
+                "New York"
+            ],
             "oclc": [
-                "956999728",
-                "1021287056",
-                "1040147657"
-            ],
-            "contributor": [
-                "I\ufe20A\ufe21strebov, Gleb, translator",
-                "Roig, Anna,   translator",
-                "Wayne, Roger, narrator"
+                "11165649274",
+                "1055766559"
             ],
             "lcc": [
-                "BJ-1589.00000000",
-                "BJ-1589.00000000.M259 2016ab",
-                "BJ-1589.00000000.M259 2016",
-                "BJ-1589.00000000.M25918 2018"
+                "BF-0335.00000000.C525 2018",
+                "BF-0335.00000000"
             ],
             "ddc": [
-                "158.1"
+                "155.24"
             ],
             "isbn": [
-                "9788551002490",
-                "9781760558772",
-                "8328335492",
-                "176055877X",
-                "9780062851338",
-                "9780062457738",
-                "1441711368",
-                "006245773X",
-                "9389012996",
-                "0062641549",
-                "9788328335493",
-                "9781441711366",
-                "0062851330",
-                "9798804636129",
-                "9781441711441",
-                "1387618776",
-                "1925483592",
-                "1400213304",
-                "5961462900",
-                "6059397255",
-                "0062457713",
-                "1441711449",
-                "9780062457721",
-                "0062899147",
-                "0063228254",
-                "9780062837509",
-                "9781400213306",
-                "1441711414",
-                "9786059397254",
-                "0062457721",
-                "9789389012996",
-                "9788652128600",
-                "9781441711410",
-                "9781387618774",
-                "9785961462906",
-                "855100249X",
-                "0062837508",
-                "8491392289",
-                "9781760782108",
-                "9780062884022",
-                "9780063228252",
-                "1760782106",
-                "9780062457714",
-                "9780062641540",
-                "9788491392286",
-                "9781925483598",
-                "9780062899149",
-                "865212860X",
-                "0062884026"
+                "9781698414683",
+                "1804222135",
+                "3442178584",
+                "1847941842",
+                "9788418118036",
+                "1804225789",
+                "9781847941848",
+                "9783442178582",
+                "6052998385",
+                "9786067891744",
+                "9781659017168",
+                "0735211302",
+                "9781804220207",
+                "9780735211292",
+                "1473537800",
+                "9780735211308",
+                "8418118032",
+                "1804220205",
+                "9780593189641",
+                "0735211299",
+                "9781847941831",
+                "97820359692",
+                "9781804225783",
+                "6077476714",
+                "9786077476719",
+                "9788550807560",
+                "9781473537804",
+                "9798613461172",
+                "9781804222133",
+                "1698414684",
+                "9786052998380",
+                "0593189647",
+                "9780593207093",
+                "1847941834",
+                "1659021588",
+                "ISBN 22",
+                "1659017165",
+                "6067891743",
+                "0593207092",
+                "8550807567",
+                "9781659021585"
             ],
-            "last_modified_i": 1670412667,
-            "ebook_count_i": 2,
-            "ebook_access": "printdisabled",
-            "has_fulltext": true,
+            "last_modified_i": 1671159851,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
             "public_scan_b": false,
-            "ia": [
-                "subtleartofnotgi0000mans_n2n5",
-                "subtleartofnotgi0000mans_h2r6"
-            ],
-            "ia_collection": [
-                "internetarchivebooks",
-                "printdisabled"
-            ],
-            "ia_collection_s": "internetarchivebooks;printdisabled",
-            "printdisabled_s": "OL27351482M;OL28230579M",
-            "cover_edition_key": "OL26193423M",
-            "cover_i": 8231990,
+            "cover_edition_key": "OL36647151M",
+            "cover_i": 12539702,
             "publisher": [
-                "Intrinseca",
-                "HarperOne",
-                "Laguna",
-                "HarperCollins Publishers",
-                "Mark Manson",
-                "Mark Manson ",
-                "Vani Ptakashan",
-                "Lulu Press, Inc.",
-                "Penguin",
-                "Harper Paperbacks",
-                "Macmillan",
-                "harper collins publishers",
-                "Pan Macmillan Australia Pty, Limited",
-                "Harpercollins",
-                "Harper",
-                "Harperone",
-                "Helion",
-                "HarperLuxe",
-                "Butik Yaynlar",
-                "HarperCollins Publishers and Blackstone Audio",
+                "Avery, an Imprint of Penguin Random House LLC",
                 "Independently Published",
-                "HarperCollins",
-                "Butik Yay\u0131nlar\u0131"
+                "Random House, Incorporated",
+                "Random House Business",
+                "Larousse",
+                "Diana",
+                "Pegasus",
+                "Penguin Random House USA",
+                "James Clear",
+                "Penguin Random house",
+                "Alta Books",
+                "Editora Alta Life",
+                "James clear",
+                "Goldmann Verlag",
+                "Random House Business Books",
+                "Penguin Random House",
+                "Planeta Publishing",
+                "Avery",
+                "Penguin random house",
+                "Lifestyle Publishing",
+                "Penguin Audio"
             ],
             "language": [
                 "eng",
-                "por",
-                "rus",
-                "spa"
+                "fre"
             ],
             "author_key": [
-                "OL2964000A"
+                "OL7422948A"
             ],
             "author_name": [
-                "Mark Manson"
+                "James Clear"
             ],
             "author_alternative_name": [
-                "Manson Mark",
-                "The Subtle Art of Not Giving A F*ck by Mark Manson",
-                "mark manson"
+                "James James Clear"
             ],
             "subject": [
-                "Self-realization",
-                "Conduct of life",
-                "Conducta de vida",
-                "nyt:advice-how-to-and-miscellaneous=2016-10-02",
-                "New York Times bestseller"
+                "Habit",
+                "Habit breaking",
+                "Behavior modification",
+                "Self-actualization (psychology)",
+                "Business",
+                "psychology",
+                "Personal Growth",
+                "nyt:business-books=2022-08-14",
+                "New York Times bestseller",
+                "BUSINESS & ECONOMICS / Organizational Behavior",
+                "PSYCHOLOGY / Social Psychology",
+                "SELF-HELP / Personal Growth / General"
             ],
             "id_amazon": [
-                "0062884026",
-                "0062899147",
-                "0062837508",
-                "0062851330",
-                "B0000CQEA0"
+                "B07RFSSYBH",
+                "B09YTXNR2H"
             ],
             "id_better_world_books": [
-                "BWBM51472717"
+                ""
             ],
-            "ia_box_id": [
-                "IA40594623",
-                "IA40576215"
+            "id_goodreads": [
+                "62221762"
+            ],
+            "id_learnawesome": [
+                "bc60faf0-a9b8-45f8-8ddb-d9179e6d3dd4"
+            ],
+            "id_wikidata": [
+                "Q98178602"
             ],
             "publisher_facet": [
-                "Butik Yaynlar",
-                "Butik Yay\u0131nlar\u0131",
-                "Harper",
-                "Harper Paperbacks",
-                "HarperCollins",
-                "HarperCollins Publishers",
-                "HarperCollins Publishers and Blackstone Audio",
-                "HarperLuxe",
-                "HarperOne",
-                "Harpercollins",
-                "Harperone",
-                "Helion",
+                "Alta Books",
+                "Avery",
+                "Avery, an Imprint of Penguin Random House LLC",
+                "Diana",
+                "Editora Alta Life",
+                "Goldmann Verlag",
                 "Independently Published",
-                "Intrinseca",
-                "Laguna",
-                "Lulu Press, Inc.",
-                "Macmillan",
-                "Mark Manson",
-                "Mark Manson ",
-                "Pan Macmillan Australia Pty, Limited",
-                "Penguin",
-                "Vani Ptakashan",
-                "harper collins publishers"
+                "James Clear",
+                "James clear",
+                "Larousse",
+                "Lifestyle Publishing",
+                "Pegasus",
+                "Penguin Audio",
+                "Penguin Random House",
+                "Penguin Random House USA",
+                "Penguin Random house",
+                "Penguin random house",
+                "Planeta Publishing",
+                "Random House Business",
+                "Random House Business Books",
+                "Random House, Incorporated"
             ],
             "subject_facet": [
-                "Conduct of life",
-                "Conducta de vida",
+                "BUSINESS & ECONOMICS / Organizational Behavior",
+                "Behavior modification",
+                "Business",
+                "Habit",
+                "Habit breaking",
                 "New York Times bestseller",
-                "Self-realization",
-                "nyt:advice-how-to-and-miscellaneous=2016-10-02"
+                "PSYCHOLOGY / Social Psychology",
+                "Personal Growth",
+                "SELF-HELP / Personal Growth / General",
+                "Self-actualization (psychology)",
+                "nyt:business-books=2022-08-14",
+                "psychology"
             ],
-            "_version_": 1751590554606501888,
-            "lcc_sort": "BJ-1589.00000000.M259 2016ab",
+            "_version_": 1752497123825287168,
+            "lcc_sort": "BF-0335.00000000.C525 2018",
             "author_facet": [
-                "OL2964000A Mark Manson"
+                "OL7422948A James Clear"
             ],
             "subject_key": [
-                "conduct_of_life",
-                "conducta_de_vida",
+                "behavior_modification",
+                "business",
+                "business__economics__organizational_behavior",
+                "habit",
+                "habit_breaking",
                 "new_york_times_bestseller",
-                "nytadvice-how-to-and-miscellaneous2016-10-02",
-                "self-realization"
+                "nytbusiness-books2022-08-14",
+                "personal_growth",
+                "psychology",
+                "psychology__social_psychology",
+                "self-actualization_(psychology)",
+                "self-help__personal_growth__general"
             ],
-            "ddc_sort": "158.1"
+            "ddc_sort": "155.24"
         },
         {
-            "key": "/works/OL30318856W",
+            "key": "/works/OL31058900W",
             "type": "work",
             "seed": [
-                "/books/OL41678736M",
-                "/works/OL30318856W",
-                "/authors/OL10902364A"
+                "/books/OL42654455M",
+                "/works/OL31058900W",
+                "/authors/OL10535237A"
             ],
-            "title": "50 Fuck of Quotes from the SUBTLE ART of NOT GIVING a Fuck",
-            "title_suggest": "50 Fuck of Quotes from the SUBTLE ART of NOT GIVING a Fuck",
+            "title": "Coaching Workbook for Atomic Habits",
+            "title_suggest": "Coaching Workbook for Atomic Habits",
             "edition_count": 1,
             "edition_key": [
-                "OL41678736M"
+                "OL42654455M"
             ],
             "publish_date": [
-                "2019"
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798527685459"
+            ],
+            "last_modified_i": 1670045993,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10535237A"
+            ],
+            "author_name": [
+                "Omni Reads"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751170152683012096,
+            "author_facet": [
+                "OL10535237A Omni Reads"
+            ]
+        },
+        {
+            "key": "/works/OL26656889W",
+            "type": "work",
+            "seed": [
+                "/books/OL36091464M",
+                "/works/OL26656889W",
+                "/authors/OL10030803A"
+            ],
+            "title": "Atomic Habits for Kids",
+            "title_suggest": "Atomic Habits for Kids",
+            "edition_count": 1,
+            "edition_key": [
+                "OL36091464M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798484417858"
+            ],
+            "last_modified_i": 1640678746,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10030803A"
+            ],
+            "author_name": [
+                "GoldInk Books"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735668680199503872,
+            "author_facet": [
+                "OL10030803A GoldInk Books"
+            ]
+        },
+        {
+            "key": "/works/OL28963636W",
+            "type": "work",
+            "seed": [
+                "/books/OL39823371M",
+                "/works/OL28963636W",
+                "/authors/OL9166632A"
+            ],
+            "title": "SUMMARY : ATOMIC HABITS",
+            "title_suggest": "SUMMARY : ATOMIC HABITS",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39823371M"
+            ],
+            "publish_date": [
+                "May 02, 2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "number_of_pages_median": 69,
+            "isbn": [
+                "1096612232",
+                "9781096612230"
+            ],
+            "last_modified_i": 1665700935,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently published",
+                "Independently Published"
+            ],
+            "author_key": [
+                "OL9166632A"
+            ],
+            "author_name": [
+                "Key Notes"
+            ],
+            "publisher_facet": [
+                "Independently Published",
+                "Independently published"
+            ],
+            "_version_": 1746614025572057088,
+            "author_facet": [
+                "OL9166632A Key Notes"
+            ]
+        },
+        {
+            "key": "/works/OL31579770W",
+            "type": "work",
+            "seed": [
+                "/books/OL43251192M",
+                "/works/OL31579770W",
+                "/authors/OL8372525A"
+            ],
+            "title": "ATOMIC HABITS JOURNAL",
+            "title_suggest": "ATOMIC HABITS JOURNAL",
+            "edition_count": 1,
+            "edition_key": [
+                "OL43251192M"
+            ],
+            "publish_date": [
+                "2019-05-27"
             ],
             "publish_year": [
                 2019
             ],
             "first_publish_year": 2019,
             "isbn": [
-                "9781709050169",
-                "1709050160"
+                "1070527971",
+                "9781070527970"
             ],
-            "last_modified_i": 1669530748,
+            "last_modified_i": 1670457439,
             "ebook_count_i": 0,
             "ebook_access": "no_ebook",
             "has_fulltext": false,
             "public_scan_b": false,
             "publisher": [
-                "Independently Published"
-            ],
-            "language": [
-                "eng"
+                "Independently published"
             ],
             "author_key": [
-                "OL10902364A"
+                "OL8372525A"
             ],
             "author_name": [
-                "Tamil Thiyan"
+                "Happy Press"
             ],
             "publisher_facet": [
-                "Independently Published"
+                "Independently published"
             ],
-            "_version_": 1750629876546666497,
+            "_version_": 1751627978095198208,
             "author_facet": [
-                "OL10902364A Tamil Thiyan"
+                "OL8372525A Happy Press"
             ]
         },
         {
-            "key": "/works/OL30355761W",
+            "key": "/works/OL28861784W",
             "type": "work",
             "seed": [
-                "/books/OL41729539M",
-                "/works/OL30355761W",
-                "/authors/OL10902364A"
+                "/books/OL39674546M",
+                "/works/OL28861784W",
+                "/authors/OL10681645A"
             ],
-            "title": "18 Inspirational Quotes from the Subtle Art of Not Giving a Fuck",
-            "title_suggest": "18 Inspirational Quotes from the Subtle Art of Not Giving a Fuck",
+            "title": "Habit Tracker Journal for James Clear's Atomic Habits",
+            "title_suggest": "Habit Tracker Journal for James Clear's Atomic Habits",
             "edition_count": 1,
             "edition_key": [
-                "OL41729539M"
+                "OL39674546M"
             ],
             "publish_date": [
-                "2019"
+                "2022"
             ],
             "publish_year": [
-                2019
+                2022
             ],
-            "first_publish_year": 2019,
+            "first_publish_year": 2022,
             "isbn": [
-                "1706767617",
-                "9781706767619"
+                "9798411925357"
             ],
-            "last_modified_i": 1669558732,
+            "last_modified_i": 1663528884,
             "ebook_count_i": 0,
             "ebook_access": "no_ebook",
             "has_fulltext": false,
@@ -407,82 +972,239 @@
                 "eng"
             ],
             "author_key": [
-                "OL10902364A"
+                "OL10681645A"
             ],
             "author_name": [
-                "Tamil Thiyan"
+                "S. K. Publications"
             ],
             "publisher_facet": [
                 "Independently Published"
             ],
-            "_version_": 1750659219553517568,
+            "_version_": 1744336466495930368,
             "author_facet": [
-                "OL10902364A Tamil Thiyan"
+                "OL10681645A S. K. Publications"
             ]
         },
         {
-            "key": "/works/OL27117933W",
+            "key": "/works/OL26584952W",
             "type": "work",
             "seed": [
-                "/books/OL36812810M",
-                "/works/OL27117933W",
-                "/authors/OL7798859A"
+                "/books/OL35990979M",
+                "/works/OL26584952W",
+                "/subjects/self-help_techniques",
+                "/authors/OL9105151A"
             ],
-            "title": "Summary, Analysis, and Review of Mark Manson's the Subtle Art of Not Giving a Fuck",
-            "title_suggest": "Summary, Analysis, and Review of Mark Manson's the Subtle Art of Not Giving a Fuck",
+            "title": "Workbook for Atomic Habits",
+            "title_suggest": "Workbook for Atomic Habits",
             "edition_count": 1,
             "edition_key": [
-                "OL36812810M"
+                "OL35990979M"
             ],
             "publish_date": [
-                "2017"
+                "2021"
             ],
             "publish_year": [
-                2017
+                2021
             ],
-            "first_publish_year": 2017,
+            "first_publish_year": 2021,
             "isbn": [
-                "9781682996775",
-                "1682996778"
+                "9781954432260",
+                "1954432267"
             ],
-            "last_modified_i": 1643350269,
+            "last_modified_i": 1640618902,
             "ebook_count_i": 0,
             "ebook_access": "no_ebook",
             "has_fulltext": false,
             "public_scan_b": false,
             "publisher": [
-                "Start Publishing LLC"
+                "Made in Colors Publishers LLC"
             ],
             "language": [
                 "eng"
             ],
             "author_key": [
-                "OL7798859A"
+                "OL9105151A"
             ],
             "author_name": [
-                "Start Publishing Notes"
+                "Roger Press"
+            ],
+            "subject": [
+                "Self-help techniques"
             ],
             "publisher_facet": [
-                "Start Publishing LLC"
+                "Made in Colors Publishers LLC"
             ],
-            "_version_": 1735669187080093698,
+            "subject_facet": [
+                "Self-help techniques"
+            ],
+            "_version_": 1735668647957889025,
             "author_facet": [
-                "OL7798859A Start Publishing Notes"
+                "OL9105151A Roger Press"
+            ],
+            "subject_key": [
+                "self-help_techniques"
             ]
         },
         {
-            "key": "/works/OL29458740W",
+            "key": "/works/OL31091912W",
             "type": "work",
             "seed": [
-                "/books/OL40553285M",
-                "/works/OL29458740W",
-                "/authors/OL10867122A"
+                "/books/OL42697508M",
+                "/works/OL31091912W",
+                "/authors/OL11356974A"
             ],
-            "title": "Resumen de el Sutil Arte de Que Te Importe un Carajo (the Subtle Art of Not Giving a Fuck) - de Marc Manson",
-            "title_suggest": "Resumen de el Sutil Arte de Que Te Importe un Carajo (the Subtle Art of Not Giving a Fuck) - de Marc Manson",
+            "title": "Atomic Habits Workbook",
+            "title_suggest": "Atomic Habits Workbook",
             "edition_count": 1,
             "edition_key": [
-                "OL40553285M"
+                "OL42697508M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798357954848"
+            ],
+            "last_modified_i": 1670055785,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11356974A"
+            ],
+            "author_name": [
+                "Christopher J. Lam"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751180416326303744,
+            "author_facet": [
+                "OL11356974A Christopher J. Lam"
+            ]
+        },
+        {
+            "key": "/works/OL30772197W",
+            "type": "work",
+            "seed": [
+                "/books/OL42285036M",
+                "/works/OL30772197W",
+                "/authors/OL11192215A"
+            ],
+            "title": "Paperback - Atomic Habits",
+            "title_suggest": "Paperback - Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42285036M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798697610282"
+            ],
+            "last_modified_i": 1669878935,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11192215A"
+            ],
+            "author_name": [
+                "Zach Pettus"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750994977673969664,
+            "author_facet": [
+                "OL11192215A Zach Pettus"
+            ]
+        },
+        {
+            "key": "/works/OL26022374W",
+            "type": "work",
+            "seed": [
+                "/books/OL35121180M",
+                "/works/OL26022374W",
+                "/authors/OL9832537A"
+            ],
+            "title": "Atomic Habit",
+            "title_suggest": "Atomic Habit",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35121180M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798544366041"
+            ],
+            "last_modified_i": 1633874813,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9832537A"
+            ],
+            "author_name": [
+                "Nelson Singleton"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735668004519149569,
+            "author_facet": [
+                "OL9832537A Nelson Singleton"
+            ]
+        },
+        {
+            "key": "/works/OL29559104W",
+            "type": "work",
+            "seed": [
+                "/books/OL40675387M",
+                "/works/OL29559104W",
+                "/authors/OL10927056A"
+            ],
+            "title": "Atomic Habits",
+            "title_suggest": "Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL40675387M"
             ],
             "publish_date": [
                 "2018"
@@ -492,10 +1214,10 @@
             ],
             "first_publish_year": 2018,
             "isbn": [
-                "1728774039",
-                "9781728774039"
+                "172904915X",
+                "9781729049150"
             ],
-            "last_modified_i": 1668883278,
+            "last_modified_i": 1668949853,
             "ebook_count_i": 0,
             "ebook_access": "no_ebook",
             "has_fulltext": false,
@@ -504,35 +1226,2972 @@
                 "Independently Published"
             ],
             "language": [
-                "spa"
+                "eng"
             ],
             "author_key": [
-                "OL10867122A"
+                "OL10927056A"
             ],
             "author_name": [
-                "Sapiens Editorial"
+                "Dan Builfford"
             ],
             "publisher_facet": [
                 "Independently Published"
             ],
-            "_version_": 1749950956571721728,
+            "_version_": 1750020762655260672,
             "author_facet": [
-                "OL10867122A Sapiens Editorial"
+                "OL10927056A Dan Builfford"
             ]
         },
         {
-            "key": "/works/OL29667337W",
+            "key": "/works/OL31517758W",
             "type": "work",
             "seed": [
-                "/books/OL40813544M",
-                "/works/OL29667337W",
-                "/authors/OL10867122A"
+                "/books/OL43182312M",
+                "/works/OL31517758W",
+                "/authors/OL11479332A"
             ],
-            "title": "Resumen de el Sutil Arte de Que No Te Importe Nada (the Subtle Art of Not Giving a F*uck) - de Mark Manson",
-            "title_suggest": "Resumen de el Sutil Arte de Que No Te Importe Nada (the Subtle Art of Not Giving a F*uck) - de Mark Manson",
+            "title": "Summary : Atomic Habits",
+            "title_suggest": "Summary : Atomic Habits",
             "edition_count": 1,
             "edition_key": [
-                "OL40813544M"
+                "OL43182312M"
+            ],
+            "publish_date": [
+                "2019-07-26"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "isbn": [
+                "1082463442",
+                "9781082463440"
+            ],
+            "last_modified_i": 1670434495,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently published"
+            ],
+            "author_key": [
+                "OL11479332A"
+            ],
+            "author_name": [
+                "EssentialInsight Summaries"
+            ],
+            "publisher_facet": [
+                "Independently published"
+            ],
+            "_version_": 1751619329689911296,
+            "author_facet": [
+                "OL11479332A EssentialInsight Summaries"
+            ]
+        },
+        {
+            "key": "/works/OL28720251W",
+            "type": "work",
+            "seed": [
+                "/books/OL39415928M",
+                "/works/OL28720251W",
+                "/authors/OL10633556A"
+            ],
+            "title": "Manifestation Workbook : Atomic Habits",
+            "title_suggest": "Manifestation Workbook : Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39415928M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798401655363"
+            ],
+            "last_modified_i": 1660855797,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10633556A"
+            ],
+            "author_name": [
+                "LogJourPlaNote Publications"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1741533531363868672,
+            "author_facet": [
+                "OL10633556A LogJourPlaNote Publications"
+            ]
+        },
+        {
+            "key": "/works/OL25545263W",
+            "type": "work",
+            "seed": [
+                "/books/OL34262887M",
+                "/works/OL25545263W",
+                "/authors/OL9651636A"
+            ],
+            "title": "Summary of Atomic Habits",
+            "title_suggest": "Summary of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL34262887M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "number_of_pages_median": 162,
+            "isbn": [
+                "9798628833629"
+            ],
+            "last_modified_i": 1633106930,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9651636A"
+            ],
+            "author_name": [
+                "Clark DAVID"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667456013238272,
+            "author_facet": [
+                "OL9651636A Clark DAVID"
+            ]
+        },
+        {
+            "key": "/works/OL27941750W",
+            "type": "work",
+            "seed": [
+                "/books/OL38189387M",
+                "/works/OL27941750W",
+                "/authors/OL9276600A"
+            ],
+            "title": "Workbook for Atomic Habits",
+            "title_suggest": "Workbook for Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38189387M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798776352188"
+            ],
+            "last_modified_i": 1653650883,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9276600A"
+            ],
+            "author_name": [
+                "Smart Reads"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669997465763840,
+            "author_facet": [
+                "OL9276600A Smart Reads"
+            ]
+        },
+        {
+            "key": "/works/OL27497625W",
+            "type": "work",
+            "seed": [
+                "/books/OL37499318M",
+                "/works/OL27497625W",
+                "/authors/OL10195075A"
+            ],
+            "title": "Summary of Atomic Habits",
+            "title_suggest": "Summary of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL37499318M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798479949340"
+            ],
+            "last_modified_i": 1646207165,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10195075A"
+            ],
+            "author_name": [
+                "Katrina Morin"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669548716130306,
+            "author_facet": [
+                "OL10195075A Katrina Morin"
+            ]
+        },
+        {
+            "key": "/works/OL28092166W",
+            "type": "work",
+            "seed": [
+                "/books/OL38448468M",
+                "/works/OL28092166W",
+                "/authors/OL10319525A"
+            ],
+            "title": "Workbook for Atomic Habits",
+            "title_suggest": "Workbook for Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38448468M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798754598713"
+            ],
+            "last_modified_i": 1655618039,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10319525A"
+            ],
+            "author_name": [
+                "Yardlane Publishing"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736041342306353153,
+            "author_facet": [
+                "OL10319525A Yardlane Publishing"
+            ]
+        },
+        {
+            "key": "/works/OL30669329W",
+            "type": "work",
+            "seed": [
+                "/books/OL42154598M",
+                "/works/OL30669329W",
+                "/authors/OL11192017A"
+            ],
+            "title": "Paperback - Atomic Habits",
+            "title_suggest": "Paperback - Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42154598M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798553164218"
+            ],
+            "last_modified_i": 1669802195,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11192017A"
+            ],
+            "author_name": [
+                "Omen King"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750914508656738315,
+            "author_facet": [
+                "OL11192017A Omen King"
+            ]
+        },
+        {
+            "key": "/works/OL28070301W",
+            "type": "work",
+            "seed": [
+                "/books/OL38418265M",
+                "/works/OL28070301W",
+                "/authors/OL10444381A"
+            ],
+            "title": "Atoms of Habit and Behavioral Change",
+            "title_suggest": "Atoms of Habit and Behavioral Change",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38418265M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798808500648"
+            ],
+            "last_modified_i": 1655599936,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10444381A"
+            ],
+            "author_name": [
+                "Jane Chapman"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736022360521179138,
+            "author_facet": [
+                "OL10444381A Jane Chapman"
+            ]
+        },
+        {
+            "key": "/works/OL25567255W",
+            "type": "work",
+            "seed": [
+                "/books/OL34291872M",
+                "/works/OL25567255W",
+                "/authors/OL9659096A"
+            ],
+            "title": "Atomic Habits",
+            "title_suggest": "Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL34291872M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "number_of_pages_median": 90,
+            "isbn": [
+                "9798535811406"
+            ],
+            "last_modified_i": 1633124175,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9659096A"
+            ],
+            "author_name": [
+                "Phil GRAHAM"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667459121217536,
+            "author_facet": [
+                "OL9659096A Phil GRAHAM"
+            ]
+        },
+        {
+            "key": "/works/OL26055821W",
+            "type": "work",
+            "seed": [
+                "/books/OL35167460M",
+                "/works/OL26055821W",
+                "/authors/OL9842693A"
+            ],
+            "title": "Workbook : Atomic Habits",
+            "title_suggest": "Workbook : Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35167460M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798458259132"
+            ],
+            "last_modified_i": 1633900419,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9842693A"
+            ],
+            "author_name": [
+                "Elite WRITERS"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735668004502372352,
+            "author_facet": [
+                "OL9842693A Elite WRITERS"
+            ]
+        },
+        {
+            "key": "/works/OL26913919W",
+            "type": "work",
+            "seed": [
+                "/books/OL36489954M",
+                "/works/OL26913919W",
+                "/authors/OL10106228A"
+            ],
+            "title": "Workbook and Notebook Atomic Habits",
+            "title_suggest": "Workbook and Notebook Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL36489954M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798456107756"
+            ],
+            "last_modified_i": 1640969205,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10106228A"
+            ],
+            "author_name": [
+                "saido art2"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735668903549337600,
+            "author_facet": [
+                "OL10106228A saido art2"
+            ]
+        },
+        {
+            "key": "/works/OL27566022W",
+            "type": "work",
+            "seed": [
+                "/books/OL37591752M",
+                "/works/OL27566022W",
+                "/authors/OL2765101A"
+            ],
+            "title": "Mastering Atomic Habits",
+            "title_suggest": "Mastering Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL37591752M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798777228529"
+            ],
+            "last_modified_i": 1646270788,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL2765101A"
+            ],
+            "author_name": [
+                "Stephen James Parker"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669585032511489,
+            "author_facet": [
+                "OL2765101A Stephen James Parker"
+            ]
+        },
+        {
+            "key": "/works/OL30924302W",
+            "type": "work",
+            "seed": [
+                "/books/OL42485514M",
+                "/works/OL30924302W",
+                "/authors/OL11304812A"
+            ],
+            "title": "Monthly Atomic Habits Log",
+            "title_suggest": "Monthly Atomic Habits Log",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42485514M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798727434109"
+            ],
+            "last_modified_i": 1669981384,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11304812A"
+            ],
+            "author_name": [
+                "Hamza HMMOUCH"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751102401278902272,
+            "author_facet": [
+                "OL11304812A Hamza HMMOUCH"
+            ]
+        },
+        {
+            "key": "/works/OL30412154W",
+            "type": "work",
+            "seed": [
+                "/books/OL41809179M",
+                "/works/OL30412154W",
+                "/authors/OL11096719A"
+            ],
+            "title": "Atomic Habits",
+            "title_suggest": "Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41809179M"
+            ],
+            "publish_date": [
+                "2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "isbn": [
+                "1677149175",
+                "9781677149179"
+            ],
+            "last_modified_i": 1669603801,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11096719A"
+            ],
+            "author_name": [
+                "Mark Clear"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750706479453700096,
+            "author_facet": [
+                "OL11096719A Mark Clear"
+            ]
+        },
+        {
+            "key": "/works/OL25943727W",
+            "type": "work",
+            "seed": [
+                "/books/OL35015530M",
+                "/works/OL25943727W",
+                "/authors/OL9672374A"
+            ],
+            "title": "Journal of Daily Atomic Habits for Women and Men",
+            "title_suggest": "Journal of Daily Atomic Habits for Women and Men",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35015530M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798545960941"
+            ],
+            "last_modified_i": 1633818032,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9672374A"
+            ],
+            "author_name": [
+                "rondyy rondyy roo"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667875900817408,
+            "author_facet": [
+                "OL9672374A rondyy rondyy roo"
+            ]
+        },
+        {
+            "key": "/works/OL28713976W",
+            "type": "work",
+            "seed": [
+                "/books/OL39407554M",
+                "/works/OL28713976W",
+                "/authors/OL10631239A"
+            ],
+            "title": "SUMMARY of Atomic Habits",
+            "title_suggest": "SUMMARY of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39407554M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798840466919"
+            ],
+            "last_modified_i": 1660850193,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10631239A"
+            ],
+            "author_name": [
+                "Laura Stones"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1741527658913595394,
+            "author_facet": [
+                "OL10631239A Laura Stones"
+            ]
+        },
+        {
+            "key": "/works/OL31035278W",
+            "type": "work",
+            "seed": [
+                "/books/OL42623921M",
+                "/works/OL31035278W",
+                "/authors/OL8245315A"
+            ],
+            "title": "Atomic Habits for Teens",
+            "title_suggest": "Atomic Habits for Teens",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42623921M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798432032980"
+            ],
+            "last_modified_i": 1670039282,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8245315A"
+            ],
+            "author_name": [
+                "Michelle Coleman"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751163115655921664,
+            "author_facet": [
+                "OL8245315A Michelle Coleman"
+            ]
+        },
+        {
+            "key": "/works/OL27928969W",
+            "type": "work",
+            "seed": [
+                "/books/OL38171388M",
+                "/works/OL27928969W",
+                "/authors/OL2444127A"
+            ],
+            "title": "Summary of Atomic Habits by James Clear",
+            "title_suggest": "Summary of Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38171388M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798418172082"
+            ],
+            "last_modified_i": 1653640472,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL2444127A"
+            ],
+            "author_name": [
+                "Scott, James"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669925326880769,
+            "author_facet": [
+                "OL2444127A Scott, James"
+            ]
+        },
+        {
+            "key": "/works/OL28746952W",
+            "type": "work",
+            "seed": [
+                "/books/OL39453088M",
+                "/works/OL28746952W",
+                "/authors/OL1539090A"
+            ],
+            "title": "Summary and Simple Analysis of ATOMIC HABITS by James Clear",
+            "title_suggest": "Summary and Simple Analysis of ATOMIC HABITS by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39453088M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798840115008"
+            ],
+            "last_modified_i": 1660881137,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL1539090A"
+            ],
+            "author_name": [
+                "Katherine Jones"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1741560105694920705,
+            "author_facet": [
+                "OL1539090A Katherine Jones"
+            ]
+        },
+        {
+            "key": "/works/OL28560021W",
+            "type": "work",
+            "seed": [
+                "/books/OL39162981M",
+                "/works/OL28560021W",
+                "/authors/OL10407645A"
+            ],
+            "title": "Atomic Habits",
+            "title_suggest": "Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39162981M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798422690466"
+            ],
+            "last_modified_i": 1658430539,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10407645A"
+            ],
+            "author_name": [
+                "youssef press"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1738990466342322176,
+            "author_facet": [
+                "OL10407645A youssef press"
+            ]
+        },
+        {
+            "key": "/works/OL28071573W",
+            "type": "work",
+            "seed": [
+                "/books/OL38419876M",
+                "/works/OL28071573W",
+                "/authors/OL8379390A"
+            ],
+            "title": "Workbook for Atomic Habits",
+            "title_suggest": "Workbook for Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38419876M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798439314027"
+            ],
+            "last_modified_i": 1655600870,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8379390A"
+            ],
+            "author_name": [
+                "Crystal Publishing"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736023341665353728,
+            "author_facet": [
+                "OL8379390A Crystal Publishing"
+            ]
+        },
+        {
+            "key": "/works/OL28901054W",
+            "type": "work",
+            "seed": [
+                "/books/OL39730221M",
+                "/works/OL28901054W",
+                "/authors/OL10697578A"
+            ],
+            "title": "Summary of Atomic Habits",
+            "title_suggest": "Summary of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39730221M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798842123346"
+            ],
+            "last_modified_i": 1663562341,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10697578A"
+            ],
+            "author_name": [
+                "Courtney Farfan"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1744371553563312129,
+            "author_facet": [
+                "OL10697578A Courtney Farfan"
+            ]
+        },
+        {
+            "key": "/works/OL28939406W",
+            "type": "work",
+            "seed": [
+                "/books/OL39791922M",
+                "/works/OL28939406W",
+                "/authors/OL10711572A"
+            ],
+            "title": "Summary of Atomic Habits : ",
+            "title_suggest": "Summary of Atomic Habits : ",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39791922M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798808547339"
+            ],
+            "last_modified_i": 1663602010,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10711572A"
+            ],
+            "author_name": [
+                "Trent Wyler"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1744413154360688640,
+            "author_facet": [
+                "OL10711572A Trent Wyler"
+            ]
+        },
+        {
+            "key": "/works/OL28417789W",
+            "type": "work",
+            "seed": [
+                "/books/OL38922364M",
+                "/works/OL28417789W",
+                "/authors/OL10537987A"
+            ],
+            "title": "Summary of Atomic Habits",
+            "title_suggest": "Summary of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38922364M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798818147222"
+            ],
+            "last_modified_i": 1658274990,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10537987A"
+            ],
+            "author_name": [
+                "Robert Henandez"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1738827358653120512,
+            "author_facet": [
+                "OL10537987A Robert Henandez"
+            ]
+        },
+        {
+            "key": "/works/OL27849472W",
+            "type": "work",
+            "seed": [
+                "/books/OL38062964M",
+                "/works/OL27849472W",
+                "/authors/OL2506066A"
+            ],
+            "title": "Workbook for James Clear's Atomic Habits",
+            "title_suggest": "Workbook for James Clear's Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38062964M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798417759079"
+            ],
+            "last_modified_i": 1653560316,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL2506066A"
+            ],
+            "author_name": [
+                "James Henry"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669876635205632,
+            "author_facet": [
+                "OL2506066A James Henry"
+            ]
+        },
+        {
+            "key": "/works/OL30257012W",
+            "type": "work",
+            "seed": [
+                "/books/OL41594158M",
+                "/works/OL30257012W",
+                "/authors/OL10691828A",
+                "/authors/OL2828540A"
+            ],
+            "title": "Atomic Habits for Self Discipline",
+            "title_suggest": "Atomic Habits for Self Discipline",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41594158M"
+            ],
+            "publish_date": [
+                "2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "isbn": [
+                "1705888917",
+                "9781705888919"
+            ],
+            "last_modified_i": 1669483981,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10691828A",
+                "OL2828540A"
+            ],
+            "author_name": [
+                "John Clear",
+                "James Winters"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750580840108130305,
+            "author_facet": [
+                "OL10691828A John Clear",
+                "OL2828540A James Winters"
+            ]
+        },
+        {
+            "key": "/works/OL27618730W",
+            "type": "work",
+            "seed": [
+                "/books/OL37659758M",
+                "/works/OL27618730W",
+                "/authors/OL2715116A"
+            ],
+            "title": "Summary and Lessons on Atomic Habit",
+            "title_suggest": "Summary and Lessons on Atomic Habit",
+            "edition_count": 1,
+            "edition_key": [
+                "OL37659758M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798791510884"
+            ],
+            "last_modified_i": 1646313321,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL2715116A"
+            ],
+            "author_name": [
+                "David Patterson"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669656913444865,
+            "author_facet": [
+                "OL2715116A David Patterson"
+            ]
+        },
+        {
+            "key": "/works/OL22025523W",
+            "type": "work",
+            "seed": [
+                "/books/OL30044046M",
+                "/works/OL22025523W",
+                "/authors/OL8430998A"
+            ],
+            "title": "Summary and Analysis of : Atomic Habits",
+            "title_suggest": "Summary and Analysis of : Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL30044046M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "number_of_pages_median": 58,
+            "isbn": [
+                "9798647875792"
+            ],
+            "last_modified_i": 1599078070,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8430998A"
+            ],
+            "author_name": [
+                "Book Tigers"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735663829731246083,
+            "author_facet": [
+                "OL8430998A Book Tigers"
+            ]
+        },
+        {
+            "key": "/works/OL28119293W",
+            "type": "work",
+            "seed": [
+                "/books/OL38488243M",
+                "/works/OL28119293W",
+                "/authors/OL7347583A"
+            ],
+            "title": "Summary of Atomic Habits",
+            "title_suggest": "Summary of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38488243M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798719661629"
+            ],
+            "last_modified_i": 1655642538,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL7347583A"
+            ],
+            "author_name": [
+                "Sarah Fields"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736067035699347456,
+            "author_facet": [
+                "OL7347583A Sarah Fields"
+            ]
+        },
+        {
+            "key": "/works/OL28125004W",
+            "type": "work",
+            "seed": [
+                "/books/OL38496521M",
+                "/works/OL28125004W",
+                "/authors/OL3107250A"
+            ],
+            "title": "Summary of the Atomic Habits by James Clear",
+            "title_suggest": "Summary of the Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38496521M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798414878407"
+            ],
+            "last_modified_i": 1655647367,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL3107250A"
+            ],
+            "author_name": [
+                "Jane Michael"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736072099435380737,
+            "author_facet": [
+                "OL3107250A Jane Michael"
+            ]
+        },
+        {
+            "key": "/works/OL30986379W",
+            "type": "work",
+            "seed": [
+                "/books/OL42562600M",
+                "/works/OL30986379W",
+                "/authors/OL11324564A"
+            ],
+            "title": "Review and Highlights of Atomic Habits : Create a Positive Change in Your Life by Creating Good Habits and Breaking Toxic Ones",
+            "title_suggest": "Review and Highlights of Atomic Habits : Create a Positive Change in Your Life by Creating Good Habits and Breaking Toxic Ones",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42562600M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798713856229"
+            ],
+            "last_modified_i": 1670026910,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11324564A"
+            ],
+            "author_name": [
+                "Ronnie Daugherty"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751150142771167232,
+            "author_facet": [
+                "OL11324564A Ronnie Daugherty"
+            ]
+        },
+        {
+            "key": "/works/OL27845568W",
+            "type": "work",
+            "seed": [
+                "/books/OL38056747M",
+                "/works/OL27845568W",
+                "/authors/OL10391044A"
+            ],
+            "title": "SUMMARY of Atomic Habits by James Clear",
+            "title_suggest": "SUMMARY of Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38056747M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798505362068"
+            ],
+            "last_modified_i": 1653556230,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10391044A"
+            ],
+            "author_name": [
+                "Caleb Reads"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669968336322562,
+            "author_facet": [
+                "OL10391044A Caleb Reads"
+            ]
+        },
+        {
+            "key": "/works/OL28146116W",
+            "type": "work",
+            "seed": [
+                "/books/OL38528654M",
+                "/works/OL28146116W",
+                "/authors/OL10475763A"
+            ],
+            "title": "Summary of Atomic Habits by James Clear",
+            "title_suggest": "Summary of Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38528654M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798430974671"
+            ],
+            "last_modified_i": 1655668130,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10475763A"
+            ],
+            "author_name": [
+                "Fizzy Diamond"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736093869551910912,
+            "author_facet": [
+                "OL10475763A Fizzy Diamond"
+            ]
+        },
+        {
+            "key": "/works/OL28455421W",
+            "type": "work",
+            "seed": [
+                "/books/OL38976248M",
+                "/works/OL28455421W",
+                "/authors/OL10551538A"
+            ],
+            "title": "Summary of Atomic Habits by James Clear",
+            "title_suggest": "Summary of Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38976248M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798436774848"
+            ],
+            "last_modified_i": 1658308817,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10551538A"
+            ],
+            "author_name": [
+                "Intellectual Summary"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1738862831568158721,
+            "author_facet": [
+                "OL10551538A Intellectual Summary"
+            ]
+        },
+        {
+            "key": "/works/OL30547041W",
+            "type": "work",
+            "seed": [
+                "/books/OL41999399M",
+                "/works/OL30547041W",
+                "/authors/OL1436740A"
+            ],
+            "title": "Workbook for Atomic Habits by James Clear",
+            "title_suggest": "Workbook for Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41999399M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798627496450"
+            ],
+            "last_modified_i": 1669708846,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL1436740A"
+            ],
+            "author_name": [
+                "Steve Mitchell"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750816625322360832,
+            "author_facet": [
+                "OL1436740A Steve Mitchell"
+            ]
+        },
+        {
+            "key": "/works/OL30932407W",
+            "type": "work",
+            "seed": [
+                "/books/OL42496595M",
+                "/works/OL30932407W",
+                "/authors/OL10203362A"
+            ],
+            "title": "Reexamined and Refreshed of an Atomic Habits",
+            "title_suggest": "Reexamined and Refreshed of an Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42496595M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798504920634"
+            ],
+            "last_modified_i": 1669990690,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10203362A"
+            ],
+            "author_name": [
+                "John CHAPMAN"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751112163022340096,
+            "author_facet": [
+                "OL10203362A John CHAPMAN"
+            ]
+        },
+        {
+            "key": "/works/OL26931634W",
+            "type": "work",
+            "seed": [
+                "/books/OL36512279M",
+                "/works/OL26931634W",
+                "/authors/OL10110028A"
+            ],
+            "title": "Atomic Life Changer 90 Days Habit Tracker",
+            "title_suggest": "Atomic Life Changer 90 Days Habit Tracker",
+            "edition_count": 1,
+            "edition_key": [
+                "OL36512279M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798558300291"
+            ],
+            "last_modified_i": 1640982386,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10110028A"
+            ],
+            "author_name": [
+                "Life Planner"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735668943215919106,
+            "author_facet": [
+                "OL10110028A Life Planner"
+            ]
+        },
+        {
+            "key": "/works/OL30965757W",
+            "type": "work",
+            "seed": [
+                "/books/OL42536948M",
+                "/works/OL30965757W",
+                "/authors/OL11318063A"
+            ],
+            "title": "Master Your Habits",
+            "title_suggest": "Master Your Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42536948M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798738388477"
+            ],
+            "last_modified_i": 1670020629,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11318063A"
+            ],
+            "author_name": [
+                "A. S Adam"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751143551645777920,
+            "author_facet": [
+                "OL11318063A A. S Adam"
+            ]
+        },
+        {
+            "key": "/works/OL27235582W",
+            "type": "work",
+            "seed": [
+                "/books/OL36964246M",
+                "/works/OL27235582W",
+                "/authors/OL10193695A"
+            ],
+            "title": "Summary of the Book Atomic Habits",
+            "title_suggest": "Summary of the Book Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL36964246M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798728479529"
+            ],
+            "last_modified_i": 1643446824,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10193695A"
+            ],
+            "author_name": [
+                "BestPrint"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669294952349696,
+            "author_facet": [
+                "OL10193695A BestPrint"
+            ]
+        },
+        {
+            "key": "/works/OL26587286W",
+            "type": "work",
+            "seed": [
+                "/books/OL35994949M",
+                "/works/OL26587286W",
+                "/subjects/art",
+                "/authors/OL9105151A"
+            ],
+            "title": "Workbook for Atomic Habits : Tiny Changes, Remarkable Results",
+            "title_suggest": "Workbook for Atomic Habits : Tiny Changes, Remarkable Results",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35994949M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "1954432305",
+                "9781954432307"
+            ],
+            "last_modified_i": 1640621594,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Made in Colors Publishers LLC"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9105151A"
+            ],
+            "author_name": [
+                "Roger Press"
+            ],
+            "subject": [
+                "Art"
+            ],
+            "publisher_facet": [
+                "Made in Colors Publishers LLC"
+            ],
+            "subject_facet": [
+                "Art"
+            ],
+            "_version_": 1735668519865942018,
+            "author_facet": [
+                "OL9105151A Roger Press"
+            ],
+            "subject_key": [
+                "art"
+            ]
+        },
+        {
+            "key": "/works/OL30965778W",
+            "type": "work",
+            "seed": [
+                "/books/OL42536973M",
+                "/works/OL30965778W",
+                "/authors/OL11318071A"
+            ],
+            "title": "Develop Your Skills",
+            "title_suggest": "Develop Your Skills",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42536973M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798520590415"
+            ],
+            "last_modified_i": 1670020634,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11318071A"
+            ],
+            "author_name": [
+                "Jonas Berrezoug"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751143557583863809,
+            "author_facet": [
+                "OL11318071A Jonas Berrezoug"
+            ]
+        },
+        {
+            "key": "/works/OL28119746W",
+            "type": "work",
+            "seed": [
+                "/books/OL38488789M",
+                "/works/OL28119746W",
+                "/authors/OL10484115A"
+            ],
+            "title": "Summary : Atomic Habits",
+            "title_suggest": "Summary : Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38488789M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798830581271"
+            ],
+            "last_modified_i": 1655642858,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10484115A"
+            ],
+            "author_name": [
+                "James Steve"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736067367574700033,
+            "author_facet": [
+                "OL10484115A James Steve"
+            ]
+        },
+        {
+            "key": "/works/OL25546243W",
+            "type": "work",
+            "seed": [
+                "/books/OL34264110M",
+                "/works/OL25546243W",
+                "/authors/OL9651871A"
+            ],
+            "title": "Habits and Goal Tracking Journal : with Motivational Quotes from Atomic Habits by James Clear",
+            "title_suggest": "Habits and Goal Tracking Journal : with Motivational Quotes from Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL34264110M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "number_of_pages_median": 97,
+            "isbn": [
+                "9798521341634"
+            ],
+            "last_modified_i": 1633107609,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9651871A"
+            ],
+            "author_name": [
+                "Premay Publishing"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667469753778176,
+            "author_facet": [
+                "OL9651871A Premay Publishing"
+            ]
+        },
+        {
+            "key": "/works/OL22203255W",
+            "type": "work",
+            "seed": [
+                "/books/OL30253511M",
+                "/works/OL22203255W",
+                "/authors/OL8432912A"
+            ],
+            "title": "Summary Review and Discussion of Atomic Habits",
+            "title_suggest": "Summary Review and Discussion of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL30253511M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "number_of_pages_median": 48,
+            "isbn": [
+                "9798649097918"
+            ],
+            "last_modified_i": 1600315283,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8432912A"
+            ],
+            "author_name": [
+                "Quick Read Publishing"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735663939651371008,
+            "author_facet": [
+                "OL8432912A Quick Read Publishing"
+            ]
+        },
+        {
+            "key": "/works/OL24851324W",
+            "type": "work",
+            "seed": [
+                "/books/OL33031015M",
+                "/works/OL24851324W",
+                "/authors/OL5503714A"
+            ],
+            "title": "THE POWER OF HABIT",
+            "title_suggest": "THE POWER OF HABIT",
+            "edition_count": 1,
+            "edition_key": [
+                "OL33031015M"
+            ],
+            "publish_date": [
+                "Apr 26, 2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "number_of_pages_median": 139,
+            "isbn": [
+                "1096017997",
+                "9781096017998"
+            ],
+            "last_modified_i": 1669172994,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "cover_edition_key": "OL33031015M",
+            "cover_i": 11714617,
+            "publisher": [
+                "Independently Published",
+                "Independently published"
+            ],
+            "author_key": [
+                "OL5503714A"
+            ],
+            "author_name": [
+                "Katherine Curtis"
+            ],
+            "publisher_facet": [
+                "Independently Published",
+                "Independently published"
+            ],
+            "_version_": 1750254744188747776,
+            "author_facet": [
+                "OL5503714A Katherine Curtis"
+            ]
+        },
+        {
+            "key": "/works/OL29300562W",
+            "type": "work",
+            "seed": [
+                "/books/OL40281222M",
+                "/works/OL29300562W",
+                "/authors/OL9099021A"
+            ],
+            "title": "Summary of Atomic Habits : An Easy and Proven Way to Build Good Habits and Break Bad Ones",
+            "title_suggest": "Summary of Atomic Habits : An Easy and Proven Way to Build Good Habits and Break Bad Ones",
+            "edition_count": 1,
+            "edition_key": [
+                "OL40281222M"
+            ],
+            "publish_date": [
+                "May 01, 2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "number_of_pages_median": 76,
+            "isbn": [
+                "0368437892",
+                "9780368437892"
+            ],
+            "last_modified_i": 1668365268,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Blurb"
+            ],
+            "author_key": [
+                "OL9099021A"
+            ],
+            "author_name": [
+                "London Sky Press"
+            ],
+            "publisher_facet": [
+                "Blurb"
+            ],
+            "_version_": 1749407781152096256,
+            "author_facet": [
+                "OL9099021A London Sky Press"
+            ]
+        },
+        {
+            "key": "/works/OL27903752W",
+            "type": "work",
+            "seed": [
+                "/books/OL38136911M",
+                "/works/OL27903752W",
+                "/authors/OL9671882A"
+            ],
+            "title": "Summary of Atomic Habits by James Clear",
+            "title_suggest": "Summary of Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38136911M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798502597982"
+            ],
+            "last_modified_i": 1653616782,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9671882A"
+            ],
+            "author_name": [
+                "Podium PRESS"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735669926617677826,
+            "author_facet": [
+                "OL9671882A Podium PRESS"
+            ]
+        },
+        {
+            "key": "/works/OL28575776W",
+            "type": "work",
+            "seed": [
+                "/books/OL39181785M",
+                "/works/OL28575776W",
+                "/authors/OL10584663A"
+            ],
+            "title": "Summary and Analysis of ATOMIC HABITS by James Clear",
+            "title_suggest": "Summary and Analysis of ATOMIC HABITS by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39181785M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798541815276"
+            ],
+            "last_modified_i": 1658443890,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10584663A"
+            ],
+            "author_name": [
+                "Sharon Skot"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1739004463145811968,
+            "author_facet": [
+                "OL10584663A Sharon Skot"
+            ]
+        },
+        {
+            "key": "/works/OL29223304W",
+            "type": "work",
+            "seed": [
+                "/books/OL40196419M",
+                "/works/OL29223304W",
+                "/subjects/business",
+                "/authors/OL10394876A"
+            ],
+            "title": "Summary of Companion Works's Workbook for James Clear's Atomic Habits",
+            "title_suggest": "Summary of Companion Works's Workbook for James Clear's Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL40196419M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798350002102"
+            ],
+            "last_modified_i": 1666242188,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "IRB MEDIA"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10394876A"
+            ],
+            "author_name": [
+                "Irb Media"
+            ],
+            "subject": [
+                "Business"
+            ],
+            "publisher_facet": [
+                "IRB MEDIA"
+            ],
+            "subject_facet": [
+                "Business"
+            ],
+            "_version_": 1747181571052404737,
+            "author_facet": [
+                "OL10394876A Irb Media"
+            ],
+            "subject_key": [
+                "business"
+            ]
+        },
+        {
+            "key": "/works/OL28099481W",
+            "type": "work",
+            "seed": [
+                "/books/OL38458340M",
+                "/works/OL28099481W",
+                "/authors/OL9644186A"
+            ],
+            "title": "21 Day Habit Tracker - Atomic Habit Tracker/ Track Your Goals, Wellness, Fitness, Productivity. Keep Track of Your Progress and Bad Habits",
+            "title_suggest": "21 Day Habit Tracker - Atomic Habit Tracker/ Track Your Goals, Wellness, Fitness, Productivity. Keep Track of Your Progress and Bad Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38458340M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798427446310"
+            ],
+            "last_modified_i": 1655624341,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9644186A"
+            ],
+            "author_name": [
+                "Sue Idah"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1736047954414796800,
+            "author_facet": [
+                "OL9644186A Sue Idah"
+            ]
+        },
+        {
+            "key": "/works/OL25980175W",
+            "type": "work",
+            "seed": [
+                "/books/OL35066187M",
+                "/works/OL25980175W",
+                "/authors/OL9813221A"
+            ],
+            "title": "Summary, Analysis and Key Takeaways of Atomic Habits",
+            "title_suggest": "Summary, Analysis and Key Takeaways of Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35066187M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798524287335"
+            ],
+            "last_modified_i": 1633844715,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9813221A"
+            ],
+            "author_name": [
+                "Richard B. Banks"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667883650842624,
+            "author_facet": [
+                "OL9813221A Richard B. Banks"
+            ]
+        },
+        {
+            "key": "/works/OL31864239W",
+            "type": "work",
+            "seed": [
+                "/books/OL43570879M",
+                "/works/OL31864239W"
+            ],
+            "title": "Atomic Habits",
+            "title_suggest": "Atomic Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL43570879M"
+            ],
+            "publish_date": [
+                "????"
+            ],
+            "isbn": [
+                "9798608879340"
+            ],
+            "last_modified_i": 1670594027,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "id_amazon": [
+                "B084FX3Q17"
+            ],
+            "_version_": 1751744804544315392
+        },
+        {
+            "key": "/works/OL30562682W",
+            "type": "work",
+            "seed": [
+                "/books/OL42022392M",
+                "/works/OL30562682W",
+                "/authors/OL11181867A"
+            ],
+            "title": "Every Day Atomic Habits to Unfu K Yourself",
+            "title_suggest": "Every Day Atomic Habits to Unfu K Yourself",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42022392M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798623060433"
+            ],
+            "last_modified_i": 1669721224,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11181867A"
+            ],
+            "author_name": [
+                "Luis Maxim"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750829603794976768,
+            "author_facet": [
+                "OL11181867A Luis Maxim"
+            ]
+        },
+        {
+            "key": "/works/OL30574979W",
+            "type": "work",
+            "seed": [
+                "/books/OL42038605M",
+                "/works/OL30574979W",
+                "/authors/OL8418493A"
+            ],
+            "title": "Practice WorkBook Based on Atomic Habits by James Clear",
+            "title_suggest": "Practice WorkBook Based on Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42038605M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798667740056"
+            ],
+            "last_modified_i": 1669732136,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8418493A"
+            ],
+            "author_name": [
+                "Dilan Heart"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750841047564419072,
+            "author_facet": [
+                "OL8418493A Dilan Heart"
+            ]
+        },
+        {
+            "key": "/works/OL25962089W",
+            "type": "work",
+            "seed": [
+                "/books/OL35040836M",
+                "/works/OL25962089W",
+                "/authors/OL9813678A"
+            ],
+            "title": "Summary and in-Depth Analysis of ATOMIC HABITs by JAMES CLEAR",
+            "title_suggest": "Summary and in-Depth Analysis of ATOMIC HABITs by JAMES CLEAR",
+            "edition_count": 1,
+            "edition_key": [
+                "OL35040836M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798508952907"
+            ],
+            "last_modified_i": 1633831537,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9813678A"
+            ],
+            "author_name": [
+                "Vikky PRINT"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667984577331200,
+            "author_facet": [
+                "OL9813678A Vikky PRINT"
+            ]
+        },
+        {
+            "key": "/works/OL27926015W",
+            "type": "work",
+            "seed": [
+                "/books/OL38167443M",
+                "/works/OL27926015W",
+                "/authors/OL10393358A"
+            ],
+            "title": "Summary of Atomic Habits : An Easy and Proven Way to Build Good Habits and Break Bad Ones by James Clear",
+            "title_suggest": "Summary of Atomic Habits : An Easy and Proven Way to Build Good Habits and Break Bad Ones by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38167443M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798426548008"
+            ],
+            "last_modified_i": 1653638026,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10393358A"
+            ],
+            "author_name": [
+                "Mini Reads Summaries"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735670024651145216,
+            "author_facet": [
+                "OL10393358A Mini Reads Summaries"
+            ]
+        },
+        {
+            "key": "/works/OL28698634W",
+            "type": "work",
+            "seed": [
+                "/books/OL39388139M",
+                "/works/OL28698634W",
+                "/authors/OL10625403A"
+            ],
+            "title": "Atomic Habits Journal",
+            "title_suggest": "Atomic Habits Journal",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39388139M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798705467518"
+            ],
+            "last_modified_i": 1660835295,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10625403A"
+            ],
+            "author_name": [
+                "Eva Charlie"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1741512036817305600,
+            "author_facet": [
+                "OL10625403A Eva Charlie"
+            ]
+        },
+        {
+            "key": "/works/OL31349018W",
+            "type": "work",
+            "seed": [
+                "/books/OL42997591M",
+                "/works/OL31349018W"
+            ],
+            "title": "\uc544\uc8fc \uc791\uc740 \uc2b5\uad00\uc758 \ud798 ATOMIC HABITS Korean Text \uc81c\uc784\uc2a4 \ud074\ub9ac\uc5b4 James Clear",
+            "title_suggest": "\uc544\uc8fc \uc791\uc740 \uc2b5\uad00\uc758 \ud798 ATOMIC HABITS Korean Text \uc81c\uc784\uc2a4 \ud074\ub9ac\uc5b4 James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42997591M"
+            ],
+            "publish_date": [
+                "????"
+            ],
+            "isbn": [
+                "9791162540640"
+            ],
+            "last_modified_i": 1670365379,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "id_amazon": [
+                "B07Q47GXZM"
+            ],
+            "_version_": 1751600438807887872
+        },
+        {
+            "key": "/works/OL27898815W",
+            "type": "work",
+            "seed": [
+                "/books/OL38130519M",
+                "/works/OL27898815W",
+                "/authors/OL5176747A"
+            ],
+            "title": "Summary on Atomic Habits an Easy and Proven Way to Build Good Habits and Break Bad Ones - James Clear",
+            "title_suggest": "Summary on Atomic Habits an Easy and Proven Way to Build Good Habits and Break Bad Ones - James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL38130519M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798408420094"
+            ],
+            "last_modified_i": 1653612326,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL5176747A"
+            ],
+            "author_name": [
+                "Jonathan Taylor"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735670002810355714,
+            "author_facet": [
+                "OL5176747A Jonathan Taylor"
+            ]
+        },
+        {
+            "key": "/works/OL28884089W",
+            "type": "work",
+            "seed": [
+                "/books/OL39773456M",
+                "/books/OL39706155M",
+                "/works/OL28884089W",
+                "/authors/OL10690949A"
+            ],
+            "title": "Power of Atomic Memory and Unlimited Habits",
+            "title_suggest": "Power of Atomic Memory and Unlimited Habits",
+            "edition_count": 2,
+            "edition_key": [
+                "OL39773456M",
+                "OL39706155M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9781471637797",
+                "1471653544",
+                "9781471653544",
+                "1471637794"
+            ],
+            "last_modified_i": 1663589365,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Lulu Press, Inc."
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10690949A"
+            ],
+            "author_name": [
+                "Joe Charles Paterson"
+            ],
+            "publisher_facet": [
+                "Lulu Press, Inc."
+            ],
+            "_version_": 1744399888929521664,
+            "author_facet": [
+                "OL10690949A Joe Charles Paterson"
+            ]
+        },
+        {
+            "key": "/works/OL29763023W",
+            "type": "work",
+            "seed": [
+                "/books/OL40936830M",
+                "/works/OL29763023W",
+                "/authors/OL353242A"
+            ],
+            "title": "Successful Habits of Extraordinary People",
+            "title_suggest": "Successful Habits of Extraordinary People",
+            "edition_count": 1,
+            "edition_key": [
+                "OL40936830M"
             ],
             "publish_date": [
                 "2018"
@@ -542,10 +4201,10 @@
             ],
             "first_publish_year": 2018,
             "isbn": [
-                "9781976872365",
-                "1976872367"
+                "9781731530066",
+                "1731530064"
             ],
-            "last_modified_i": 1669026091,
+            "last_modified_i": 1669098831,
             "ebook_count_i": 0,
             "ebook_access": "no_ebook",
             "has_fulltext": false,
@@ -554,128 +4213,1162 @@
                 "Independently Published"
             ],
             "language": [
-                "spa"
+                "eng"
             ],
             "author_key": [
-                "OL10867122A"
+                "OL353242A"
             ],
             "author_name": [
-                "Sapiens Editorial"
+                "Stephen Patterson"
             ],
             "publisher_facet": [
                 "Independently Published"
             ],
-            "_version_": 1750100707193651201,
+            "_version_": 1750176976605282307,
             "author_facet": [
-                "OL10867122A Sapiens Editorial"
+                "OL353242A Stephen Patterson"
             ]
         },
         {
-            "key": "/works/OL27419964W",
+            "key": "/works/OL30499366W",
             "type": "work",
             "seed": [
-                "/books/OL37346802M",
-                "/works/OL27419964W",
-                "/authors/OL2964000A",
-                "/authors/OL10271722A"
+                "/books/OL41930421M",
+                "/works/OL30499366W",
+                "/authors/OL10298129A"
             ],
-            "title": "the subtle art of not giving a fuck [hardcover] and how to be fucking awesome 2 books collection set - a counterintuitive approach to living a good life",
-            "title_suggest": "the subtle art of not giving a fuck [hardcover] and how to be fucking awesome 2 books collection set - a counterintuitive approach to living a good life",
+            "title": "Mini Habits for Your Success",
+            "title_suggest": "Mini Habits for Your Success",
             "edition_count": 1,
             "edition_key": [
-                "OL37346802M"
+                "OL41930421M"
             ],
             "publish_date": [
-                "Feb 28, 2018"
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798640023411"
+            ],
+            "last_modified_i": 1669671041,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10298129A"
+            ],
+            "author_name": [
+                "Williams Mc Covey"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750776986521829376,
+            "author_facet": [
+                "OL10298129A Williams Mc Covey"
+            ]
+        },
+        {
+            "key": "/works/OL30463264W",
+            "type": "work",
+            "seed": [
+                "/books/OL41879569M",
+                "/works/OL30463264W",
+                "/authors/OL8371528A"
+            ],
+            "title": "Practice WorkBook Based on Atomic Habits by James Clear",
+            "title_suggest": "Practice WorkBook Based on Atomic Habits by James Clear",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41879569M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798623180094"
+            ],
+            "last_modified_i": 1669641960,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8371528A"
+            ],
+            "author_name": [
+                "Dylan Hart"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750746494181310464,
+            "author_facet": [
+                "OL8371528A Dylan Hart"
+            ]
+        },
+        {
+            "key": "/works/OL28546990W",
+            "type": "work",
+            "seed": [
+                "/books/OL39142048M",
+                "/works/OL28546990W",
+                "/authors/OL909949A"
+            ],
+            "title": "Atomic Habits of Decluttering and Organizing Your Home",
+            "title_suggest": "Atomic Habits of Decluttering and Organizing Your Home",
+            "edition_count": 1,
+            "edition_key": [
+                "OL39142048M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798834711964"
+            ],
+            "last_modified_i": 1658415788,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL909949A"
+            ],
+            "author_name": [
+                "George Williams"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1738974994158845952,
+            "author_facet": [
+                "OL909949A George Williams"
+            ]
+        },
+        {
+            "key": "/works/OL25526051W",
+            "type": "work",
+            "seed": [
+                "/books/OL34238840M",
+                "/works/OL25526051W",
+                "/authors/OL9613443A"
+            ],
+            "title": "Five Minute Journal",
+            "title_suggest": "Five Minute Journal",
+            "edition_count": 1,
+            "edition_key": [
+                "OL34238840M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "number_of_pages_median": 140,
+            "isbn": [
+                "9798508831462"
+            ],
+            "last_modified_i": 1633092916,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL9613443A"
+            ],
+            "author_name": [
+                "Ally Bill"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735667391937904641,
+            "author_facet": [
+                "OL9613443A Ally Bill"
+            ]
+        },
+        {
+            "key": "/works/OL30250920W",
+            "type": "work",
+            "seed": [
+                "/books/OL41584722M",
+                "/works/OL30250920W",
+                "/authors/OL3522425A"
+            ],
+            "title": "BadAss Success Secrets the Subtle Art of Success and Atomic Mindpower Habits",
+            "title_suggest": "BadAss Success Secrets the Subtle Art of Success and Atomic Mindpower Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41584722M"
+            ],
+            "publish_date": [
+                "2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "isbn": [
+                "9781686615535",
+                "1686615531"
+            ],
+            "last_modified_i": 1669478538,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL3522425A"
+            ],
+            "author_name": [
+                "George Mentz"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750575130098008065,
+            "author_facet": [
+                "OL3522425A George Mentz"
+            ]
+        },
+        {
+            "key": "/works/OL18939315W",
+            "type": "work",
+            "seed": [
+                "/books/OL12891839M",
+                "/books/OL17969594M",
+                "/works/OL18939315W",
+                "/subjects/safety_measures",
+                "/subjects/nuclear_facilities",
+                "/subjects/nuclear_reactors",
+                "/subjects/nuclear_reactor_accidents",
+                "/subjects/design_and_construction",
+                "/authors/OL7428598A"
+            ],
+            "title": "On-site habitability in the event of an accident at a nuclear facility",
+            "title_suggest": "On-site habitability in the event of an accident at a nuclear facility",
+            "edition_count": 2,
+            "edition_key": [
+                "OL12891839M",
+                "OL17969594M"
+            ],
+            "publish_date": [
+                "January 1989",
+                "1990"
+            ],
+            "publish_year": [
+                1989,
+                1990
+            ],
+            "first_publish_year": 1989,
+            "number_of_pages_median": 74,
+            "publish_place": [
+                "[Lanham, Md",
+                "Vienna"
+            ],
+            "contributor": [
+                "International Atomic Energy Agency."
+            ],
+            "isbn": [
+                "9201238894",
+                "9789201238894"
+            ],
+            "last_modified_i": 1645786412,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "International Atomic Energy Agency",
+                "Exclusive sales agent in the USA, UNIPUB]"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL7428598A"
+            ],
+            "author_name": [
+                "International Atomic Energy Agency"
+            ],
+            "subject": [
+                "Safety measures",
+                "Nuclear facilities",
+                "Nuclear reactors",
+                "Nuclear reactor accidents",
+                "Design and construction"
+            ],
+            "publisher_facet": [
+                "Exclusive sales agent in the USA, UNIPUB]",
+                "International Atomic Energy Agency"
+            ],
+            "subject_facet": [
+                "Design and construction",
+                "Nuclear facilities",
+                "Nuclear reactor accidents",
+                "Nuclear reactors",
+                "Safety measures"
+            ],
+            "_version_": 1735660087847944192,
+            "author_facet": [
+                "OL7428598A International Atomic Energy Agency"
+            ],
+            "subject_key": [
+                "design_and_construction",
+                "nuclear_facilities",
+                "nuclear_reactor_accidents",
+                "nuclear_reactors",
+                "safety_measures"
+            ]
+        },
+        {
+            "key": "/works/OL30919794W",
+            "type": "work",
+            "seed": [
+                "/books/OL42479353M",
+                "/works/OL30919794W",
+                "/authors/OL11303606A"
+            ],
+            "title": "Art of Building Good Habits : Things You Need to Know about the Science Behind Habit Building Process",
+            "title_suggest": "Art of Building Good Habits : Things You Need to Know about the Science Behind Habit Building Process",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42479353M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798708551795"
+            ],
+            "last_modified_i": 1669976351,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11303606A"
+            ],
+            "author_name": [
+                "Jarvis Casacchia"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751097128372928512,
+            "author_facet": [
+                "OL11303606A Jarvis Casacchia"
+            ]
+        },
+        {
+            "key": "/works/OL29774375W",
+            "type": "work",
+            "seed": [
+                "/books/OL40951165M",
+                "/works/OL29774375W",
+                "/authors/OL353242A"
+            ],
+            "title": "Happy Brain Habits",
+            "title_suggest": "Happy Brain Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL40951165M"
+            ],
+            "publish_date": [
+                "2018"
             ],
             "publish_year": [
                 2018
             ],
             "first_publish_year": 2018,
             "isbn": [
-                "9123649704",
-                "9789123649709"
+                "1790501598",
+                "9781790501595"
             ],
-            "last_modified_i": 1646056510,
+            "last_modified_i": 1669107085,
             "ebook_count_i": 0,
             "ebook_access": "no_ebook",
             "has_fulltext": false,
             "public_scan_b": false,
             "publisher": [
-                "HarperOne/Rethink Press Limited"
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
             ],
             "author_key": [
-                "OL2964000A",
-                "OL10271722A"
+                "OL353242A"
             ],
             "author_name": [
-                "Mark Manson",
-                "Dan Meredith"
+                "Stephen Patterson"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750185633024835593,
+            "author_facet": [
+                "OL353242A Stephen Patterson"
+            ]
+        },
+        {
+            "key": "/works/OL25071780W",
+            "type": "work",
+            "seed": [
+                "/books/OL33337359M",
+                "/works/OL25071780W",
+                "/authors/OL9461425A",
+                "/authors/OL9461426A",
+                "/authors/OL9461427A"
+            ],
+            "title": "HABITS AND THE POWER OF THE BRAIN",
+            "title_suggest": "HABITS AND THE POWER OF THE BRAIN",
+            "edition_count": 1,
+            "edition_key": [
+                "OL33337359M"
+            ],
+            "publish_date": [
+                "Jun 22, 2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "number_of_pages_median": 117,
+            "isbn": [
+                "1300415886",
+                "9781300415886"
+            ],
+            "last_modified_i": 1633854831,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "cover_edition_key": "OL33337359M",
+            "cover_i": 11961362,
+            "publisher": [
+                "Lulu.com"
+            ],
+            "author_key": [
+                "OL9461425A",
+                "OL9461426A",
+                "OL9461427A"
+            ],
+            "author_name": [
+                "Esther Greene Clear",
+                "Charles Robert Hicks",
+                "Jerry James Duhigg"
+            ],
+            "publisher_facet": [
+                "Lulu.com"
+            ],
+            "_version_": 1735667043656531968,
+            "author_facet": [
+                "OL9461425A Esther Greene Clear",
+                "OL9461426A Charles Robert Hicks",
+                "OL9461427A Jerry James Duhigg"
+            ]
+        },
+        {
+            "key": "/works/OL30410387W",
+            "type": "work",
+            "seed": [
+                "/books/OL41806861M",
+                "/works/OL30410387W",
+                "/authors/OL1716771A"
+            ],
+            "title": "Common Habits of Successful People",
+            "title_suggest": "Common Habits of Successful People",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41806861M"
+            ],
+            "publish_date": [
+                "2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "isbn": [
+                "9781707009046",
+                "170700904X"
+            ],
+            "last_modified_i": 1669602532,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL1716771A"
+            ],
+            "author_name": [
+                "Brian James"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750705147810414592,
+            "author_facet": [
+                "OL1716771A Brian James"
+            ]
+        },
+        {
+            "key": "/works/OL30338487W",
+            "type": "work",
+            "seed": [
+                "/books/OL41705472M",
+                "/works/OL30338487W",
+                "/authors/OL2842415A"
+            ],
+            "title": "Atomic Habits of Unlimited Memory Improvement for Adults",
+            "title_suggest": "Atomic Habits of Unlimited Memory Improvement for Adults",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41705472M"
+            ],
+            "publish_date": [
+                "2019"
+            ],
+            "publish_year": [
+                2019
+            ],
+            "first_publish_year": 2019,
+            "isbn": [
+                "9781704042732",
+                "1704042739"
+            ],
+            "last_modified_i": 1669545290,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL2842415A"
+            ],
+            "author_name": [
+                "Kevin Lucas"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750645123369140224,
+            "author_facet": [
+                "OL2842415A Kevin Lucas"
+            ]
+        },
+        {
+            "key": "/works/OL28872325W",
+            "type": "work",
+            "seed": [
+                "/books/OL39723168M",
+                "/books/OL39689473M",
+                "/works/OL28872325W",
+                "/authors/OL10686092A"
+            ],
+            "title": "Atomic Habits of Highly Effective People",
+            "title_suggest": "Atomic Habits of Highly Effective People",
+            "edition_count": 2,
+            "edition_key": [
+                "OL39723168M",
+                "OL39689473M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "1471657469",
+                "9781471654718",
+                "9781471657467",
+                "1471654710"
+            ],
+            "last_modified_i": 1663558623,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Lulu Press, Inc."
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10686092A"
+            ],
+            "author_name": [
+                "Jeff Younan Smith"
+            ],
+            "publisher_facet": [
+                "Lulu Press, Inc."
+            ],
+            "_version_": 1744367653938528256,
+            "author_facet": [
+                "OL10686092A Jeff Younan Smith"
+            ]
+        },
+        {
+            "key": "/works/OL30895026W",
+            "type": "work",
+            "seed": [
+                "/books/OL42445411M",
+                "/works/OL30895026W",
+                "/authors/OL3147365A"
+            ],
+            "title": "Atomic Productivity",
+            "title_suggest": "Atomic Productivity",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42445411M"
+            ],
+            "publish_date": [
+                "2021"
+            ],
+            "publish_year": [
+                2021
+            ],
+            "first_publish_year": 2021,
+            "isbn": [
+                "9798595636148"
+            ],
+            "last_modified_i": 1669955208,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL3147365A"
+            ],
+            "author_name": [
+                "Leo Black"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751074954624892928,
+            "author_facet": [
+                "OL3147365A Leo Black"
+            ]
+        },
+        {
+            "key": "/works/OL30457706W",
+            "type": "work",
+            "seed": [
+                "/books/OL41872364M",
+                "/works/OL30457706W",
+                "/authors/OL7681618A",
+                "/authors/OL385833A"
+            ],
+            "title": "Win in Life by Changing Your Habits",
+            "title_suggest": "Win in Life by Changing Your Habits",
+            "edition_count": 1,
+            "edition_key": [
+                "OL41872364M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798621920449"
+            ],
+            "last_modified_i": 1669638049,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL7681618A",
+                "OL385833A"
+            ],
+            "author_name": [
+                "Shawn Walker",
+                "Chris Stevenson"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1750742387372589057,
+            "author_facet": [
+                "OL385833A Chris Stevenson",
+                "OL7681618A Shawn Walker"
+            ]
+        },
+        {
+            "key": "/works/OL22217808W",
+            "type": "work",
+            "seed": [
+                "/books/OL30273880M",
+                "/works/OL22217808W",
+                "/authors/OL8498821A",
+                "/authors/OL8498822A"
+            ],
+            "title": "Master EMOTIONAL INTELLIGENCE : 4 Books in 1 : Mental Toughness : Atomic Habits, Dark Psychology Secrets",
+            "title_suggest": "Master EMOTIONAL INTELLIGENCE : 4 Books in 1 : Mental Toughness : Atomic Habits, Dark Psychology Secrets",
+            "edition_count": 1,
+            "edition_key": [
+                "OL30273880M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "number_of_pages_median": 411,
+            "isbn": [
+                "9798649394130"
+            ],
+            "last_modified_i": 1600331789,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8498821A",
+                "OL8498822A"
+            ],
+            "author_name": [
+                "Daniel Travis",
+                "Seth JD Beck"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1735663959597383681,
+            "author_facet": [
+                "OL8498821A Daniel Travis",
+                "OL8498822A Seth JD Beck"
+            ]
+        },
+        {
+            "key": "/works/OL31051264W",
+            "type": "work",
+            "seed": [
+                "/books/OL42644379M",
+                "/works/OL31051264W",
+                "/authors/OL10328477A"
+            ],
+            "title": "Lose Weight Get Rich",
+            "title_suggest": "Lose Weight Get Rich",
+            "edition_count": 1,
+            "edition_key": [
+                "OL42644379M"
+            ],
+            "publish_date": [
+                "2022"
+            ],
+            "publish_year": [
+                2022
+            ],
+            "first_publish_year": 2022,
+            "isbn": [
+                "9798418974976"
+            ],
+            "last_modified_i": 1670043321,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL10328477A"
+            ],
+            "author_name": [
+                "Johnny Crox"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1751167349233287168,
+            "author_facet": [
+                "OL10328477A Johnny Crox"
+            ]
+        },
+        {
+            "key": "/works/OL32514286W",
+            "type": "work",
+            "seed": [
+                "/books/OL44310894M",
+                "/works/OL32514286W",
+                "/authors/OL11200291A"
+            ],
+            "title": "Procrastination Cure",
+            "title_suggest": "Procrastination Cure",
+            "edition_count": 1,
+            "edition_key": [
+                "OL44310894M"
+            ],
+            "publish_date": [
+                "2020"
+            ],
+            "publish_year": [
+                2020
+            ],
+            "first_publish_year": 2020,
+            "isbn": [
+                "9798699599134"
+            ],
+            "last_modified_i": 1671319454,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Independently Published"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL11200291A"
+            ],
+            "author_name": [
+                "MI$TER X"
+            ],
+            "publisher_facet": [
+                "Independently Published"
+            ],
+            "_version_": 1752505471314427904,
+            "author_facet": [
+                "OL11200291A MI$TER X"
+            ]
+        },
+        {
+            "key": "/works/OL21129543W",
+            "type": "work",
+            "seed": [
+                "/books/OL44177333M",
+                "/books/OL28601588M",
+                "/books/OL38747050M",
+                "/books/OL37971459M",
+                "/books/OL35978539M",
+                "/books/OL29493004M",
+                "/works/OL21129543W",
+                "/subjects/nuclear_weapons_testing",
+                "/subjects/aboriginal_australians_government_relations",
+                "/subjects/radioactive_pollution",
+                "/subjects/cold_war",
+                "/subjects/australia_politics_and_government",
+                "/subjects/australia_history",
+                "/subjects/great_britain_politics_and_government_1945-1979",
+                "/subjects/nuclear_weapons",
+                "/subjects/testing",
+                "/subjects/treatment_of_aboriginal_australians",
+                "/subjects/cold_war",
+                "/subjects/politics_and_government",
+                "/subjects/western_desert_people",
+                "/subjects/defence",
+                "/subjects/missile_and_weapons_testing",
+                "/subjects/habitation",
+                "/subjects/government_settlements",
+                "/authors/OL8089221A"
+            ],
+            "title": "Atomic Thunder",
+            "title_suggest": "Atomic Thunder",
+            "edition_count": 6,
+            "edition_key": [
+                "OL44177333M",
+                "OL28601588M",
+                "OL38747050M",
+                "OL37971459M",
+                "OL35978539M",
+                "OL29493004M"
+            ],
+            "publish_date": [
+                "2018",
+                "2016"
+            ],
+            "publish_year": [
+                2018,
+                2016
+            ],
+            "first_publish_year": 2016,
+            "number_of_pages_median": 388,
+            "oclc": [
+                "937981551"
+            ],
+            "lcc": [
+                "U--0264.00000000.T96 2016",
+                "U--0264.50000000.A8"
+            ],
+            "isbn": [
+                "9781526727589",
+                "1525229095",
+                "1526727587",
+                "9781742234281",
+                "1742234283",
+                "1526727579",
+                "9781526727596",
+                "1526727609",
+                "1526727595",
+                "9781526727602",
+                "9781526727572",
+                "9781525229091"
+            ],
+            "last_modified_i": 1671271108,
+            "ebook_count_i": 1,
+            "ebook_access": "borrowable",
+            "has_fulltext": true,
+            "public_scan_b": false,
+            "ia": [
+                "atomicthundermar0000tyna"
+            ],
+            "ia_collection": [
+                "inlibrary",
+                "internetarchivebooks",
+                "printdisabled"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "lending_edition_s": "OL28601588M",
+            "lending_identifier_s": "atomicthundermar0000tyna",
+            "printdisabled_s": "OL28601588M",
+            "cover_edition_key": "OL28601588M",
+            "cover_i": 12737540,
+            "publisher": [
+                "ReadHowYouWant.com, Limited",
+                "Pen & Sword Books Limited",
+                "NewSouth Publishing"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL8089221A"
+            ],
+            "author_name": [
+                "Elizabeth Tynan"
+            ],
+            "subject": [
+                "Nuclear weapons, testing",
+                "Aboriginal australians, government relations",
+                "Radioactive pollution",
+                "Cold war",
+                "Australia, politics and government",
+                "Australia, history",
+                "Great britain, politics and government, 1945-1979",
+                "Nuclear weapons",
+                "Testing",
+                "Treatment of Aboriginal Australians",
+                "Cold War",
+                "Politics and government",
+                "Western Desert people",
+                "Defence",
+                "Missile and weapons testing",
+                "Habitation",
+                "Government settlements"
+            ],
+            "ia_box_id": [
+                "IA40474914"
+            ],
+            "publisher_facet": [
+                "NewSouth Publishing",
+                "Pen & Sword Books Limited",
+                "ReadHowYouWant.com, Limited"
+            ],
+            "subject_facet": [
+                "Aboriginal australians, government relations",
+                "Australia, history",
+                "Australia, politics and government",
+                "Cold War",
+                "Cold war",
+                "Defence",
+                "Government settlements",
+                "Great britain, politics and government, 1945-1979",
+                "Habitation",
+                "Missile and weapons testing",
+                "Nuclear weapons",
+                "Nuclear weapons, testing",
+                "Politics and government",
+                "Radioactive pollution",
+                "Testing",
+                "Treatment of Aboriginal Australians",
+                "Western Desert people"
+            ],
+            "_version_": 1752454775599792129,
+            "lcc_sort": "U--0264.00000000.T96 2016",
+            "author_facet": [
+                "OL8089221A Elizabeth Tynan"
+            ],
+            "subject_key": [
+                "aboriginal_australians_government_relations",
+                "australia_history",
+                "australia_politics_and_government",
+                "cold_war",
+                "defence",
+                "government_settlements",
+                "great_britain_politics_and_government_1945-1979",
+                "habitation",
+                "missile_and_weapons_testing",
+                "nuclear_weapons",
+                "nuclear_weapons_testing",
+                "politics_and_government",
+                "radioactive_pollution",
+                "testing",
+                "treatment_of_aboriginal_australians",
+                "western_desert_people"
+            ]
+        },
+        {
+            "key": "/works/OL10858489W",
+            "type": "work",
+            "seed": [
+                "/books/OL21970098M",
+                "/works/OL10858489W",
+                "/authors/OL4524330A"
+            ],
+            "title": "Transfer of Fallout Cesium-137 From Browse to Moose Part 1",
+            "title_suggest": "Transfer of Fallout Cesium-137 From Browse to Moose Part 1",
+            "edition_count": 1,
+            "edition_key": [
+                "OL21970098M"
+            ],
+            "publish_date": [
+                "1980"
+            ],
+            "publish_year": [
+                1980
+            ],
+            "first_publish_year": 1980,
+            "publish_place": [
+                "S.l"
+            ],
+            "contributor": [
+                "Zach, R.",
+                "Mayoh, K."
+            ],
+            "last_modified_i": 1260862641,
+            "ebook_count_i": 0,
+            "ebook_access": "no_ebook",
+            "has_fulltext": false,
+            "public_scan_b": false,
+            "publisher": [
+                "Sine nomine"
+            ],
+            "language": [
+                "eng"
+            ],
+            "author_key": [
+                "OL4524330A"
+            ],
+            "author_name": [
+                "Atomic Energy of Canada Limited."
             ],
             "author_alternative_name": [
-                "mark manson"
+                "Atomic Energy of Canada, Limited.",
+                "Atomic Energy of Canada.",
+                "Atomic Energy of Canada Limited",
+                "Atomic Energy Of Canada Limited",
+                "Atomic Energy of Canada, Ltd.",
+                "Canada. Atomic Energy of Canada Limited."
             ],
             "publisher_facet": [
-                "HarperOne/Rethink Press Limited"
+                "Sine nomine"
             ],
-            "_version_": 1735669553053040640,
+            "_version_": 1735651529412575232,
             "author_facet": [
-                "OL10271722A Dan Meredith",
-                "OL2964000A Mark Manson"
-            ]
-        },
-        {
-            "key": "/works/OL29782526W",
-            "type": "work",
-            "seed": [
-                "/books/OL40960859M",
-                "/works/OL29782526W",
-                "/authors/OL10904448A"
-            ],
-            "title": "Resumen Extendido de el Sutil Arte de Que Te Importe un Carajo (the Subtle Art of Not Giving a Fuck) - Basado en el Libro de Mark Manson",
-            "title_suggest": "Resumen Extendido de el Sutil Arte de Que Te Importe un Carajo (the Subtle Art of Not Giving a Fuck) - Basado en el Libro de Mark Manson",
-            "edition_count": 1,
-            "edition_key": [
-                "OL40960859M"
-            ],
-            "publish_date": [
-                "2019"
-            ],
-            "publish_year": [
-                2019
-            ],
-            "first_publish_year": 2019,
-            "isbn": [
-                "9781795864466",
-                "179586446X"
-            ],
-            "last_modified_i": 1669112661,
-            "ebook_count_i": 0,
-            "ebook_access": "no_ebook",
-            "has_fulltext": false,
-            "public_scan_b": false,
-            "publisher": [
-                "Independently Published"
-            ],
-            "language": [
-                "spa"
-            ],
-            "author_key": [
-                "OL10904448A"
-            ],
-            "author_name": [
-                "Libros Mentores"
-            ],
-            "publisher_facet": [
-                "Independently Published"
-            ],
-            "_version_": 1750191479182065665,
-            "author_facet": [
-                "OL10904448A Libros Mentores"
+                "OL4524330A Atomic Energy of Canada Limited."
             ]
         }
     ],
-    "num_found": 8,
-    "q": "the subtle art of not giving a fuck",
+    "num_found": 138,
+    "q": "atomic habit",
     "offset": null
 }
