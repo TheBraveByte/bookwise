@@ -35,10 +35,10 @@ func main() {
 	gob.Register(map[string]string{})
 	gob.Register(primitive.NewObjectID())
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("no environment variable file")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("no environment variable file")
+	// }
 
 	InfoLogger := log.New(os.Stdout, " ", log.LstdFlags|log.Lshortfile)
 	ErrorLogger := log.New(os.Stdout, " ", log.LstdFlags|log.Lshortfile)
