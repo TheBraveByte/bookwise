@@ -69,8 +69,8 @@ func main() {
 	}()
 
 	catalog := controller.NewCatalogue(&app, client)
-
-	srv := &http.Server{Addr: ":8000", Handler: Route(catalog)}
+	port := os.Getenv("PORT")
+	srv := &http.Server{Addr:port, Handler: Route(catalog)}
 	if err := srv.ListenAndServe(); err != nil {
 		log.Panic(err)
 	}
