@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - 8000:8000
     volumes:
       - .:/usr/src/app
     command: ["/usr/src/app/bookwiseAPI"]
