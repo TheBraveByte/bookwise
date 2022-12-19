@@ -93,6 +93,7 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 	}
 	scs := ct.App.Session.Start(wr, rq)
 	scs.Set("book_id", bookID)
+	scs.Set("book_title",book.Title)
 
 	// conditions : check if the searched book is available in the Main Library/ Store
 	// , not available or if an error pop up in the server

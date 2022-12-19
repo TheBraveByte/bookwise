@@ -133,7 +133,7 @@ func (cr *CatalogueDBRepo) FindBook(userID, bookId primitive.ObjectID) (primitiv
 	err := UserData(cr.DB, "user").FindOne(ctx, filter, opt).Decode(&res)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			return res, nil
+			return res, err
 		}
 		cr.App.ErrorLogger.Panic(err)
 	}

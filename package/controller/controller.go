@@ -192,7 +192,6 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 
 	scs := ct.App.Session.Start(wr, rq)
 	userInfo, ok := scs.Get("userInfo").(model.UserInfo)
-	fmt.Println(userInfo)
 	if !ok {
 		ct.App.ErrorLogger.Fatal("no available data in session")
 	}
@@ -254,65 +253,94 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 // PurchaseBook : this will help users to process the payment procedure when the user provide
 // their credit/debit card details.
 func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
-	// Parse the posted details of the controller
-	if err := rq.ParseForm(); err != nil {
-		ct.App.ErrorLogger.Fatalln(err)
-		return
-	}
-	amount, _ := strconv.ParseFloat(rq.Form.Get("amount"), 64)
-	payload := &model.PayLoad{
-		FirstName:   rq.Form.Get("first_name"),
-		LastName:    rq.Form.Get("last_name"),
-		Amount:      amount,
-		TxRef:       "MC-11001993",
-		Email:       rq.Form.Get("email"),
-		Phone:       rq.Form.Get("phone"),
-		Currency:    rq.Form.Get("currency"),
-		CardNo:      rq.Form.Get("card_no"),
-		Cvv:         rq.Form.Get("cvv"),
-		Pin:         rq.Form.Get("pin"),
-		ExpiryMonth: rq.Form.Get("expiry_month"),
-		ExpiryYear:  rq.Form.Get("expiry_year"),
+	
+	scs := ct.App.Session.Start(wr, rq)
+	bookId := scs.Get("book_id").(primitive.ObjectID)
+	userInfo, ok := scs.Get("userInfo").(model.UserInfo)
+	if !ok {
+		ct.App.ErrorLogger.Fatal("no available data in session")
 	}
 
-	// validate value with respect to struct tags
-	if err := ct.App.Validate.Struct(payload); err != nil {
-		if _, ok := err.(*validator.InvalidValidationError); !ok {
-			wr.Header().Set("Content-Type", "application/json")
-			msg := fmt.Sprintf("error %v", http.StatusBadRequest)
-			jsonData, err := json.MarshalIndent(msg, " ", "   ")
-			if err != nil {
-				return
-			}
-			_, err = wr.Write(jsonData)
-			if err != nil {
-				return
+	result, _ := ct.CatDB.FindBook(userInfo.ID, bookId)
+	
+	// Avoid the user from paying for purchaseed book multiple time
+	if len(result) >= 1 {
+		msg := map[string]interface{}{
+			"status_code": http.StatusNotImplemented,
+			"message":     "You have purchase this book before !",
+		}
+		wr.Header().Set("Content-Type", "application/json")
+
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
+		if err != nil {
+			return
+		}
+	} else {
+
+		// Parse the posted details of the controller
+		if err := rq.ParseForm(); err != nil {
+			ct.App.ErrorLogger.Fatalln(err)
+			return
+		}
+		amount, _ := strconv.ParseFloat(rq.Form.Get("amount"), 64)
+		payload := &model.PayLoad{
+			FirstName:   rq.Form.Get("first_name"),
+			LastName:    rq.Form.Get("last_name"),
+			Amount:      amount,
+			TxRef:       "MC-11001993",
+			Email:       rq.Form.Get("email"),
+			Phone:       rq.Form.Get("phone"),
+			Currency:    rq.Form.Get("currency"),
+			CardNo:      rq.Form.Get("card_no"),
+			Cvv:         rq.Form.Get("cvv"),
+			Pin:         rq.Form.Get("pin"),
+			ExpiryMonth: rq.Form.Get("expiry_month"),
+			ExpiryYear:  rq.Form.Get("expiry_year"),
+		}
+
+		// validate value with respect to struct tags
+		if err := ct.App.Validate.Struct(payload); err != nil {
+			if _, ok := err.(*validator.InvalidValidationError); !ok {
+				wr.Header().Set("Content-Type", "application/json")
+				msg := fmt.Sprintf("error %v", http.StatusBadRequest)
+				jsonData, err := json.MarshalIndent(msg, " ", "   ")
+				if err != nil {
+					return
+				}
+				_, err = wr.Write(jsonData)
+				if err != nil {
+					return
+				}
 			}
 		}
-	}
-	resp, _ := ct.Process(payload)
+		resp, _ := ct.Process(payload)
 
-	ref := resp["data"].(map[string]interface{})["flwRef"].(string)
+		ref := resp["data"].(map[string]interface{})["flwRef"].(string)
 
-	scs := ct.App.Session.Start(wr, rq)
+		scs := ct.App.Session.Start(wr, rq)
 
-	scs.Set("amount", amount)
-	scs.Set("ref", ref)
+		scs.Set("amount", amount)
+		scs.Set("ref", ref)
 
-	msg := map[string]interface{}{
-		"status_code": http.StatusAccepted,
-		"message":     "All Payment Details Confirmed",
-		"response":    resp,
-	}
-	wr.Header().Set("Content-Type", "application/json")
+		msg := map[string]interface{}{
+			"status_code": http.StatusAccepted,
+			"message":     "All Payment Details Confirmed",
+			"response":    resp,
+		}
+		wr.Header().Set("Content-Type", "application/json")
 
-	jsonData, err := json.MarshalIndent(msg, " ", "   ")
-	if err != nil {
-		return
-	}
-	_, err = wr.Write(jsonData)
-	if err != nil {
-		return
+		jsonData, err := json.MarshalIndent(msg, " ", "   ")
+		if err != nil {
+			return
+		}
+		_, err = wr.Write(jsonData)
+		if err != nil {
+			return
+		}
 	}
 }
 
@@ -320,12 +348,12 @@ func (ct *Catalogue) PurchaseBook(wr http.ResponseWriter, rq *http.Request) {
 // and other reference value needed.
 func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	scs := ct.App.Session.Start(wr, rq)
-	ref := scs.GetString( "ref")
+	ref := scs.GetString("ref")
 	if ref == "" {
 		ct.App.ErrorLogger.Fatal("error no reference code for this transaction ")
 	}
-	amount, err := scs.GetFloat64( "amount")
-	if amount == 0.0  || err != nil{
+	amount, err := scs.GetFloat64("amount")
+	if amount == 0.0 || err != nil {
 		ct.App.ErrorLogger.Fatal("error cannot make a payment of NGN 0.0 : pls enter a valid amount")
 	}
 
@@ -336,7 +364,6 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	resp, err := ct.Validate(ref, "1234")
 	if err != nil {
 		ct.App.ErrorLogger.Fatalf("invalid card details, cannot complete this payment process %v ", err)
-		
 	}
 
 	respAmount := resp["data"].(map[string]interface{})["tx"].(map[string]interface{})["amount"].(float64)
@@ -401,7 +428,7 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 	bookId := book["_id"].(primitive.ObjectID)
 
 	// Add the book to the user Library
-	userInfo := scs.Get( "userInfo").(model.UserInfo)
+	userInfo := scs.Get("userInfo").(model.UserInfo)
 
 	err = ct.CatDB.UpdateUserBook(userInfo.ID, bookId, bookData)
 	if err != nil {
@@ -430,7 +457,7 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 func (ct *Catalogue) ViewUserLibrary(wr http.ResponseWriter, rq *http.Request) {
 	scs := ct.App.Session.Start(wr, rq)
 
-	userInfo := scs.Get( "userInfo").(model.UserInfo)
+	userInfo := scs.Get("userInfo").(model.UserInfo)
 	userLibrary, err := ct.CatDB.GetUserBooks(userInfo.ID)
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln(err)
@@ -460,7 +487,7 @@ func (ct *Catalogue) SearchUserBook(wr http.ResponseWriter, rq *http.Request) {
 		ct.App.ErrorLogger.Fatalln("invalid id parameter")
 		return
 	}
-	
+
 	scs := ct.App.Session.Start(wr, rq)
 	userInfo := scs.Get("userInfo").(model.UserInfo)
 	book, err := ct.CatDB.FindBook(userInfo.ID, bookID)
