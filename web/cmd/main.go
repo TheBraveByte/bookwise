@@ -13,7 +13,7 @@ import (
 	"github.com/yusuf/bookwiseAPI/model"
 	"github.com/yusuf/bookwiseAPI/package/controller"
 
-	"github.com/joho/godotenv"
+	_"github.com/joho/godotenv"
 	"github.com/yusuf/bookwiseAPI/package/config"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
