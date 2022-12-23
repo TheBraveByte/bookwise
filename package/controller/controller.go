@@ -45,7 +45,17 @@ func NewCatalogue(app *config.CatalogueConfig, db *mongo.Client) *Catalogue {
 		Client: Client,
 	}
 }
-
+// Home 
+func (ct *Catalogue) Home (wr http.ResponseWriter, rq *http.Request) {
+	data := map[string]interface{}{
+		"status_code": http.StatusOK,
+		"message":"Welcome to BookwiseAPI",
+	}
+	err := json.NewEncoder(wr).Encode(&data)
+	if err != nil{
+		return
+	}
+}
 // AvailableBooks : this method allows access for authorized and unauthorized users to views and
 // see all available books in the library.
 func (ct *Catalogue) AvailableBooks(wr http.ResponseWriter, rq *http.Request) {

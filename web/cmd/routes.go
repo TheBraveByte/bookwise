@@ -19,6 +19,7 @@ func Route(c *controller.Catalogue) http.Handler {
 	mux.Use(middleware.Recoverer)
 	mux.Use(middleware.Timeout(100 * time.Second))
 
+	mux.Get("/", c.Home)
 	mux.Get("/view/books", c.AvailableBooks)
 	mux.Post("/create/account", c.CreateAccount)
 	mux.Post("/login/account", c.Login)
