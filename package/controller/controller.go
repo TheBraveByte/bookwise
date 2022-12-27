@@ -25,7 +25,7 @@ import (
 
 var Client = &http.Client{
 	Transport: &http.Transport{
-		MaxIdleConns:       3,
+		MaxIdleConns:       10,
 		DisableCompression: true,
 		MaxConnsPerHost:    3,
 		IdleConnTimeout:    100 * time.Second,

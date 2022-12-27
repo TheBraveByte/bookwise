@@ -1,17 +1,19 @@
 package model
 
 import (
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-// Library : model struct for the main library to store books
+// Library represents the main library for this application to store books
 type Library struct {
 	ID   primitive.ObjectID `bson:"_id" json:"_id"`
 	Book Book               `json:"book" bson:"book"`
 }
 
-// User : model for users
+// User represents the user for this application
+
 type User struct {
 	ID          primitive.ObjectID `bson:"_id" json:"_id"`
 	FirstName   string             `json:"first_name" Usage:"required,alpha"`
@@ -26,6 +28,7 @@ type User struct {
 }
 
 // UserLibrary : model to store purchased book by user
+
 type UserLibrary struct {
 	BookID     primitive.ObjectID `json:"_id" bson:"_id"`
 	AuthorName []string           `json:"author_name"`
@@ -43,19 +46,19 @@ type Book struct {
 	Contributor  []string `json:"contributor"`
 }
 
-// Docs : model for the API response when book is search by the user
+// Docs represent model for the API response when book is search by the user
 type Docs struct {
 	Docs []Book `json:"docs"`
 }
 
-// UserInfo : model to store cookies data in sessions
+// UserInfo represent model to store cookies data in sessions
 type UserInfo struct {
 	Email    string
 	ID       primitive.ObjectID
 	Password string
 }
 
-// PayLoad : model struct for user payment details
+// PayLoad represent model struct for user payment details
 type PayLoad struct {
 	FirstName   string  `json:"first_name" Usage:"required,alpha"`
 	LastName    string  `json:"last_name" Usage:"required,alpha"`

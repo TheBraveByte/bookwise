@@ -9,7 +9,6 @@ import (
 
 // Note : this payment process here is for testing and not live yet
 
-
 var card = rave.Card{
 	Rave: rave.Rave{
 		Live:      false,

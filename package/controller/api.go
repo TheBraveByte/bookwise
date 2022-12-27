@@ -1,14 +1,14 @@
 package controller
 
-
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/yusuf/bookwiseAPI/model"
 	"io"
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/yusuf/bookwiseAPI/model"
 )
 
 // SearchForBook : this method searched for requested books using OpenLibrary API and
@@ -24,7 +24,7 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 	}
 
 	// remove redundant space from the input values
-	title := strings.ToLower(rq.Form.Get("title"))
+	title := strings.ToLower(rq.PostForm.Get("title"))
 	searchBook := strings.Replace(strings.TrimSpace(title), " ", "+", -1)
 
 	// using the http client to get result/data from the API url
@@ -51,7 +51,7 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 	apiData := string(data)
 
 	// write the data read from the body to json file (api.json)
-	err = os.WriteFile("./package/json/api.json", []byte(apiData), 0666)
+	err = os.WriteFile("./package/json/api.json", []byte(apiData), 0o666)
 	if err != nil {
 		ct.App.ErrorLogger.Println(err)
 	}
@@ -86,14 +86,14 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 
 	book := docs.Docs[0]
 
-	//Check if Book is in the Library if not add the book to the library collections
+	// Check if Book is in the Library if not add the book to the library collections
 	count, bookID, err := ct.CatDB.CheckLibrary(book.Title, book)
 	if err != nil {
 		ct.App.ErrorLogger.Fatalln("error while checking for book in the library")
 	}
 	scs := ct.App.Session.Start(wr, rq)
 	scs.Set("book_id", bookID)
-	scs.Set("book_title",book.Title)
+	scs.Set("book_title", book.Title)
 
 	// conditions : check if the searched book is available in the Main Library/ Store
 	// , not available or if an error pop up in the server
@@ -141,5 +141,3 @@ func (ct *Catalogue) SearchForBook(wr http.ResponseWriter, rq *http.Request) {
 		}
 	}
 }
-
-
