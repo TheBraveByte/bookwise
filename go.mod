@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/anjolabassey/Rave-go v0.0.0-20220227000759-c0b94887bf0b
+	github.com/go-chi/cors v1.2.1
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/gorilla/securecookie v1.1.1
 	github.com/joho/godotenv v1.4.0

@@ -18,7 +18,7 @@ email=yusufakinleye10@gmail.com&password=Akinleye12345
 POST http://localhost:8000/api/user/search-book
 Content-Type: application/x-www-form-urlencoded
 
-title=Atomic Habit
+title=Think Big
 
 ### request to process payment for a book
 POST http://localhost:8000/api/user/pay/details
@@ -48,5 +48,6 @@ Content-Type: application/x-www-form-urlencoded
 
 
 ### request to delete from the user library  (copy the id to test the endpoint)
-GET http://localhost:8000/api/user/delete/book/639f02e4af11f63bde22f6c5
+GET http://localhost:8000639f02e4af11f63bde22f6c5
 Content-Type: application/x-www-form-urlencoded
+/api/user/delete/book/
