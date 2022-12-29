@@ -2,11 +2,12 @@ package main
 
 import (
 	"context"
-	"github.com/kataras/go-sessions/v3"
-	"github.com/yusuf/bookwiseAPI/package/token"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/kataras/go-sessions/v3"
+	"github.com/yusuf/bookwiseAPI/package/token"
 
 	_ "github.com/gorilla/securecookie"
 )
@@ -15,22 +16,29 @@ import (
 // a unique generated token
 func Authorization(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(wr http.ResponseWriter, rq *http.Request) {
-		authToken, err := rq.Cookie("auth_token")
-		if err != nil {
-			log.Println(err)
+		// authToken, err := rq.Cookie("auth_token")
+		// if err != nil {
+		// 	log.Println(err)
+		// }
+		// fmt.Println()
+
+		// if authToken.Value == "" {
+		// 	log.Fatal("error no value is assigned to key in header")
+		// 	return
+		// }
+		scs := session.Start(wr, rq)
+		authToken, ok := scs.Get("auth_token").(string)
+		if !ok {
+			log.Fatalf("%v token not available in session", http.StatusUnauthorized)
 		}
-		if authToken.Value == "" {
-			log.Fatal("error no value is assigned to key in header")
-			return
-		}
-		tokenClaims, err := token.ParseTokenString(authToken.Value)
+
+		tokenClaims, err := token.ParseTokenString(authToken)
 		if err != nil {
 			log.Fatalf("error %v", http.StatusUnauthorized)
 			return
 		}
 		ctx := context.WithValue(rq.Context(), "pass_token", tokenClaims)
 		next.ServeHTTP(wr, rq.WithContext(ctx))
-
 	})
 }
 

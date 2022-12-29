@@ -218,8 +218,10 @@ func (ct *Catalogue) Login(wr http.ResponseWriter, rq *http.Request) {
 				log.Fatal(err)
 				return
 			}
+		
+			scs.Set("auth_token", generateToken)
 
-			http.SetCookie(wr, &http.Cookie{Name: "auth_token", Value: generateToken, Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
+			// http.SetCookie(wr, &http.Cookie{Name: "auth_token", Value: generateToken, Path: "/", Domain: "localhost", Expires: time.Now().AddDate(0, 1, 0)})
 
 			err = ct.CatDB.UpdateUserDetails(userInfo.ID, generateToken, renewToken)
 			if err != nil {
@@ -361,6 +363,7 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	ref := scs.GetString("ref")
 	if ref == "" {
 		ct.App.ErrorLogger.Fatal("error no reference code for this transaction ")
+		
 	}
 	amount, err := scs.GetFloat64("amount")
 	if amount == 0.0 || err != nil {
