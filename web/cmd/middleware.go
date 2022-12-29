@@ -26,7 +26,7 @@ func Authorization(next http.Handler) http.Handler {
 		// 	log.Fatal("error no value is assigned to key in header")
 		// 	return
 		// }
-		scs := session.Start(wr, rq)
+		scs := app.Session.Start(wr, rq)
 		authToken, ok := scs.Get("auth_token").(string)
 		if !ok {
 			log.Fatalf("%v token not available in session", http.StatusUnauthorized)
