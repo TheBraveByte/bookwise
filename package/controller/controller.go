@@ -388,7 +388,7 @@ func (ct *Catalogue) ValidatePayment(wr http.ResponseWriter, rq *http.Request) {
 	wr.Header().Set("Content-Type", "application/json")
 
 	if resp["status"] == "success" && resp["message"] == "Charge Complete" && amount == respAmount {
-		http.SetCookie(wr, &http.Cookie{Name: "add_book", Value: "success", Path: "/", Domain: "localhost", Expires: time.Now().Add(60 * time.Second)})
+		scs.Set("add_book", "success")
 		msg := map[string]interface{}{
 			"status_code": http.StatusOK,
 			"message":     "Payment For Book Successful",
@@ -463,6 +463,7 @@ func (ct *Catalogue) AddBook(wr http.ResponseWriter, rq *http.Request) {
 	if err != nil {
 		return
 	}
+	_ = scs.Delete("add_book")
 }
 
 // ViewUserLibrary : this method is to check out all the book collection that a particular user

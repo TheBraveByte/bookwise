@@ -16,16 +16,7 @@ import (
 // a unique generated token
 func Authorization(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(wr http.ResponseWriter, rq *http.Request) {
-		// authToken, err := rq.Cookie("auth_token")
-		// if err != nil {
-		// 	log.Println(err)
-		// }
-		// fmt.Println()
 
-		// if authToken.Value == "" {
-		// 	log.Fatal("error no value is assigned to key in header")
-		// 	return
-		// }
 		scs := app.Session.Start(wr, rq)
 		authToken, ok := scs.Get("auth_token").(string)
 		if !ok {
@@ -48,15 +39,12 @@ func Authorization(next http.Handler) http.Handler {
 // book collections
 func AuthAddBook(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(wr http.ResponseWriter, rq *http.Request) {
-		c, err := rq.Cookie("add_book")
-		if err != nil {
-			log.Println(err)
+		scs := app.Session.Start(wr, rq)
+		add, ok := scs.Get("add_book").(string)
+		if !ok {
+			log.Fatalf("%v token not available in session", http.StatusUnauthorized)
 		}
-		if c.Value == "" {
-			log.Fatal("error no value is assigned to key in header")
-			return
-		}
-		ctx := context.WithValue(rq.Context(), "purchase", c.Value)
+		ctx := context.WithValue(rq.Context(), "purchased", add)
 		next.ServeHTTP(wr, rq.WithContext(ctx))
 	})
 }
