@@ -2,6 +2,8 @@
 
 Bookwise is a RESTful bookstore API that allows users to search for books and securely add them to their library or book catalogue through the integration of the Flutterwave payment system gateway. It interacts with an external search endpoint provided by Open Library to enable users to filter their search results based on the book title.
 
+Click the link [here](https://documenter.getpostman.com/view/24714144/2s8Z6yXDMj) to check out the postman documentation of the API .
+
 ## Features
 - Search for books by title
 - Filter search results by book title
